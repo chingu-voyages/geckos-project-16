@@ -2,7 +2,7 @@
 
 ## Our Team
 - [Daniel Strong](https://github.com/dastrong) *Team Lead*
-- []()
+- [Jim Wright](https://github.com/diskomotech)
 - []()
 - []()
 
