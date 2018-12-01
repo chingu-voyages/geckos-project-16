@@ -3,7 +3,7 @@
 ## Our Team
 - [Daniel Strong](https://github.com/dastrong) *Team Lead*
 - [Jim Wright](https://github.com/diskomotech)
-- []()
+- [Harjas](https://github.com/harjas27)
 - []()
 
 ## Our Project Idea
