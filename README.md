@@ -4,7 +4,7 @@
 - [Daniel Strong](https://github.com/dastrong) *Team Lead*
 - [Jim Wright](https://github.com/diskomotech)
 - [Harjas](https://github.com/harjas27)
-- []()
+- [Dhairya](https://github.com/dhairyadwivedi)
 
 ## Our Project Idea
 To create a site that will make it easier for people to connect with dogs for adoption in South Korea. There are sites that do this already, but are most were outdated or not visually appealing.
