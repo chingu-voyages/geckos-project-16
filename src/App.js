@@ -4,12 +4,7 @@ import Disclaimer from "./Disclaimer";
 
 class App extends Component {
   render() {
-    return (
-      <div>
-        <div className="App">Chingu Dogs</div>
-        <Disclaimer />
-      </div>
-    );
+    return <div className="App">Chingu Dogs</div>;
   }
 }
 
