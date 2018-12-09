@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import Disclaimer from "./Disclaimer";
 
 class App extends Component {
   render() {
