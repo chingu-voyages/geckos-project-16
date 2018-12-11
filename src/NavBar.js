@@ -1,6 +1,5 @@
 import _ from "lodash";
 import React, { Component } from "react";
-import { render } from "react-dom";
 import { Container, Icon, Menu, Sidebar, Responsive } from "semantic-ui-react";
 
 const MenuItems = ({ items, position }) => (
@@ -104,7 +103,5 @@ const rightItems = [
   { as: "a", content: "Login", key: "login" },
   { as: "a", content: "Register", key: "register" }
 ];
-
-const App = () => <NavBar leftItems={leftItems} rightItems={rightItems} />;
 
 export default NavBar;
