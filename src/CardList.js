@@ -1,6 +1,5 @@
 import React from "react";
 import CardComponent from "./CardComponent";
-import { Grid } from "semantic-ui-react";
 
 class CardList extends React.Component {
   constructor(props) {
@@ -10,12 +9,14 @@ class CardList extends React.Component {
     };
   }
 
-  componentDidMount() {
-    fetch("http://localhost:3000/posts")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ displayPets: data });
-      });
+  async componentDidMount() {
+    try {
+      const response = await fetch("http://localhost:4000/posts");
+      const data = await response.json();
+      this.setState({ displayPets: data });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render() {
@@ -23,11 +24,11 @@ class CardList extends React.Component {
     return displayPets.map((pet, i) => (
       <CardComponent
         key={i}
-        image={displayPets[i].images[0]}
-        name={displayPets[i].user.name}
-        gender={displayPets[i].gender}
-        age={displayPets[i].age}
-        location={displayPets[i].location}
+        image={pet.images[0]}
+        name={pet.user.name}
+        gender={pet.gender}
+        age={pet.age}
+        location={pet.location}
       />
     ));
   }
