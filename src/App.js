@@ -3,10 +3,15 @@ import "./App.css";
 import Disclaimer from "./Disclaimer";
 import ListingPolicy from "./ListingPolicy";
 import CardList from "./CardList";
+import NavBar from "./NavBar";
 
 class App extends Component {
   render() {
-    return <div className="App">Chingu Dogs</div>;
+    return (
+      <div className="App">
+        <NavBar />
+      </div>
+    );
   }
 }
 
