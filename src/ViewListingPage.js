@@ -7,14 +7,61 @@ import ViewListingStory from "./ViewListingStory";
 import ViewListingAction from "./ViewListingAction";
 
 class ViewListingPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      // String or empty object or empty array???
+      displayPet: "",
+    };
+  }
+
+  // Fetch data for individual pet
+  async componentDidMount() {
+    try {
+      const response = await fetch("http://localhost:4000/posts");
+      const data = await response.json();
+      this.setState({ displayPet: data[key] });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  // Need to check the test data properly to make sure we're grabbing info from right place!!!!!!
   render() {
+    const { displayPet } = this.state;
     return (
       <Fragment>
-        <ViewListingTitle />
-        <ViewListingFacts />
-        <ViewListingInfo />
-        <ViewListingStory />
-        <ViewListingAction />
+        <ViewListingTitle
+          petName={displayPet.name}
+          imageMain={displayPet.images[0]}
+          image2={displayPet.images[1]}
+          image3={displayPet.images[2]}
+          image4={displayPet.images[3]}
+        />
+        <ViewListingFacts
+          breed={displayPet.breed}
+          gender={displayPet.gender}
+          age={displayPet.age}
+          color={displayPet.color}
+          weight={displayPet.weight}
+          location={displayPet.location}
+        />
+        <ViewListingInfo
+          isSpayed={displayPet.spayed}
+          isVaccinated={displayPet.vaccinated}
+          houseTrained={displayPet.houseTrained}
+          goodWithKids={displayPet.goodWithKids}
+          goodWithDogs={displayPet.goodWithDogs}
+          goodWithCats={displayPet.goodWithCats}
+          leashTrained={displayPet.leashTrained}
+          crateTrained={displayPet.crateTrained}
+        />
+        <ViewListingStory story={displayPet.description} />
+        <ViewListingAction
+          contactName={displayPet.user.name}
+          contactEmail={displayPet.user.email}
+          fee={displayPet.adoptionFee}
+        />
       </Fragment>
     );
   }
