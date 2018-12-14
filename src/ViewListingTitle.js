@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Image } from "semantic-ui-react";
 
 const ViewListingTitle = ({ name, imageMain, image2, image3, image4 }) => (
