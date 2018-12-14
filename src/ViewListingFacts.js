@@ -3,6 +3,7 @@ import { List, Grid } from "semantic-ui-react";
 
 const ViewListingFacts = ({ breed, gender, age, color, weight, location }) => (
   <Fragment>
+    <h3>Facts About Me</h3>
     <Grid>
       <Grid.Row>
         <Grid.Column width={3}>
