@@ -32,7 +32,7 @@ class ViewListingPage extends React.Component {
     return (
       <Fragment>
         <ViewListingTitle
-          petName={displayPet.name}
+          petName={displayPet.petName}
           imageMain={displayPet.images[0]}
           image2={displayPet.images[1]}
           image3={displayPet.images[2]}
@@ -49,16 +49,17 @@ class ViewListingPage extends React.Component {
         <ViewListingInfo
           isSpayed={displayPet.spayed}
           isVaccinated={displayPet.vaccinated}
-          houseTrained={displayPet.houseTrained}
           goodWithKids={displayPet.goodWithKids}
           goodWithDogs={displayPet.goodWithDogs}
           goodWithCats={displayPet.goodWithCats}
+          houseTrained={displayPet.houseTrained}
           leashTrained={displayPet.leashTrained}
           crateTrained={displayPet.crateTrained}
+          litterTrained={displayPet.litterTrained}
         />
         <ViewListingStory story={displayPet.description} />
         <ViewListingAction
-          contactName={displayPet.user.name}
+          contactName={displayPet.user.contactName}
           contactEmail={displayPet.user.email}
           fee={displayPet.adoptionFee}
         />
