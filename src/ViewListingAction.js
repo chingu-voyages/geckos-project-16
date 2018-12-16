@@ -15,7 +15,7 @@ const ViewListingAction = ({ contactName, contactEmail, fee }) => (
         <Button circular color="facebook" icon="facebook" />
         <Button circular color="twitter" icon="twitter" />
         <Button circular color="purple" icon="instagram" />
-        <Button circular color="pinterest" icon="pinterest" />
+        <Button circular color="red" icon="pinterest" />
         <Button circular color="yellow" icon="mail" />
       </List>
       <Grid>
