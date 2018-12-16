@@ -10,30 +10,14 @@ const ViewListingFacts = ({ breed, gender, age, color, weight, location }) => (
           <Grid.Column width={3}>
             <List.Item>
               <List.Content>
-                <strong>Breed:</strong> Husky
+                <strong>Breed:</strong> {breed}
               </List.Content>
             </List.Item>
           </Grid.Column>
           <Grid.Column width={3}>
             <List.Item>
               <List.Content>
-                <strong>Color:</strong> Black
-              </List.Content>
-            </List.Item>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column width={3}>
-            <List.Item>
-              <List.Content>
-                <strong>Gender:</strong> Female
-              </List.Content>
-            </List.Item>
-          </Grid.Column>
-          <Grid.Column width={3}>
-            <List.Item>
-              <List.Content>
-                <strong>Weight:</strong> 8kg
+                <strong>Color:</strong> {color}
               </List.Content>
             </List.Item>
           </Grid.Column>
@@ -42,14 +26,30 @@ const ViewListingFacts = ({ breed, gender, age, color, weight, location }) => (
           <Grid.Column width={3}>
             <List.Item>
               <List.Content>
-                <strong>Age:</strong> 3 years
+                <strong>Gender:</strong> {gender}
               </List.Content>
             </List.Item>
           </Grid.Column>
           <Grid.Column width={3}>
             <List.Item>
               <List.Content>
-                <strong>Location:</strong> Busan
+                <strong>Weight:</strong> {weight}
+              </List.Content>
+            </List.Item>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={3}>
+            <List.Item>
+              <List.Content>
+                <strong>Age:</strong> {age}
+              </List.Content>
+            </List.Item>
+          </Grid.Column>
+          <Grid.Column width={3}>
+            <List.Item>
+              <List.Content>
+                <strong>Location:</strong> {location}
               </List.Content>
             </List.Item>
           </Grid.Column>
