@@ -23,13 +23,13 @@ const ViewListingAction = ({ contactName, contactEmail, fee }) => (
           <Grid.Column width={8}>
             <List.Item>
               <List.Content>
-                <strong>Contact Name:</strong> John Doe
+                <strong>Contact Name:</strong> {contactName}
               </List.Content>
             </List.Item>
           </Grid.Column>
           <List.Item>
             <List.Content>
-              <strong>Contact Email:</strong> jdoe34@gmail.com
+              <strong>Contact Email:</strong> {contactEmail}
             </List.Content>
           </List.Item>
         </Grid.Row>
@@ -37,7 +37,7 @@ const ViewListingAction = ({ contactName, contactEmail, fee }) => (
           <Grid.Column width={8}>
             <List.Item>
               <List.Content>
-                <strong>Adoption Fee:</strong> 10,000 Won
+                <strong>Adoption Fee:</strong> {fee}
               </List.Content>
             </List.Item>
           </Grid.Column>
