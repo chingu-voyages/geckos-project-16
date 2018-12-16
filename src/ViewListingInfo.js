@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { List, Grid, Icon, Container } from "semantic-ui-react";
+import { List, Grid, Container } from "semantic-ui-react";
 
 const ViewListingInfo = ({
   vaccinated,
