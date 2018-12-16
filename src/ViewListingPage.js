@@ -35,8 +35,6 @@ class ViewListingPage extends Component {
           image2={displayPet.images ? displayPet.images[1] : null}
           image3={displayPet.images ? displayPet.images[2] : null}
           image4={displayPet.images ? displayPet.images[3] : null}
-        />
-        <ViewListingFacts
           breed={displayPet.breed}
           gender={displayPet.gender}
           age={displayPet.age}
