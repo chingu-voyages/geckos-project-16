@@ -45,7 +45,7 @@ class ViewListingPage extends Component {
           location={displayPet.location}
         />
         <ViewListingInfo
-          isSpayed={displayPet.spayed}
+          spayed={displayPet.spayed}
           vaccinated={displayPet.vaccinated}
           goodWithKids={displayPet.goodWithKids}
           goodWithDogs={displayPet.goodWithDogs}
