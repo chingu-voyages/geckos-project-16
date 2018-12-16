@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { List, Grid, Container } from "semantic-ui-react";
 
 const ViewListingInfo = ({
+  spayed,
   vaccinated,
   goodWithKids,
   goodWithDogs,
@@ -18,19 +19,19 @@ const ViewListingInfo = ({
         <Grid.Row>
           <Grid.Column width={5}>
             <List.Item>
-              <List.Icon name="check" />
+              <List.Icon name={spayed ? "check" : "times"} />
               <List.Content>Spayed/Neutered</List.Content>
             </List.Item>
           </Grid.Column>
           <Grid.Column width={5}>
             <List.Item>
-              <List.Icon name="check" />
+              <List.Icon name={goodWithKids ? "check" : "times"} />
               <List.Content>Good with kids</List.Content>
             </List.Item>
           </Grid.Column>
           <Grid.Column width={5}>
             <List.Item>
-              <List.Icon name="times" />
+              <List.Icon name={leashTrained ? "check" : "times"} />
               <List.Content>Leash trained</List.Content>
             </List.Item>
           </Grid.Column>
@@ -38,19 +39,19 @@ const ViewListingInfo = ({
         <Grid.Row>
           <Grid.Column width={5}>
             <List.Item>
-              <List.Icon name="check" />
+              <List.Icon name={vaccinated ? "check" : "times"} />
               <List.Content>Vaccinated</List.Content>
             </List.Item>
           </Grid.Column>
           <Grid.Column width={5}>
             <List.Item>
-              <List.Icon name="check" />
+              <List.Icon name={goodWithDogs ? "check" : "times"} />
               <List.Content>Good with dogs</List.Content>
             </List.Item>
           </Grid.Column>
           <Grid.Column width={5}>
             <List.Item>
-              <List.Icon name="check" />
+              <List.Icon name={crateTrained ? "check" : "times"} />
               <List.Content>Crate trained</List.Content>
             </List.Item>
           </Grid.Column>
@@ -58,19 +59,19 @@ const ViewListingInfo = ({
         <Grid.Row>
           <Grid.Column width={5}>
             <List.Item>
-              <List.Icon name="check" />
+              <List.Icon name={houseTrained ? "check" : "times"} />
               <List.Content>House trained</List.Content>
             </List.Item>
           </Grid.Column>
           <Grid.Column width={5}>
             <List.Item>
-              <List.Icon name="times" />
+              <List.Icon name={goodWithCats ? "check" : "times"} />
               <List.Content>Good with cats</List.Content>
             </List.Item>
           </Grid.Column>
           <Grid.Column width={5}>
             <List.Item>
-              <List.Icon name="check" />
+              <List.Icon name={litterTrained ? "check" : "times"} />
               <List.Content>Litter trained</List.Content>
             </List.Item>
           </Grid.Column>
