@@ -10,8 +10,7 @@ class ViewListingPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // String or empty object or empty array???
-      displayPet: "",
+      displayPet: {},
     };
   }
 
@@ -20,23 +19,22 @@ class ViewListingPage extends Component {
     try {
       const response = await fetch("http://localhost:4000/posts");
       const data = await response.json();
-      this.setState({ displayPet: data[key] });
+      this.setState({ displayPet: data[1] });
     } catch (err) {
       console.log(err);
     }
   }
 
-  // Need to check the test data properly to make sure we're grabbing info from right place!!!!!!
   render() {
     const { displayPet } = this.state;
     return (
       <Fragment>
         <ViewListingTitle
           petName={displayPet.petName}
-          imageMain={displayPet.images[0]}
-          image2={displayPet.images[1]}
-          image3={displayPet.images[2]}
-          image4={displayPet.images[3]}
+          imageMain={displayPet.images ? displayPet.images[0] : null}
+          image2={displayPet.images ? displayPet.images[1] : null}
+          image3={displayPet.images ? displayPet.images[2] : null}
+          image4={displayPet.images ? displayPet.images[3] : null}
         />
         <ViewListingFacts
           breed={displayPet.breed}
@@ -48,7 +46,7 @@ class ViewListingPage extends Component {
         />
         <ViewListingInfo
           isSpayed={displayPet.spayed}
-          isVaccinated={displayPet.vaccinated}
+          vaccinated={displayPet.vaccinated}
           goodWithKids={displayPet.goodWithKids}
           goodWithDogs={displayPet.goodWithDogs}
           goodWithCats={displayPet.goodWithCats}
@@ -59,8 +57,8 @@ class ViewListingPage extends Component {
         />
         <ViewListingStory story={displayPet.description} />
         <ViewListingAction
-          contactName={displayPet.user.contactName}
-          contactEmail={displayPet.user.email}
+          contactName={displayPet.user ? displayPet.user.contactName : null}
+          contactEmail={displayPet.user ? displayPet.user.email : null}
           fee={displayPet.adoptionFee}
         />
       </Fragment>
