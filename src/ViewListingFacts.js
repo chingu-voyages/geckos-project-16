@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { List, Grid, Container } from "semantic-ui-react";
+import { List, Grid, Container, Divider } from "semantic-ui-react";
 
 const ViewListingFacts = ({ breed, gender, age, color, weight, location }) => (
   <Fragment>
@@ -55,6 +55,7 @@ const ViewListingFacts = ({ breed, gender, age, color, weight, location }) => (
           </Grid.Column>
         </Grid.Row>
       </Grid>
+      <Divider />
     </Container>
   </Fragment>
 );

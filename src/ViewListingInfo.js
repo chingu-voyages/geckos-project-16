@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { List, Grid, Container } from "semantic-ui-react";
+import { List, Grid, Container, Divider } from "semantic-ui-react";
 
 const ViewListingInfo = ({
   spayed,
@@ -77,6 +77,7 @@ const ViewListingInfo = ({
           </Grid.Column>
         </Grid.Row>
       </Grid>
+      <Divider />
     </Container>
   </Fragment>
 );
