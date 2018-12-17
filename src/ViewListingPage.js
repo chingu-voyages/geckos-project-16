@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from "react";
 
 import ViewListingTitle from "./ViewListingTitle";
-import ViewListingFacts from "./ViewListingFacts";
 import ViewListingInfo from "./ViewListingInfo";
 import ViewListingStory from "./ViewListingStory";
 import ViewListingAction from "./ViewListingAction";
+
+import "./ViewListingPage.css";
 
 class ViewListingPage extends Component {
   constructor(props) {
