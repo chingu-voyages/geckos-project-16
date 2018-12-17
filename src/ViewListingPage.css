@@ -10,7 +10,11 @@ body {
 .factItemList {
   height: 60px;
   align-items: center;
-  padding-top: 160px;
+  padding-top: 100px;
+}
+
+.factItemList > * {
+  padding-top: 15px;
 }
 
 .infoItemList .content {
