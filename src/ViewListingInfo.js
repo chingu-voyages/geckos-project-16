@@ -15,7 +15,7 @@ const ViewListingInfo = ({
   <Fragment>
     <Container>
       <h3>My Info</h3>
-      <Grid>
+      <Grid className="infoItemList">
         <Grid.Row>
           <Grid.Column width={5}>
             <List.Item>
