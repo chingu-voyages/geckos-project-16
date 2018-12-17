@@ -10,16 +10,16 @@ const ViewListingAction = ({ contactName, contactEmail, fee }) => (
           <Button positive>Register Your Interest</Button>
         </List.Item>
         <List.Item>
-          <h4>Share:</h4>
+          <h4 className="socialMediaShare">Share:</h4>
         </List.Item>
-        <Button circular color="facebook" icon="facebook" />
-        <Button circular color="twitter" icon="twitter" />
-        <Button circular color="purple" icon="instagram" />
-        <Button circular color="red" icon="pinterest" />
-        <Button circular color="yellow" icon="mail" />
+        <Button circular color="facebook" icon="facebook" className="socialMediaButton" />
+        <Button circular color="twitter" icon="twitter" className="socialMediaButton" />
+        <Button circular color="purple" icon="instagram" className="socialMediaButton" />
+        <Button circular color="red" icon="pinterest" className="socialMediaButton" />
+        <Button circular color="yellow" icon="mail" className="socialMediaButton" />
       </List>
       <Grid>
-        <Grid.Row>
+        <Grid.Row className="contactDetails">
           <Grid.Column width={8}>
             <List.Item>
               <List.Content>
@@ -36,7 +36,7 @@ const ViewListingAction = ({ contactName, contactEmail, fee }) => (
         <Grid.Row>
           <Grid.Column width={8}>
             <List.Item>
-              <List.Content>
+              <List.Content className="adoptionFee">
                 <strong>Adoption Fee:</strong> {fee}
               </List.Content>
             </List.Item>
