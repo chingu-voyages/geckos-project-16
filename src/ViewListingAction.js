@@ -37,7 +37,7 @@ const ViewListingAction = ({ contactName, contactEmail, fee }) => (
           <Grid.Column width={8}>
             <List.Item>
               <List.Content className="adoptionFee">
-                <strong>Adoption Fee:</strong> {fee}
+                <strong>Adoption Fee:</strong> ₩{fee}
               </List.Content>
             </List.Item>
           </Grid.Column>
