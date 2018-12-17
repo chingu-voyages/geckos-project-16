@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Image, Container, Grid, List, Divider } from "semantic-ui-react";
+import { Image, Container, Grid, List, Divider, Button } from "semantic-ui-react";
 
 const ViewListingTitle = ({
   petName,
@@ -16,13 +16,13 @@ const ViewListingTitle = ({
 }) => (
   <Fragment>
     <Container>
-      <h2>{`My name is ${petName}!`}</h2>
-      <Grid columns={4}>
+      <h2 className="petNameTitle">{`My name is ${petName}!`}</h2>
+      <Grid columns={5}>
         <Grid.Row stretched>
           <Grid.Column width={8}>
             <Image src={imageMain} alt="Main image of pet" className="imageMain" />
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column className="factItemList">
             <List.Content>
               <strong>Breed:</strong> {breed}
             </List.Content>
@@ -30,10 +30,10 @@ const ViewListingTitle = ({
               <strong>Gender:</strong> {gender}
             </List.Content>
             <List.Content>
-              <strong>Age:</strong> {age}
+              <strong>Age:</strong> {age} years
             </List.Content>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column className="factItemList">
             <List.Content>
               <strong>Color:</strong> {color}
             </List.Content>
