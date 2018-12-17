@@ -1,0 +1,10 @@
+.petNameTitle {
+  padding: 15px 0 15px 5px;
+  font-size: 30px;
+}
+
+.factItemList {
+  height: 60px;
+  align-items: center;
+  padding-top: 160px;
+}
