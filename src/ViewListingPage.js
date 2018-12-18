@@ -59,7 +59,7 @@ class ViewListingPage extends Component {
         <ViewListingAction
           contactName={displayPet.user ? displayPet.user.contactName : null}
           contactEmail={displayPet.user ? displayPet.user.email : null}
-          fee={displayPet.adoptionFee}
+          adoptionFee={displayPet.adoptionFee}
         />
       </Fragment>
     );

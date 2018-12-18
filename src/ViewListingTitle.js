@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Image, Container, Grid, List, Divider, Button } from "semantic-ui-react";
+import { Image, Container, Grid, List, Divider } from "semantic-ui-react";
 
 const ViewListingTitle = ({
   petName,
