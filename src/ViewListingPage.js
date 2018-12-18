@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from "react";
-
 import ViewListingTitle from "./ViewListingTitle";
 import ViewListingInfo from "./ViewListingInfo";
 import ViewListingStory from "./ViewListingStory";
 import ViewListingAction from "./ViewListingAction";
-
 import "./ViewListingPage.css";
 
 class ViewListingPage extends Component {
@@ -20,6 +18,7 @@ class ViewListingPage extends Component {
     try {
       const response = await fetch("http://localhost:4000/posts");
       const data = await response.json();
+      // Temporary code for development purposes. Which pet will be displayed will be more complex in finished product
       this.setState({ displayPet: data[1] });
     } catch (err) {
       console.log(err);
@@ -32,6 +31,7 @@ class ViewListingPage extends Component {
       <Fragment>
         <ViewListingTitle
           petName={displayPet.petName}
+          // Is there a better way to do this? Lifecycle method perhaps?
           imageMain={displayPet.images ? displayPet.images[0] : null}
           image2={displayPet.images ? displayPet.images[1] : null}
           image3={displayPet.images ? displayPet.images[2] : null}
@@ -52,6 +52,7 @@ class ViewListingPage extends Component {
           houseTrained={displayPet.houseTrained}
           leashTrained={displayPet.leashTrained}
           crateTrained={displayPet.crateTrained}
+          // Litter trained only for cats so maybe can be removed?
           litterTrained={displayPet.litterTrained}
         />
         <ViewListingStory story={displayPet.description} />
