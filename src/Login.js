@@ -5,8 +5,24 @@ import "./Login.css";
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      email: "",
+      password: "",
+    };
   }
+
+  handleChange = event => {
+    const name = event.target.name;
+    this.setState({
+      [name]: event.target.value,
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    // Temporary placeholder code
+    console.log(this.state.email, this.state.password);
+  };
 
   render() {
     return (
@@ -28,16 +44,30 @@ class Login extends Component {
               </Divider>
             </div>
             <div id="input-form">
-              <Form>
+              <Form onSubmit={this.handleSubmit}>
                 <Form.Group widths="equal">
-                  <Form.Input fluid placeholder="Email" id="input" />
-                  <Form.Input fluid placeholder="Password" id="input" />
+                  <Form.Input
+                    fluid
+                    placeholder="Email"
+                    id="input"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                  />
+                  <Form.Input
+                    fluid
+                    placeholder="Password"
+                    id="input"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                  />
                 </Form.Group>
+                <Button positive id="login-button">
+                  Log In
+                </Button>
               </Form>
             </div>
-            <Button positive id="login-button">
-              Log In
-            </Button>
             <h2>
               No account? <a href="#">Sign up here</a>
             </h2>
