@@ -6,7 +6,7 @@ import {
   Icon,
   Segment,
   Form,
-  Checkbox,
+  Input,
 } from "semantic-ui-react";
 import "./SignUp.css";
 
@@ -18,27 +18,26 @@ class SignUp extends Component {
       firstName: "",
       lastName: "",
       password: "",
-      over18: "",
+      confirmPassword: "",
+      over18: false,
       koreanResident: false,
     };
   }
 
   handleChange = event => {
-    const name = event.target.name;
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
     this.setState({
-      [name]: event.target.value,
+      [name]: value,
     });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    // Temporary placeholder code
-    console.log(this.state.email, this.state.password);
   };
 
   render() {
-    const { over18, koreanResident } = this.state;
-
     return (
       <Fragment>
         <Container id="container">
@@ -64,62 +63,67 @@ class SignUp extends Component {
               <Form onSubmit={this.handleSubmit}>
                 <Form.Group widths="equal">
                   <Form.Input
-                    fluid
+                    type="text"
                     placeholder="First Name"
                     id="input"
-                    name="password"
-                    value={this.state.password}
+                    name="firstName"
+                    value={this.state.firstName}
                     onChange={this.handleChange}
                   />
                   <Form.Input
-                    fluid
+                    type="text"
                     placeholder="Last Name"
                     id="input"
-                    name="password"
-                    value={this.state.password}
+                    name="lastName"
+                    value={this.state.lastName}
                     onChange={this.handleChange}
                   />
                 </Form.Group>
                 <Form.Group>
                   <Form.Input
-                    fluid
+                    type="email"
                     placeholder="Email"
                     id="input-email"
-                    name="password"
-                    value={this.state.password}
+                    name="email"
+                    value={this.state.email}
                     onChange={this.handleChange}
                   />
                 </Form.Group>
                 <Form.Group>
                   <Form.Input
-                    fluid
-                    placeholder="Confirm Password"
-                    id="input"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                  />
-                  <Form.Input
-                    fluid
+                    type="password"
                     placeholder="Password"
                     id="input"
                     name="password"
+                    autoComplete="new-password"
                     value={this.state.password}
+                    onChange={this.handleChange}
+                  />
+                  <Form.Input
+                    type="password"
+                    placeholder="Confirm Password"
+                    id="input"
+                    name="confirmPassword"
+                    autoComplete="new-password"
+                    value={this.state.confirmPassword}
                     onChange={this.handleChange}
                   />
                 </Form.Group>
                 <div id="checkbox">
-                  <Form.Group>
-                    <Checkbox label="I am over 18 years of age" />
-                  </Form.Group>
-
-                  <Form.Group>
-                    <Checkbox label="I am a South Korean citizen or permanent resident" />
-                  </Form.Group>
+                  <Form.Field inline>
+                    <Input name="over18" type="checkbox" onClick={this.handleChange} />
+                    <label>I am over 18 years of age</label>
+                  </Form.Field>
+                  <Form.Field inline>
+                    <Input
+                      name="koreanResident"
+                      type="checkbox"
+                      onClick={this.handleChange}
+                    />
+                    <label>I am a South Korean citizen or permanent resident</label>
+                  </Form.Field>
                 </div>
-                <Button positive id="login-button">
-                  Sign Up
-                </Button>
+                <Button id="login-button">Sign Up</Button>
               </Form>
             </div>
           </Segment>
