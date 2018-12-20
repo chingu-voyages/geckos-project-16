@@ -13,7 +13,7 @@ a {
 #container {
   display: flex;
   justify-content: center;
-  padding: 4% 0;
+  padding: 2%;
 }
 
 #container-segment {
@@ -47,6 +47,10 @@ a {
   text-transform: lowercase;
 }
 
+#signup-email-title {
+  margin: 5px 0 25px 0;
+}
+
 #input-form {
   display: flex;
   justify-content: center;
@@ -59,14 +63,22 @@ a {
 }
 
 #input-email {
-  width: 760px !important;
+  width: 765px !important;
   height: 60px;
   margin: 5px 10px;
 }
 
+#checkbox {
+  margin: 25px 0 20px 25px;
+}
+
+#checkbox > * {
+  font-size: 25px;
+  font-weight: bold;
+}
+
 #login-button {
-  width: 760px;
+  width: 765px;
   height: 60px;
   font-size: 20px;
-  margin: 0 0 10px 0;
 }

@@ -59,7 +59,7 @@ class SignUp extends Component {
                 or
               </Divider>
             </div>
-            <h2>Sign Up with Your Email Address</h2>
+            <h2 id="signup-email-title">Sign Up with Your Email Address</h2>
             <div id="input-form">
               <Form onSubmit={this.handleSubmit}>
                 <Form.Group widths="equal">
@@ -108,12 +108,15 @@ class SignUp extends Component {
                     onChange={this.handleChange}
                   />
                 </Form.Group>
-                <Form.Group>
-                  <Checkbox label="I am over 18 years of age" />
-                </Form.Group>
-                <Form.Group>
-                  <Checkbox label="I am a South Korean citizen or permanent resident" />
-                </Form.Group>
+                <div id="checkbox">
+                  <Form.Group>
+                    <Checkbox label="I am over 18 years of age" />
+                  </Form.Group>
+
+                  <Form.Group>
+                    <Checkbox label="I am a South Korean citizen or permanent resident" />
+                  </Form.Group>
+                </div>
                 <Button positive id="login-button">
                   Sign Up
                 </Button>
