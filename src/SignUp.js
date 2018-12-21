@@ -123,7 +123,22 @@ class SignUp extends Component {
                     <label>I am a South Korean citizen or permanent resident</label>
                   </Form.Field>
                 </div>
-                <Button id="login-button">Sign Up</Button>
+                <Form.Button
+                  positive
+                  id="login-button"
+                  type="submit"
+                  disabled={
+                    !this.state.email ||
+                    !this.state.firstName ||
+                    !this.state.lastName ||
+                    !this.state.password ||
+                    !this.state.confirmPassword ||
+                    !this.state.over18 ||
+                    !this.state.koreanResident
+                  }
+                >
+                  Sign Up
+                </Form.Button>
               </Form>
             </div>
           </Segment>
