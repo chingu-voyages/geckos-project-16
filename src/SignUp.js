@@ -21,6 +21,10 @@ class SignUp extends Component {
       confirmPassword: "",
       over18: false,
       koreanResident: false,
+      passwordError: false,
+      confirmPasswordError: false,
+      passwordMatchError: false,
+      formError: false,
     };
   }
 
@@ -35,6 +39,42 @@ class SignUp extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+
+    // Variable to track global error state of the form
+    let error = false;
+
+    // Form validation for password length
+    if (this.state.password.length < 8) {
+      this.setState({ passwordError: true });
+      error = true;
+    } else {
+      this.setState({ passwordError: false });
+    }
+
+    // Form validation for confirmed password length
+    if (this.state.confirmPassword.length < 8) {
+      this.setState({ confirmPasswordError: true });
+      error = true;
+    } else {
+      this.setState({ confirmPasswordError: false });
+    }
+
+    // Form validation for password and confirmed password matching
+    if (!this.state.password === this.state.confirmPassword) {
+      this.setState({ passwordMatchError: true });
+      error = true;
+    } else {
+      this.setState({ passwordMatchError: false });
+    }
+
+    // Check whether form error is set to true and, if so, return to end submit form execution
+    if (error) {
+      this.setState({ formError: true });
+      return;
+    }
+
+    // If no form errors found then proceed to submit new account details
+    this.setState({ formError: false });
   };
 
   render() {
@@ -98,6 +138,7 @@ class SignUp extends Component {
                     autoComplete="new-password"
                     value={this.state.password}
                     onChange={this.handleChange}
+                    error={this.state.passwordError || this.state.passwordMatchError}
                   />
                   <Form.Input
                     type="password"
@@ -107,6 +148,9 @@ class SignUp extends Component {
                     autoComplete="new-password"
                     value={this.state.confirmPassword}
                     onChange={this.handleChange}
+                    error={
+                      this.state.confirmPasswordError || this.state.passwordMatchError
+                    }
                   />
                 </Form.Group>
                 <div id="checkbox">
