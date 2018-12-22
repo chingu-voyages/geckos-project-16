@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Image } from "semantic-ui-react";
 
 const CardComponent = ({ image, name, gender, age, location }) => (
-  <Card>
+  <Card fluid>
     <Image src={image} alt="Pets" />
     <Card.Content>
       <Card.Header>{name}</Card.Header>
