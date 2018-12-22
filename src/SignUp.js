@@ -164,7 +164,7 @@ class SignUp extends Component {
                       type="checkbox"
                       onClick={this.handleChange}
                     />
-                    <label>I am a South Korean citizen or permanent resident</label>
+                    <label>I live in South Korea</label>
                   </Form.Field>
                 </div>
                 <Form.Button
