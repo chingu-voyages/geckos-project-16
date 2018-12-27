@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Login from "./Login";
 import SignUp from "./SignUp";
+import FeaturedPosts from "./FeaturedPosts";
 import ViewListingPage from "./ViewListingPage";
 import ListingPolicy from "./ListingPolicy";
 import CardList from "./CardList";
@@ -16,7 +17,7 @@ class Routes extends Component {
     return (
       <section style={styles}>
         <Switch>
-          {/* <Route exact path="/" component={FeaturedPets} /> */}
+          <Route exact path="/" component={FeaturedPosts} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
           <Route path="/listing/:id" component={ViewListingPage} />
