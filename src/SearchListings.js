@@ -12,8 +12,9 @@ class SearchListings extends Component {
 
   handleChange = event => {
     const target = event.target;
-    const value = target.value;
-    const name = target.name;
+    const value = event.target.value;
+    const name = event.target.name;
+    console.log(target, value, name);
     this.setState({
       [name]: value,
     });
