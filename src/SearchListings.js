@@ -3,17 +3,20 @@ import { Button, Container, Divider, Icon, Segment, Form } from "semantic-ui-rea
 
 class SearchListings extends Component {
   state = {
-    searchLocation: "",
-    searchGender: "",
-    searchAge: "",
-    searchColor: "",
-    searchShelter: "",
-    searchItems: 9,
+    location: "",
+    gender: "",
+    breed: "",
+    age: "",
+    color: "",
   };
 
-  handleChange = (event, { value }) => {
+  handleChange = event => {
     const target = event.target;
-    this.setState({ value });
+    const value = target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value,
+    });
   };
 
   handleSubmit = event => {
@@ -21,7 +24,7 @@ class SearchListings extends Component {
   };
 
   render() {
-    const { value } = this.state;
+    const { value, location, gender, breed, age, color } = this.state;
     return (
       <Fragment>
         <Container id="container">
@@ -31,32 +34,32 @@ class SearchListings extends Component {
                 <label>Current Location</label>
                 <Form.Radio
                   label="Seoul"
+                  name="location"
                   value="seoul"
-                  checked={value === "seoul"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="Busan"
+                  name="location"
                   value="busan"
-                  checked={value === "busan"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="Gwangju"
+                  name="location"
                   value="gwangju"
-                  checked={value === "gwangju"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="Jeju"
+                  name="location"
                   value="jeju"
-                  checked={value === "jeju"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="Suwon"
-                  value="searchLocation"
-                  checked={value === "suwon"}
+                  name="location"
+                  value="suwon"
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -64,14 +67,14 @@ class SearchListings extends Component {
                 <label>Gender</label>
                 <Form.Radio
                   label="Male"
+                  name="gender"
                   value="male"
-                  checked={value === "male"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="Female"
+                  name="gender"
                   value="female"
-                  checked={value === "female"}
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -79,32 +82,32 @@ class SearchListings extends Component {
                 <label>Breed</label>
                 <Form.Radio
                   label="Husky"
+                  name="breed"
                   value="husky"
-                  checked={value === "husky"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="Bulldog"
+                  name="breed"
                   value="bulldog"
-                  checked={value === "bulldog"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="Labrador"
+                  name="breed"
                   value="labrador"
-                  checked={value === "labrador"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="Boxer"
+                  name="breed"
                   value="boxer"
-                  checked={value === "boxer"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="Spaniel"
+                  name="breed"
                   value="spaniel"
-                  checked={value === "spaniel"}
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -112,32 +115,32 @@ class SearchListings extends Component {
                 <label>Age</label>
                 <Form.Radio
                   label="Under 1 year"
+                  name="age"
                   value="0"
-                  checked={value === "0"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="1-3 years"
+                  name="age"
                   value="1-3"
-                  checked={value === "1-3"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="4-6 years"
+                  name="age"
                   value="4-6"
-                  checked={value === "4-6"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="7-9 years"
+                  name="age"
                   value="7-9"
-                  checked={value === "7-9"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="Over 10 years"
+                  name="age"
                   value="10"
-                  checked={value === "10"}
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -145,32 +148,32 @@ class SearchListings extends Component {
                 <label>Color</label>
                 <Form.Radio
                   label="Black"
+                  name="color"
                   value="black"
-                  checked={value === "black"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="White"
+                  name="color"
                   value="white"
-                  checked={value === "white"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="Brown"
+                  name="color"
                   value="brown"
-                  checked={value === "brown"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="Yellow"
+                  name="color"
                   value="yellow"
-                  checked={value === "yellow"}
                   onChange={this.handleChange}
                 />
                 <Form.Radio
                   label="Grey"
+                  name="color"
                   value="grey"
-                  checked={value === "grey"}
                   onChange={this.handleChange}
                 />
               </Form.Group>
