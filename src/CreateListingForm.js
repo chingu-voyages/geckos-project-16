@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import ListingDetails from "./ListingDetails";
-import Confirmation from "./Confirmation";
-import Success from "./Success";
+import CreateListingDetails from "./CreateListingDetails";
+import CreateListingConfirmation from "./CreateListingConfirmation";
+import CreateListingSuccess from "./CreateListingSuccess";
 
-class MainForm extends Component {
+class CreateListingForm extends Component {
   state = {
     step: 1,
   };
@@ -33,7 +33,7 @@ class MainForm extends Component {
     switch (step) {
       case 1:
         return (
-          <ListingDetails
+          <CreateListingDetails
             nextStep={this.nextStep}
             handleChange={this.handleChange}
             values={values}
@@ -41,16 +41,18 @@ class MainForm extends Component {
         );
       case 2:
         return (
-          <Confirmation
+          <CreateListingConfirmation
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             values={values}
           />
         );
       case 3:
-        return <Success />;
+        return <CreateListingSuccess />;
       default:
       //do nothing
     }
   }
 }
+
+export default CreateListingForm;
