@@ -25,7 +25,7 @@ class CardList extends React.Component {
       <CardComponent
         key={i}
         image={pet.images[0]}
-        name={pet.user.name}
+        name={pet.petName}
         gender={pet.gender}
         age={pet.age}
         location={pet.location}
