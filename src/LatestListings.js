@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import CardList from "./CardList";
+import SearchBox from "./SearchBox";
 
 class LatestListings extends Component {
   constructor(props) {
     super(props);
     this.state = {
       displayPets: [],
+      searchLocation: "",
+      searchGender: "",
+      searchBreed: "",
+      searchAge: "",
+      searchColor: "",
     };
   }
 
@@ -19,21 +25,35 @@ class LatestListings extends Component {
     }
   }
 
+  onSearchChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
-    const { displayPets } = this.state;
-    return displayPets.map((pet, i) => (
+    const {
+      displayPets,
+      searchLocation,
+      searchGender,
+      searchBreed,
+      searchAge,
+      searchColor,
+    } = this.state;
+    const filteredPets = displayPets.filter(dog => {
+      // This is where the magic needs to happen
+      return dog;
+    });
+    return !displayPets.length ? (
+      <h1>Loading</h1>
+    ) : (
       <div>
+        <SearchBox searchChange={this.onSearchChange} />
         <CardList pets={filteredPets} />
-        <CardComponent
-          key={i}
-          image={pet.images[0]}
-          name={pet.petName}
-          gender={pet.gender}
-          age={pet.age}
-          location={pet.location}
-        />
       </div>
-    ));
+    );
   }
 }
 
