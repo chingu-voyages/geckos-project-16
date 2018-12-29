@@ -8,9 +8,11 @@
  *
  */
 
+
 /*******************************
            Standard
 *******************************/
+
 
 /*--------------------
         Inputs
@@ -29,15 +31,15 @@
   margin: 0em;
   max-width: 100%;
   -webkit-box-flex: 1;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
   outline: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   text-align: left;
   line-height: 1.21428571em;
-  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   padding: 0.67857143em 1em;
-  background: #ffffff;
+  background: #FFFFFF;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.28571429rem;
@@ -46,12 +48,13 @@
   transition: box-shadow 0.1s ease, border-color 0.1s ease;
   transition: box-shadow 0.1s ease, border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
   -webkit-box-shadow: none;
-  box-shadow: none;
+          box-shadow: none;
 }
 
 /*--------------------
       Placeholder
 ---------------------*/
+
 
 /* browsers require these rules separate */
 .ui.input > input::-webkit-input-placeholder {
@@ -64,9 +67,11 @@
   color: rgba(191, 191, 191, 0.87);
 }
 
+
 /*******************************
             States
 *******************************/
+
 
 /*--------------------
         Disabled
@@ -88,10 +93,10 @@
 .ui.input > input:active,
 .ui.input.down input {
   border-color: rgba(0, 0, 0, 0.3);
-  background: #fafafa;
+  background: #FAFAFA;
   color: rgba(0, 0, 0, 0.87);
   -webkit-box-shadow: none;
-  box-shadow: none;
+          box-shadow: none;
 }
 
 /*--------------------
@@ -100,7 +105,7 @@
 
 .ui.loading.loading.input > i.icon:before {
   position: absolute;
-  content: "";
+  content: '';
   top: 50%;
   left: 50%;
   margin: -0.64285714em 0em 0em -0.64285714em;
@@ -111,22 +116,22 @@
 }
 .ui.loading.loading.input > i.icon:after {
   position: absolute;
-  content: "";
+  content: '';
   top: 50%;
   left: 50%;
   margin: -0.64285714em 0em 0em -0.64285714em;
   width: 1.28571429em;
   height: 1.28571429em;
   -webkit-animation: button-spin 0.6s linear;
-  animation: button-spin 0.6s linear;
+          animation: button-spin 0.6s linear;
   -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
   border-radius: 500rem;
   border-color: #767676 transparent transparent;
   border-style: solid;
   border-width: 0.2em;
   -webkit-box-shadow: 0px 0px 0px 1px transparent;
-  box-shadow: 0px 0px 0px 1px transparent;
+          box-shadow: 0px 0px 0px 1px transparent;
 }
 
 /*--------------------
@@ -135,11 +140,11 @@
 
 .ui.input.focus > input,
 .ui.input > input:focus {
-  border-color: #85b7d9;
-  background: #ffffff;
+  border-color: #85B7D9;
+  background: #FFFFFF;
   color: rgba(0, 0, 0, 0.8);
   -webkit-box-shadow: none;
-  box-shadow: none;
+          box-shadow: none;
 }
 .ui.input.focus > input::-webkit-input-placeholder,
 .ui.input > input:focus::-webkit-input-placeholder {
@@ -159,11 +164,11 @@
 ---------------------*/
 
 .ui.input.error > input {
-  background-color: #fff6f6;
-  border-color: #e0b4b4;
-  color: #9f3a38;
+  background-color: #FFF6F6;
+  border-color: #E0B4B4;
+  color: #9F3A38;
   -webkit-box-shadow: none;
-  box-shadow: none;
+          box-shadow: none;
 }
 
 /* Error Placeholder */
@@ -188,9 +193,11 @@
   color: #da9796 !important;
 }
 
+
 /*******************************
            Variations
 *******************************/
+
 
 /*--------------------
       Transparent
@@ -201,7 +208,7 @@
   background-color: transparent !important;
   padding: 0em !important;
   -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+          box-shadow: none !important;
   border-radius: 0px !important;
 }
 
@@ -220,7 +227,7 @@
 
 /* Transparent Inverted */
 .ui.transparent.inverted.input {
-  color: #ffffff;
+  color: #FFFFFF;
 }
 .ui.transparent.inverted.input > input {
   color: inherit;
@@ -301,11 +308,12 @@
         Labeled
 ---------------------*/
 
+
 /* Adjacent Label */
 .ui.labeled.input > .label {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
   margin: 0;
   font-size: 1em;
 }
@@ -325,7 +333,7 @@
   border-left-color: transparent;
 }
 .ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input:focus {
-  border-left-color: #85b7d9;
+  border-left-color: #85B7D9;
 }
 
 /* Regular Label on Right */
@@ -339,7 +347,7 @@
   border-bottom-left-radius: 0px;
 }
 .ui[class*="right labeled"].input > input:focus {
-  border-right-color: #85b7d9 !important;
+  border-right-color: #85B7D9 !important;
 }
 
 /* Corner Label */
@@ -392,11 +400,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
 }
 .ui.action.input > .button,
 .ui.action.input > .buttons > .button {
@@ -424,7 +432,7 @@
 
 /* Input Focus */
 .ui.action.input:not([class*="left action"]) > input:focus {
-  border-right-color: #85b7d9 !important;
+  border-right-color: #85B7D9 !important;
 }
 
 /* Button on Left */
@@ -446,12 +454,13 @@
 
 /* Input Focus */
 .ui[class*="left action"].input > input:focus {
-  border-left-color: #85b7d9 !important;
+  border-left-color: #85B7D9 !important;
 }
 
 /*--------------------
        Inverted
 ---------------------*/
+
 
 /* Standard */
 .ui.inverted.input > input {
@@ -497,10 +506,14 @@
   font-size: 1.71428571em;
 }
 
+
 /*******************************
          Theme Overrides
 *******************************/
 
+
+
 /*******************************
          Site Overrides
 *******************************/
+

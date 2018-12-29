@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
-import { Image, Container, Grid, List, Divider } from "semantic-ui-react";
+import { Container, Grid, List, Divider } from "semantic-ui-react";
+import ImgWithPlaceholder from "./ImgWithPlaceholder";
 
 const ViewListingTitle = ({
   petName,
@@ -20,7 +21,11 @@ const ViewListingTitle = ({
       <Grid>
         <Grid.Row stretched>
           <Grid.Column width={8}>
-            <Image src={imageMain} alt="Main image of pet" className="imageMain" />
+            <ImgWithPlaceholder
+              src={imageMain}
+              alt="Main image of pet"
+              className="imageMain"
+            />
           </Grid.Column>
           <Grid.Column width={3} className="factItemList">
             <List.Content>
@@ -47,16 +52,32 @@ const ViewListingTitle = ({
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={2}>
-            <Image src={imageMain} alt="Additional image of pet" className="subImage" />
+            <ImgWithPlaceholder
+              src={imageMain}
+              alt="Additional image of pet"
+              className="subImage"
+            />
           </Grid.Column>
           <Grid.Column width={2}>
-            <Image src={image2} alt="Additional image of pet" className="subImage" />
+            <ImgWithPlaceholder
+              src={image2}
+              alt="Additional image of pet"
+              className="subImage"
+            />
           </Grid.Column>
           <Grid.Column width={2}>
-            <Image src={image3} alt="Additional image of pet" className="subImage" />
+            <ImgWithPlaceholder
+              src={image3}
+              alt="Additional image of pet"
+              className="subImage"
+            />
           </Grid.Column>
           <Grid.Column width={2}>
-            <Image src={image4} alt="Additional image of pet" className="subImage" />
+            <ImgWithPlaceholder
+              src={image4}
+              alt="Additional image of pet"
+              className="subImage"
+            />
           </Grid.Column>
         </Grid.Row>
       </Grid>
