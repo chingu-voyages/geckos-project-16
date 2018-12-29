@@ -410,14 +410,14 @@ a.ui.card:hover {
 .ui.cards > .olive.card,
 .ui.olive.card,
 .ui.olive.cards > .card {
-  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #b5cc18, 0 1px 3px 0 #d4d4d5;
-  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #b5cc18, 0 1px 3px 0 #d4d4d5;
+  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #d52484, 0 1px 3px 0 #d4d4d5;
+  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #d52484, 0 1px 3px 0 #d4d4d5;
 }
 .ui.cards > .olive.card:hover,
 .ui.olive.card:hover,
 .ui.olive.cards > .card:hover {
-  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #a7bd0d, 0 1px 3px 0 #bcbdbd;
-  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #a7bd0d, 0 1px 3px 0 #bcbdbd;
+  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #c71877, 0 1px 3px 0 #bcbdbd;
+  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #c71877, 0 1px 3px 0 #bcbdbd;
 }
 .ui.cards > .green.card,
 .ui.green.card,
@@ -458,38 +458,38 @@ a.ui.card:hover {
 .ui.cards > .violet.card,
 .ui.violet.card,
 .ui.violet.cards > .card {
-  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #6435c9, 0 1px 3px 0 #d4d4d5;
-  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #6435c9, 0 1px 3px 0 #d4d4d5;
+  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #3d0043, 0 1px 3px 0 #d4d4d5;
+  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #3d0043, 0 1px 3px 0 #d4d4d5;
 }
 .ui.cards > .violet.card:hover,
 .ui.violet.card:hover,
 .ui.violet.cards > .card:hover {
-  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #5829bb, 0 1px 3px 0 #bcbdbd;
-  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #5829bb, 0 1px 3px 0 #bcbdbd;
+  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #26002a, 0 1px 3px 0 #bcbdbd;
+  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #26002a, 0 1px 3px 0 #bcbdbd;
 }
 .ui.cards > .purple.card,
 .ui.purple.card,
 .ui.purple.cards > .card {
-  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #a333c8, 0 1px 3px 0 #d4d4d5;
-  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #a333c8, 0 1px 3px 0 #d4d4d5;
+  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #90007f, 0 1px 3px 0 #d4d4d5;
+  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #90007f, 0 1px 3px 0 #d4d4d5;
 }
 .ui.cards > .purple.card:hover,
 .ui.purple.card:hover,
 .ui.purple.cards > .card:hover {
-  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #9627ba, 0 1px 3px 0 #bcbdbd;
-  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #9627ba, 0 1px 3px 0 #bcbdbd;
+  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #770069, 0 1px 3px 0 #bcbdbd;
+  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #770069, 0 1px 3px 0 #bcbdbd;
 }
 .ui.cards > .pink.card,
 .ui.pink.card,
 .ui.pink.cards > .card {
-  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #444, 0 1px 3px 0 #d4d4d5;
-  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #444, 0 1px 3px 0 #d4d4d5;
+  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #f185b3, 0 1px 3px 0 #d4d4d5;
+  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #f185b3, 0 1px 3px 0 #d4d4d5;
 }
 .ui.cards > .pink.card:hover,
 .ui.pink.card:hover,
 .ui.pink.cards > .card:hover {
-  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #373737, 0 1px 3px 0 #bcbdbd;
-  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #373737, 0 1px 3px 0 #bcbdbd;
+  -webkit-box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #f568a4, 0 1px 3px 0 #bcbdbd;
+  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #f568a4, 0 1px 3px 0 #bcbdbd;
 }
 .ui.brown.card,
 .ui.brown.cards > .card,
