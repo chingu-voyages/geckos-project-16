@@ -10,4 +10,5 @@
 
 .featured-container .ui.grid {
   margin: 0 -1rem 1rem;
+  width: 100%;
 }

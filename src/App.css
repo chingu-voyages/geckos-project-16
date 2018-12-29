@@ -1,3 +1,8 @@
 .App {
   color: purple;
 }
+
+/* needed to override display in cards */
+.ui.image.hidden {
+  display: none !important;
+}
