@@ -1,9 +1,10 @@
 import React from "react";
-import { Card, Image } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
+import ImgWithPlaceHolder from "./ImgWithPlaceholder";
 
 const CardComponent = ({ image, name, gender, age, location }) => (
   <Card fluid>
-    <Image src={image} alt="Pets" />
+    <ImgWithPlaceHolder src={image} alt="Pets" />
     <Card.Content>
       <Card.Header>{name}</Card.Header>
       <Card.Description>
