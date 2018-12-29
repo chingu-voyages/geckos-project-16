@@ -7,7 +7,7 @@ class LatestListings extends Component {
     super(props);
     this.state = {
       displayPets: [],
-      searchLocation: "",
+      searchLocation: "jeju",
       searchGender: "",
       searchBreed: "",
       searchAge: "",
@@ -42,10 +42,19 @@ class LatestListings extends Component {
       searchAge,
       searchColor,
     } = this.state;
-    const filteredPets = displayPets.filter(dog => {
+
+    // let filteredPets = [displayPets[0]];
+    // if (searchLocation) {
+    //   filteredPets.push(
+    //     displayPets.filter(dog => dog.location.toLowerCase() === searchLocation)
+    //   );
+    // }
+
+    let filteredPets = displayPets.filter(dog => {
       // This is where the magic needs to happen
-      return dog;
+      return dog.location.toLowerCase() === searchLocation;
     });
+
     return !displayPets.length ? (
       <h1>Loading</h1>
     ) : (
