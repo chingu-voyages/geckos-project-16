@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Button, Container, Input, Segment, Form } from "semantic-ui-react";
-import "./SearchListings.css";
+import "./SearchBox.css";
 
-class SearchListings extends Component {
+class SearchBox extends Component {
   state = {
     location: "",
     gender: "",
@@ -236,4 +236,4 @@ class SearchListings extends Component {
   }
 }
 
-export default SearchListings;
+export default SearchBox;
