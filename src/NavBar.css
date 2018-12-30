@@ -1,0 +1,35 @@
+.ui.top.fixed.menu {
+  background-color: #90007f;
+  height: 10%;
+}
+.ui.top.fixed.menu .item {
+  color: #fff;
+  border: none;
+  font-size: 18px;
+}
+.sidebar.icon {
+  color: #fff;
+  font-size: 2rem;
+}
+.ui.vertical.left.sidebar.menu {
+  width: 30%;
+  background-color: #90007f;
+  overflow: hidden;
+}
+.ui.vertical.left.sidebar.menu .item {
+  font-size: 20px;
+  font-weight: 400;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  margin-bottom: 15%;
+}
+.paw.icon {
+  font-size: 29px;
+  color: #fff;
+}
+.ui.labeled.icon.menu .item > .icon:not(.dropdown) {
+  height: 2em !important;
+  display: block;
+  padding-top: 30px;
+  margin: 0 auto 0.5rem !important;
+}

@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
-import { Menu, Sidebar, Responsive } from "semantic-ui-react";
+import { Menu, Sidebar, Responsive, Icon, Button } from "semantic-ui-react";
 import { Link, NavLink } from "react-router-dom";
+import SiteContent from "./SiteContent";
+import "./NavBar.css";
 
 // defaultly exported
 const NavBar = () => (
@@ -16,10 +18,13 @@ const NavBar = () => (
 
 // used for desktop screens
 const NavBarDesktop = () => (
-  <Menu fixed="top">
-    <MenuItems items={leftItems} />
-    <MenuItems items={rightItems} position="right" />
-  </Menu>
+  <Fragment>
+    <Menu fixed="top">
+      <MenuItems items={leftItems} />
+      <MenuItems items={rightItems} position="right" />
+    </Menu>
+    <SiteContent />
+  </Fragment>
 );
 
 // used for tablet and mobile screens
@@ -44,6 +49,7 @@ class NavBarMobile extends Component {
         </Sidebar>
         <Sidebar.Pusher
           dimmed={visible}
+          animation={"overlay"}
           onClick={this.handlePusher}
           style={{ minHeight: "100vh" }}
         >
@@ -51,6 +57,7 @@ class NavBarMobile extends Component {
             <Menu.Item onClick={this.handleToggle} icon="sidebar" />
             <MenuItems items={rightItems} position="right" />
           </Menu>
+          <SiteContent />
         </Sidebar.Pusher>
       </Sidebar.Pushable>
     );
@@ -68,7 +75,7 @@ const MenuItems = ({ items, position }) => (
 
 // Used to create menu items
 const leftItems = [
-  { as: Link, to: "/", content: "Home", key: "home" },
+  { as: Link, to: "/", icon: "paw" },
   { as: Link, to: "/listings", content: "View Listings", key: "listings" },
   { as: Link, to: "/", content: "Create Listing", key: "createListing" },
   { as: Link, to: "/listingpolicy", content: "Listing Policy", key: "listingPolicy" },
