@@ -1,0 +1,7 @@
+.customized .ui.loader {
+  top: 10%;
+}
+
+.customized .ui.dimmer {
+  z-index: 100;
+}

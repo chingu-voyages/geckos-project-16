@@ -1,30 +1,43 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Container, Grid, List, Divider } from "semantic-ui-react";
 import ImgWithPlaceholder from "./ImgWithPlaceholder";
 
 const ViewListingTitle = ({
   petName,
-  imageMain,
-  image2,
-  image3,
-  image4,
+  images = [],
   breed,
   gender,
   age,
   color,
   weight,
   location,
-}) => (
-  <Fragment>
+  openImageShowCase,
+}) => {
+  const primaryImgUrl = images[0];
+  const secondImgUrls = images.slice(1);
+  const secondaryImgs = secondImgUrls.map((url, i) => (
+    <Grid.Column key={i + url} width={2}>
+      <ImgWithPlaceholder
+        id={i + 1}
+        src={url}
+        alt={petName}
+        className="subImage"
+        onClick={openImageShowCase}
+      />
+    </Grid.Column>
+  ));
+  return (
     <Container>
       <h2 className="petNameTitle">{`My name is ${petName}!`}</h2>
       <Grid>
         <Grid.Row stretched>
           <Grid.Column width={8}>
             <ImgWithPlaceholder
-              src={imageMain}
+              id="0"
+              src={primaryImgUrl}
               alt="Main image of pet"
               className="imageMain"
+              onClick={openImageShowCase}
             />
           </Grid.Column>
           <Grid.Column width={3} className="factItemList">
@@ -50,40 +63,11 @@ const ViewListingTitle = ({
             </List.Content>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
-          <Grid.Column width={2}>
-            <ImgWithPlaceholder
-              src={imageMain}
-              alt="Additional image of pet"
-              className="subImage"
-            />
-          </Grid.Column>
-          <Grid.Column width={2}>
-            <ImgWithPlaceholder
-              src={image2}
-              alt="Additional image of pet"
-              className="subImage"
-            />
-          </Grid.Column>
-          <Grid.Column width={2}>
-            <ImgWithPlaceholder
-              src={image3}
-              alt="Additional image of pet"
-              className="subImage"
-            />
-          </Grid.Column>
-          <Grid.Column width={2}>
-            <ImgWithPlaceholder
-              src={image4}
-              alt="Additional image of pet"
-              className="subImage"
-            />
-          </Grid.Column>
-        </Grid.Row>
+        <Grid.Row>{secondaryImgs}</Grid.Row>
       </Grid>
       <Divider />
     </Container>
-  </Fragment>
-);
+  );
+};
 
 export default ViewListingTitle;
