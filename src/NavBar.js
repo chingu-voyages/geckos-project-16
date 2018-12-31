@@ -1,11 +1,10 @@
 import React, { Component, Fragment } from "react";
-import { Menu, Sidebar, Responsive, Icon, Button } from "semantic-ui-react";
-import { Link, NavLink } from "react-router-dom";
+import { Menu, Sidebar, Responsive } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import SiteContent from "./SiteContent";
 import "./NavBar.css";
 
-// defaultly exported
-const NavBar = () => (
+export default () => (
   <Fragment>
     <Responsive {...Responsive.onlyMobile}>
       <NavBarMobile />
@@ -75,7 +74,7 @@ const MenuItems = ({ items, position }) => (
 
 // Used to create menu items
 const leftItems = [
-  { as: Link, to: "/", icon: "paw" },
+  { as: Link, to: "/", icon: "paw", key: "home" },
   { as: Link, to: "/listings", content: "View Listings", key: "listings" },
   { as: Link, to: "/", content: "Create Listing", key: "createListing" },
   { as: Link, to: "/listingpolicy", content: "Listing Policy", key: "listingPolicy" },
@@ -84,5 +83,3 @@ const rightItems = [
   { as: Link, to: "/login", content: "Login", key: "login" },
   { as: Link, to: "/signup", content: "Register", key: "register" },
 ];
-
-export default NavBar;
