@@ -2,4 +2,7 @@
      User Global Variables
 *******************************/
 
-@pink: #444;
+@pink: #f185b3;
+@olive: #d52484;
+@purple: #90007f;
+@violet: #3d0043;
