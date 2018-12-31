@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Input, Segment, Form } from "semantic-ui-react";
 import "./SearchBox.css";
 
-const SearchBox = ({ searchChange }) => {
+const SearchBox = ({ searchChange, searchClear }) => {
   return (
     <Container id="search-container">
       <Segment id="search-container-segment">
@@ -198,14 +198,14 @@ const SearchBox = ({ searchChange }) => {
             <Form.Field inline>
               <Input
                 type="radio"
-                name="csearchColor"
+                name="searchColor"
                 value="grey"
                 onChange={searchChange}
               />
               <label>Grey</label>
             </Form.Field>
           </Form.Group>
-          <Button>Clear filters</Button>
+          <Button onClick={searchClear}>Clear filters</Button>
         </Form>
       </Segment>
     </Container>

@@ -33,6 +33,16 @@ class LatestListings extends Component {
     });
   };
 
+  searchClear = () => {
+    this.setState({
+      searchLocation: "",
+      searchGender: "",
+      searchBreed: "",
+      searchAge: "",
+      searchColor: "",
+    });
+  };
+
   render() {
     const {
       displayPets,
