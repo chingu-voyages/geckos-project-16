@@ -7,11 +7,8 @@ class LatestListings extends Component {
     super(props);
     this.state = {
       displayPets: [],
-      searchLocation: "jeju",
-      searchGender: "",
-      searchBreed: "",
-      searchAge: "",
-      searchColor: "",
+      filteredPets: [],
+      radiosChecked: [],
     };
   }
 
@@ -19,57 +16,46 @@ class LatestListings extends Component {
     try {
       const response = await fetch("http://localhost:4000/posts");
       const data = await response.json();
-      this.setState({ displayPets: data });
+      this.setState({ displayPets: data, filteredPets: data });
     } catch (err) {
       console.log(err);
     }
   }
 
-  onSearchChange = event => {
-    const value = event.target.value;
-    const name = event.target.name;
+  searchClear = () => {
     this.setState({
-      [name]: value,
+      radiosChecked: [],
     });
   };
 
-  searchClear = () => {
-    this.setState({
-      searchLocation: "",
-      searchGender: "",
-      searchBreed: "",
-      searchAge: "",
-      searchColor: "",
+  onSearchChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState(
+      {
+        [name]: value,
+      },
+      this.handleFilter
+    );
+  };
+
+  handleFilter = () => {
+    const { filteredPets, radiosChecked } = this.state;
+    const filtered = filteredPets.filter(pet => {
+      return radiosChecked.some(name => {
+        return name === pet[name];
+      });
     });
   };
 
   render() {
-    const {
-      displayPets,
-      searchLocation,
-      searchGender,
-      searchBreed,
-      searchAge,
-      searchColor,
-    } = this.state;
-
-    // let filteredPets = [];
-    // if (searchLocation) {
-    //   filteredPets.push(
-    //     displayPets.filter(dog => dog.location.toLowerCase() === searchLocation)
-    //   );
-    // }
-
-    let filteredPets = displayPets.filter(dog => {
-      return dog.location.toLowerCase() === searchLocation;
-    });
-
-    return !displayPets.length ? (
-      <h1>Loading</h1>
-    ) : (
+    // return !filteredPets.length ? (
+    //   <h1>Loading</h1>
+    // ) : (
+    return (
       <div>
         <SearchBox searchChange={this.onSearchChange} />
-        <CardList pets={filteredPets} />
+        <CardList pets={this.state.filteredPets} />
       </div>
     );
   }
