@@ -53,7 +53,7 @@ class LatestListings extends Component {
       searchColor,
     } = this.state;
 
-    // let filteredPets = [displayPets[0]];
+    // let filteredPets = [];
     // if (searchLocation) {
     //   filteredPets.push(
     //     displayPets.filter(dog => dog.location.toLowerCase() === searchLocation)
@@ -61,7 +61,6 @@ class LatestListings extends Component {
     // }
 
     let filteredPets = displayPets.filter(dog => {
-      // This is where the magic needs to happen
       return dog.location.toLowerCase() === searchLocation;
     });
 
