@@ -28,8 +28,42 @@ class CreateListingForm extends Component {
 
   render() {
     const { step } = this.state;
-    const { fields } = this.state;
-    const values = { fields };
+    const {
+      name,
+      type,
+      gender,
+      breed,
+      age,
+      status,
+      foster,
+      weight,
+      color,
+      characteristics,
+      story,
+      location,
+      locStatus,
+      fee,
+      contactName,
+      contactEmail,
+    } = this.state;
+    const values = {
+      name,
+      type,
+      gender,
+      breed,
+      age,
+      status,
+      foster,
+      weight,
+      color,
+      characteristics,
+      story,
+      location,
+      locStatus,
+      fee,
+      contactName,
+      contactEmail,
+    };
     switch (step) {
       case 1:
         return (
