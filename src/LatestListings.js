@@ -33,7 +33,7 @@ class LatestListings extends Component {
     const name = event.target.name;
     this.setState(
       {
-        [name]: value,
+        radiosChecked: [...this.state.radiosChecked, value],
       },
       this.handleFilter
     );
@@ -49,9 +49,6 @@ class LatestListings extends Component {
   };
 
   render() {
-    // return !filteredPets.length ? (
-    //   <h1>Loading</h1>
-    // ) : (
     return (
       <div>
         <SearchBox searchChange={this.onSearchChange} />
