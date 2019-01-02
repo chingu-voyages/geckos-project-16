@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Image, Placeholder } from "semantic-ui-react";
+import "./ImgWithPlaceholder.css";
 
 // reusable Image component
 // accepts src and alt as props
