@@ -1,18 +1,25 @@
-import React, { Component } from "react";
+import React from "react";
+import { Segment, Header, Container } from "semantic-ui-react";
 
-class Disclaimer extends Component {
-  render() {
-    return (
-      <div>
-        <h5>Disclaimer</h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-      </div>
-    );
-  }
-}
+const Disclaimer = () => (
+  <Segment basic inverted color="pink" style={{ margin: 0 }}>
+    <Header
+      as="h1"
+      color="violet"
+      content="Disclaimer"
+      textAlign="center"
+      style={{ textDecoration: "underline" }}
+    />
+    <Container color="violet">
+      <p style={{ color: "#3d0043" }}>
+        Chingu Dogs is a free service to list animals for adoption. Chingu Dogs takes no
+        responsibility for any content as all listed animals are user-generated, and
+        Chingu Dogs has not verified any information regarding health, condition, or any
+        other matter. Chingu Dogs is not a shelter, and unfortunately does not have a way
+        to accept unwanted animals. All content uploaded is the property of the submitter.
+      </p>
+    </Container>
+  </Segment>
+);
 
 export default Disclaimer;
