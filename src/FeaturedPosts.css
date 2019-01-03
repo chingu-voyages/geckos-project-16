@@ -1,0 +1,14 @@
+.featured-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.featured-container h1 {
+  font-size: 2.2em;
+}
+
+.featured-container .ui.grid {
+  margin: 0 -1rem 1rem;
+  width: 100%;
+}

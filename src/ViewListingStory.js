@@ -1,16 +1,13 @@
-import React, { Fragment } from "react";
-import { Container, Divider } from "semantic-ui-react";
+import React from "react";
+import { Segment, Grid, Header } from "semantic-ui-react";
 
 const ViewListingStory = ({ story }) => (
-  <Fragment>
-    <Container>
-      <h3>My Story</h3>
+  <Grid.Column style={{ paddingTop: "14px" }} width={16}>
+    <Segment inverted color="pink" className="listing-story">
+      <Header as="h2" color="violet" content="More About Me" />
       <p>{story}</p>
-      <p>{story}</p>
-      <p>{story}</p>
-      <Divider />
-    </Container>
-  </Fragment>
+    </Segment>
+  </Grid.Column>
 );
 
 export default ViewListingStory;
