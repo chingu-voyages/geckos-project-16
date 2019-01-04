@@ -2,15 +2,18 @@ import React, { Component, Fragment } from "react";
 import { Menu, Sidebar, Responsive } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import SiteContent from "./SiteContent";
+import ScrollToTop from "./ScrollToTop";
 import "./NavBar.css";
 
 export default () => (
   <Fragment>
     <Responsive {...Responsive.onlyMobile}>
       <NavBarMobile />
+      <ScrollToTop />
     </Responsive>
     <Responsive minWidth={Responsive.onlyTablet.minWidth}>
       <NavBarDesktop />
+      <ScrollToTop />
     </Responsive>
   </Fragment>
 );

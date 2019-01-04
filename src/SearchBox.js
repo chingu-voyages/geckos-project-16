@@ -56,15 +56,14 @@ class SearchBox extends Component {
                   ))}
                 </Form.Group>
               ))}
+              <Button
+                size="big"
+                color="purple"
+                content="View All"
+                disabled={areBoxesEmpty}
+                onClick={searchClear}
+              />
             </Form>
-            <Button
-              fluid
-              size="big"
-              color="purple"
-              content="View All"
-              disabled={areBoxesEmpty}
-              onClick={searchClear}
-            />
           </Accordion.Content>
           {!isDisabled && (
             <Icon
@@ -81,43 +80,3 @@ class SearchBox extends Component {
 }
 
 export default SearchBox;
-
-// const SearchBox = ({
-//   areBoxesEmpty,
-//   searchParams,
-//   checkedObj,
-//   searchChange,
-//   searchClear,
-// }) => (
-//   <Segment inverted color="pink" id="search-container">
-//     <Form loading={!searchParams[0].values.length}>
-//       <Header dividing as="h1" color="violet" content="Filter" textAlign="center" />
-//       {searchParams.map(({ label, values }) => (
-//         <Form.Group grouped key={label}>
-//           <Header as="h3" color="violet" content={label} />
-//           {values.map(([value, count]) => (
-//             <Form.Checkbox
-//               key={value}
-//               color="violet"
-//               name={label}
-//               value={value}
-//               checked={checkedObj[label] === value}
-//               label={`${value} (${count})`}
-//               onChange={searchChange}
-//             />
-//           ))}
-//         </Form.Group>
-//       ))}
-//       <Form.Button
-//         fluid
-//         size="big"
-//         color="purple"
-//         content="View All"
-//         disabled={areBoxesEmpty}
-//         onClick={searchClear}
-//       />
-//     </Form>
-//   </Segment>
-// );
-
-// export default SearchBox;
