@@ -1,0 +1,45 @@
+body,
+html {
+  margin-bottom: 0px;
+}
+.ui.inverted.vertical.segment {
+  text-align: center;
+  background-color: #90007f;
+  padding-bottom: 20px;
+  color: #fff;
+}
+.list {
+  width: 100%;
+  text-align: center;
+}
+.footer-item {
+  border-right: none !important;
+}
+a.item {
+  text-decoration-line: none;
+  border-bottom: none;
+}
+.ui.list > a.item {
+  color: #fff !important;
+  border-right: 1px solid #fff;
+  padding-right: 12px;
+  font-size: 17px !important;
+}
+.item:hover,
+p,
+p a,
+p a:hover {
+  color: #fff;
+  font-size: 17px;
+}
+.top-items {
+  padding-bottom: 20px !important;
+}
+p a {
+  border-bottom: 1px solid #fff;
+}
+@media only screen and (width: 767px) {
+  .ui.list > a.item {
+    font-size: 9px;
+  }
+}
