@@ -1,6 +1,4 @@
 // If there's more than 5, use a 'show more' accordion
-// If you using mobile, close the search box, but add an option to drop it down
-// When active it takes the user to the listings page
 
 import React, { Component } from "react";
 import CardList from "./CardList";
@@ -95,11 +93,13 @@ class LatestListings extends Component {
       label,
       values: Object.entries(searchFields[label]),
     }));
+    const areBoxesEmpty = Object.values(checkedObj).every(x => !x.length);
     return (
       <Container>
         <Grid stackable columns={16}>
           <Grid.Column width={4}>
             <SearchBox
+              areBoxesEmpty={areBoxesEmpty}
               searchParams={searchParams}
               checkedObj={checkedObj}
               searchChange={this.handleBoxClick}

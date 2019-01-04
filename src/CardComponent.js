@@ -34,7 +34,7 @@ const CardComponent = ({
           as={Link}
           to={`/listing/${id}`}
           color="olive"
-          content="View More"
+          content={`View ${petName}`}
         />
       </Card>
     </Segment>
