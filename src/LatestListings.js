@@ -5,7 +5,7 @@
 import React, { Component } from "react";
 import CardList from "./CardList";
 import SearchBox from "./SearchBox";
-import { Grid } from "semantic-ui-react";
+import { Grid, Container } from "semantic-ui-react";
 
 // used to map through object
 const labels = ["location", "gender", "breed", "color"];
@@ -96,19 +96,21 @@ class LatestListings extends Component {
       values: Object.entries(searchFields[label]),
     }));
     return (
-      <Grid columns={16}>
-        <Grid.Column width={4}>
-          <SearchBox
-            searchParams={searchParams}
-            checkedObj={checkedObj}
-            searchChange={this.handleBoxClick}
-            searchClear={this.handleClear}
-          />
-        </Grid.Column>
-        <Grid.Column width={4}>
-          <CardList pets={filteredPets} />
-        </Grid.Column>
-      </Grid>
+      <Container>
+        <Grid stackable columns={16}>
+          <Grid.Column width={4}>
+            <SearchBox
+              searchParams={searchParams}
+              checkedObj={checkedObj}
+              searchChange={this.handleBoxClick}
+              searchClear={this.handleClear}
+            />
+          </Grid.Column>
+          <Grid.Column width={12}>
+            <CardList pets={filteredPets} mobile={16} tablet={8} computer={5} />
+          </Grid.Column>
+        </Grid>
+      </Container>
     );
   }
 }

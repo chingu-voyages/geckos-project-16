@@ -1,27 +1,27 @@
-#search-container {
+/* #search-container {
   display: flex;
   margin: 15px 0 15px 0;
-}
+} */
 
-#search-container-segment h4 {
+/* #search-container-segment h4 {
   display: flex;
   margin-left: 17px;
   font-size: 17px;
   text-transform: uppercase;
   padding: 3px;
   min-width: 150px;
-}
+} */
 
-#search-container-segment input {
+/* #search-container-segment input {
   font-size: 25px;
   cursor: pointer;
   margin-left: 20px;
-}
+} */
 
-#search-container-segment label {
+/* #search-container-segment label {
   font-size: 14px;
-}
+} */
 
-#search-container-segment button {
+/* #search-container-segment button {
   margin: 10px 0 10px 10px;
-}
+} */
