@@ -1,7 +1,7 @@
 #login-container {
   display: flex;
   justify-content: center;
-  padding: 4% 0;
+  padding: 2% 0;
 }
 
 #login-container-segment {
@@ -40,7 +40,13 @@
   justify-content: center;
 }
 
-#login-input {
+#login-input-email {
+  width: 365px !important;
+  height: 60px;
+  margin: 20px 10px;
+}
+
+#login-input-password {
   width: 365px !important;
   height: 60px;
   margin: 20px 10px;

@@ -49,7 +49,7 @@ class Login extends Component {
                   <Form.Input
                     fluid
                     placeholder="Email"
-                    id="input"
+                    id="login-input-email"
                     name="email"
                     type="email"
                     value={this.state.email}
@@ -58,7 +58,7 @@ class Login extends Component {
                   <Form.Input
                     fluid
                     placeholder="Password"
-                    id="input"
+                    id="login-input-password"
                     name="password"
                     type="password"
                     value={this.state.password}
