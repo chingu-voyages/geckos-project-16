@@ -65,9 +65,7 @@ class Login extends Component {
                     onChange={this.handleChange}
                   />
                 </Form.Group>
-                <Button positive id="login-submit-button">
-                  Log In
-                </Button>
+                <Button id="login-submit-button">Login</Button>
               </Form>
             </div>
             <h2>
