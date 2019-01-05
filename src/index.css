@@ -11,6 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+a {
+  border-bottom: none !important;
+}
+
 @media screen and (max-width: 767px) {
   section .ui.container {
     margin-left: 0px !important;

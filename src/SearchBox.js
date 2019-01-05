@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Header, Icon, Segment, Form, Accordion, Button } from "semantic-ui-react";
+import SearchBoxContent from "./SearchBoxContent";
 import "./SearchBox.css";
 
 class SearchBox extends Component {
@@ -26,6 +27,7 @@ class SearchBox extends Component {
       searchClear,
     } = this.props;
     const { isOpen, isDisabled } = this.state;
+    const checkedObjUpdated = JSON.stringify(checkedObj);
     return (
       <Segment inverted color="pink" id="search-container">
         <Accordion>
@@ -43,23 +45,21 @@ class SearchBox extends Component {
               {searchParams.map(({ label, values }) => (
                 <Form.Group grouped key={label}>
                   <Header as="h3" color="violet" content={label} />
-                  {values.map(([value, count]) => (
-                    <Form.Checkbox
-                      key={value}
-                      color="violet"
-                      name={label}
-                      value={value}
-                      checked={checkedObj[label] === value}
-                      label={`${value} (${count})`}
-                      onChange={searchChange}
+                  {values.length && (
+                    <SearchBoxContent
+                      values={values}
+                      label={label}
+                      searchChange={searchChange}
+                      checkedObjUpdated={checkedObjUpdated}
+                      checkedVal={checkedObj[label]}
                     />
-                  ))}
+                  )}
                 </Form.Group>
               ))}
               <Button
                 size="big"
                 color="purple"
-                content="View All"
+                content="Clear"
                 disabled={areBoxesEmpty}
                 onClick={searchClear}
               />
