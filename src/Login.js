@@ -27,10 +27,10 @@ class Login extends Component {
   render() {
     return (
       <Fragment>
-        <Container id="container">
-          <Segment id="container-segment" textAlign="center">
+        <Container id="login-container">
+          <Segment id="login-container-segment" textAlign="center">
             <h2>Log In</h2>
-            <div id="social-media">
+            <div id="login-social-media">
               <Button color="facebook">
                 <Icon name="facebook" /> Log In with Facebook
               </Button>
@@ -38,12 +38,12 @@ class Login extends Component {
                 <Icon name="google" /> Log In with Google
               </Button>
             </div>
-            <div id="divider-container">
-              <Divider horizontal id="divider-item">
+            <div id="login-divider-container">
+              <Divider horizontal id="login-divider-item">
                 or
               </Divider>
             </div>
-            <div id="input-form">
+            <div id="login-input-form">
               <Form onSubmit={this.handleSubmit}>
                 <Form.Group widths="equal">
                   <Form.Input
@@ -65,7 +65,7 @@ class Login extends Component {
                     onChange={this.handleChange}
                   />
                 </Form.Group>
-                <Button positive id="login-button">
+                <Button positive id="login-submit-button">
                   Log In
                 </Button>
               </Form>
