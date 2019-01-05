@@ -5,7 +5,7 @@ import SignUp from "./SignUp";
 import FeaturedPosts from "./FeaturedPosts";
 import ViewListingHolder from "./ViewListingHolder";
 import ListingPolicy from "./ListingPolicy";
-import CardList from "./CardList";
+import LatestListings from "./LatestListings";
 
 const styles = {
   padding: "20px",
@@ -22,7 +22,7 @@ class Routes extends Component {
           <Route path="/signup" component={SignUp} />
           <Route path="/listing/:id" component={ViewListingHolder} />
           <Route path="/listingpolicy" component={ListingPolicy} />
-          <Route path="/listings" component={CardList} />
+          <Route path="/listings" component={LatestListings} />
         </Switch>
       </section>
     );
