@@ -1,45 +1,40 @@
-body,
-html {
-  margin-bottom: 0px;
-}
-.ui.inverted.vertical.segment {
+#footer.ui.inverted.vertical.segment {
   text-align: center;
-  background-color: #90007f;
-  padding-bottom: 20px;
-  color: #fff;
+  padding: 30px;
 }
-.list {
+
+#footer .list {
   width: 100%;
   text-align: center;
 }
-.footer-item {
+
+#footer .footer-item {
   border-right: none !important;
 }
-a.item {
+
+#footer a.item {
   text-decoration-line: none;
   border-bottom: none;
 }
-.ui.list > a.item {
+
+#footer .ui.list > a.item {
   color: #fff !important;
   border-right: 1px solid #fff;
   padding-right: 12px;
   font-size: 17px !important;
 }
-.item:hover,
-p,
-p a,
-p a:hover {
+
+#footer p {
   color: #fff;
-  font-size: 17px;
+  text-align: center;
 }
-.top-items {
+
+#footer .top-items {
   padding-bottom: 20px !important;
 }
-p a {
-  border-bottom: 1px solid #fff;
-}
+
 @media only screen and (width: 767px) {
-  .ui.list > a.item {
+  #footer .ui.list > a.item {
     font-size: 9px;
   }
 }
