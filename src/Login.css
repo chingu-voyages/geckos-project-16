@@ -1,66 +1,62 @@
-* {
-  color: black;
-}
-
-h2 {
-  font-size: 30px;
-}
-
-a {
-  border-bottom: 2px solid #4183c4;
-}
-
-#container {
+#login-container {
   display: flex;
   justify-content: center;
-  padding: 4% 0;
+  padding: 1% 0;
 }
 
-#container-segment {
+#login-container-segment {
   padding: 20px 40px 35px 40px;
 }
 
-#social-media {
+#login-social-media {
   display: flex;
   justify-content: center;
 }
 
-#social-media i {
+#login-social-media i {
   color: whitesmoke;
 }
 
-#social-media > * {
+#login-social-media > * {
   width: 365px;
   height: 60px;
   font-size: 20px;
   margin: 20px 15px;
 }
 
-#divider-container {
+#login-divider-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#divider-item {
+#login-divider-item {
   width: 760px;
   text-transform: lowercase;
 }
 
-#input-form {
+#login-input-form {
   display: flex;
   justify-content: center;
 }
 
-#input {
+#login-input-email {
   width: 365px !important;
   height: 60px;
   margin: 20px 10px;
 }
 
-#login-button {
+#login-input-password {
+  width: 365px !important;
+  height: 60px;
+  margin: 20px 10px;
+}
+
+#login-submit-button {
   width: 760px;
   height: 60px;
   font-size: 20px;
   margin: 0 0 10px 0;
+  background-color: #90007f;
+  color: #fff;
 }
