@@ -1,5 +1,6 @@
-.customized .ui.loader {
-  top: 10%;
+.customized.dimmable {
+  width: 100%;
+  min-height: 300px;
 }
 
 .customized .ui.dimmer {
