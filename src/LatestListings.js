@@ -30,16 +30,15 @@ class LatestListings extends Component {
     filteredPets: [],
     checkedObj,
     searchFields: JSON.parse(fields),
-    activePage: 1,
     perPage: 6,
-    totalPages: 1,
+    isLoading: true,
   };
 
   async componentDidMount() {
     try {
       const response = await fetch("http://localhost:4000/posts");
       const allPets = await response.json();
-      this.setState({ allPets }, this.handleLogic);
+      this.setState({ allPets, isLoading: false }, this.handleLogic);
     } catch (err) {
       console.log(err);
     }
@@ -105,6 +104,7 @@ class LatestListings extends Component {
       activePage,
       totalPages,
       perPage,
+      isLoading,
     } = this.state;
     const searchParams = labels.map(label => ({
       label,
@@ -126,19 +126,27 @@ class LatestListings extends Component {
             />
           </Grid.Column>
           <Grid.Column width={12}>
-            <CardList pets={results} mobile={16} tablet={8} computer={5} />
-            <Segment inverted color="pink" className="pagination-holder">
-              <Pagination
-                activePage={activePage}
-                totalPages={totalPages}
-                boundaryRange={0}
-                siblingRange={1}
-                ellipsisItem={null}
-                prevItem={null}
-                nextItem={null}
-                onPageChange={this.handlePaginationChange}
-              />
-            </Segment>
+            <CardList
+              pets={results}
+              isLoading={isLoading}
+              mobile={16}
+              tablet={8}
+              computer={5}
+            />
+            {activePage && (
+              <Segment inverted color="pink" className="pagination-holder">
+                <Pagination
+                  activePage={activePage}
+                  totalPages={totalPages}
+                  boundaryRange={0}
+                  siblingRange={1}
+                  ellipsisItem={null}
+                  prevItem={null}
+                  nextItem={null}
+                  onPageChange={this.handlePaginationChange}
+                />
+              </Segment>
+            )}
           </Grid.Column>
         </Grid>
       </Container>
