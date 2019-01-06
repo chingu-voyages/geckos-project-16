@@ -1,0 +1,31 @@
+section {
+  width: 100%;
+  height: 100%;
+  background-image: url(/pattern.svg);
+  background-repeat: no-repeat;
+}
+.lp-segment {
+  width: 100%;
+  margin: 0 auto !important;
+}
+.accordion {
+  margin: 0 auto;
+  width: 100% !important;
+  padding: 2%;
+}
+
+.listing-policy-items {
+  text-align: left !important;
+}
+.ui.list > .item,
+ol.ui.list li,
+ul.ui.list li {
+  line-height: 1.7rem !important;
+}
+.policy-heading {
+  color: #666666;
+  font-weight: bold;
+}
+.ui.accordion .title {
+  font-size: 1.3rem !important;
+}
