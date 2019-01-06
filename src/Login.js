@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import { Button, Container, Divider, Icon, Segment, Form } from "semantic-ui-react";
 import "./Login.css";
 
@@ -69,7 +70,7 @@ class Login extends Component {
               </Form>
             </div>
             <h2>
-              No account? <a href="#">Sign up here</a>
+              No account? <Link to="/signup">Sign up here</Link>
             </h2>
           </Segment>
         </Container>
