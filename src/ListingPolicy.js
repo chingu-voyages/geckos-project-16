@@ -18,7 +18,7 @@ export default class AccordionExampleStyled extends Component {
     return (
       <Container>
         <Segment inverted color="pink" className="lp-segment">
-          <Accordion styled>
+          <Accordion styled className="lp-accordion">
             <Accordion.Title
               active={activeIndex === 0}
               index={0}
@@ -29,14 +29,14 @@ export default class AccordionExampleStyled extends Component {
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 0}>
               <List as="ul" className="listing-policy-items">
-                <List.Item as="li">
+                <List.Item as="li" className="listing-policy-item">
                   <span className="policy-heading">ONE animal per listing.</span> Please
                   only list one animal in your listing. If the animal is in a bonded pair,
                   you can select “bonded pair” in the list of description options
                   provided. In the written description box, please include a link to the
                   other animal’s listing or just their name.
                 </List.Item>
-                <List.Item as="li">
+                <List.Item as="li" className="listing-policy-item">
                   <span className="policy-heading">
                     Only type the NAME of the animal in the name field.
                   </span>{" "}
@@ -47,13 +47,13 @@ export default class AccordionExampleStyled extends Component {
                   avoid errors in your upload, please keep the name short (example:
                   "David", not "David formerly Socks").
                 </List.Item>
-                <List.Item as="li">
+                <List.Item as="li" className="listing-policy-item">
                   <span className="policy-heading">Only post LANDSCAPE photos.</span>{" "}
                   Please post photos taken in landscape view (“long” ways). Photos in
                   vertical view (“tall” ways) will be cut off and site viewers will not
                   see the full image of the cutie you’ve listed.
                 </List.Item>
-                <List.Item as="li">
+                <List.Item as="li" className="listing-policy-item">
                   <span className="policy-heading">
                     The animal MUST be in your possession.
                   </span>{" "}
@@ -66,7 +66,7 @@ export default class AccordionExampleStyled extends Component {
                   authorization from the shelter owner that you are the designated contact
                   for posting listings.
                 </List.Item>
-                <List.Item as="li">
+                <List.Item as="li" className="listing-policy-item">
                   <span className="policy-heading">
                     Use YOUR email address and respond to ALL inquires.
                   </span>{" "}
@@ -81,7 +81,7 @@ export default class AccordionExampleStyled extends Component {
                   user will be issued a warning. Several incidences will result in the
                   user being blacklisted.
                 </List.Item>
-                <List.Item as="li">
+                <List.Item as="li" className="listing-policy-item">
                   <span className="policy-heading">
                     DELETE your listing after adoption.
                   </span>{" "}
@@ -105,7 +105,7 @@ export default class AccordionExampleStyled extends Component {
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 1}>
               <List as="ol" className="listing-policy-items">
-                <List.Item as="li">
+                <List.Item as="li" className="listing-policy-item">
                   Make an Account. After reading through the listing guidelines, you’re
                   ready to post your listing! Click “Login” in the upper right-hand corner
                   of the page. Then, select “Create new account” and fill in the required
@@ -113,12 +113,12 @@ export default class AccordionExampleStyled extends Component {
                   will be sent an email with your initial login information and prompted
                   to change your password and user information.
                 </List.Item>
-                <List.Item as="li">
+                <List.Item as="li" className="listing-policy-item">
                   Add a new listing. Now that you are a member, you will see new options
                   in the drop down menu for “Pet Adoption”. Please select “Add a New
                   Listing” followed by the type of animal.
                 </List.Item>
-                <List.Item as="li">
+                <List.Item as="li" className="listing-policy-item">
                   Create your listing. You will be taken to a listing form. Simply fill in
                   all relevant information and upload a photo/photos in accordance with
                   the listing guidelines. When you have finished, check that everything is
@@ -137,7 +137,7 @@ export default class AccordionExampleStyled extends Component {
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 2}>
               <List>
-                <List.Item>
+                <List.Item className="listing-policy-item">
                   Login to your account and open the listing for the animal. You will see
                   two options on your listing, “View” and “Edit”. Click “Edit”. You will
                   then have the freedom to update any of the information regarding the
