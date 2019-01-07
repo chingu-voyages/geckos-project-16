@@ -1,26 +1,27 @@
 import React from "react";
 import { Container, List, Segment } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 const Footer = () => (
-  <Segment inverted vertical>
+  <Segment inverted color="purple" vertical id="footer">
     <Container>
       <List horizontal className="top-items">
-        <List.Item as="a" href="/login">
+        <List.Item as={Link} to="/login">
           Login
         </List.Item>
-        <List.Item as="a" href="/register" className="footer-item">
+        <List.Item as={Link} to="/register" className="footer-item">
           Register
         </List.Item>
       </List>
       <List horizontal className="top-items">
-        <List.Item as="a" href="/">
+        <List.Item as={Link} to="/">
           Create Listing
         </List.Item>
-        <List.Item as="a" href="/listings">
+        <List.Item as={Link} to="/listings">
           View Listings
         </List.Item>
-        <List.Item as="a" href="/listingpolicy" className="footer-item">
+        <List.Item as={Link} to="/listingpolicy" className="footer-item">
           Listing Policy
         </List.Item>
       </List>
@@ -30,10 +31,16 @@ const Footer = () => (
           ❤️
         </span>{" "}
         and{" "}
-        <span role="img" aria-label="coffe">
+        <span role="img" aria-label="coffee">
           ☕
         </span>{" "}
-        by some <a href="https://github.com/chingu-voyages/geckos-project-16">Geckos</a>.
+        by some{" "}
+        <a href="https://github.com/chingu-voyages/geckos-project-16">
+          <span role="img" aria-label="gecko">
+            🦎
+          </span>
+        </a>
+        's.
       </p>
     </Container>
   </Segment>

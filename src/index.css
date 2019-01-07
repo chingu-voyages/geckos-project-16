@@ -10,12 +10,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
 section {
   width: 100%;
   height: 100%;
   background-image: url(/pattern.svg);
   background-repeat: no-repeat;
 }
+
+a {
+  border-bottom: none !important;
+}
+
 @media screen and (max-width: 767px) {
   section .ui.container {
     margin-left: 0px !important;
