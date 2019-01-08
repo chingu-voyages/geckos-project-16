@@ -24,13 +24,6 @@ const values = {
 class SignUp extends Component {
   state = {
     ...values,
-    states: {
-      email: null,
-      contactName: null,
-      password: null,
-      confirmPassword: null,
-      isAgreed: null,
-    },
     passwordsMatch: null,
     passwordsAccept: null,
     successStatus: null,
