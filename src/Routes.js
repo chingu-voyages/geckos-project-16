@@ -7,15 +7,10 @@ import ViewListingHolder from "./ViewListingHolder";
 import ListingPolicy from "./ListingPolicy";
 import LatestListings from "./LatestListings";
 
-const styles = {
-  padding: "20px",
-  marginTop: "65px",
-};
-
 class Routes extends Component {
   render() {
     return (
-      <section style={styles}>
+      <section>
         <Switch>
           <Route exact path="/" component={FeaturedPosts} />
           <Route path="/login" component={Login} />

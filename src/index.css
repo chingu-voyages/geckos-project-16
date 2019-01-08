@@ -12,10 +12,18 @@ code {
 }
 
 section {
+  padding: 20px;
+  margin-top: 65px;
+  display: flex !important;
+  justify-content: center;
   width: 100%;
   height: 100%;
   background-image: url(/pattern.svg);
   background-repeat: no-repeat;
+}
+
+.ui.segment.inverted.pink:not(.basic) {
+  box-shadow: 0 0 8px #90007f;
 }
 
 a {
