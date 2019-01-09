@@ -1,84 +1,32 @@
-* {
-  color: black;
+@media screen and (max-width: 767px) {
+  .signup-container.ui.container {
+    max-width: 475px !important;
+  }
 }
 
-h2 {
-  font-size: 30px;
+@media screen and (min-width: 768px) {
+  .signup-container.ui.container {
+    max-width: 725px !important;
+  }
 }
 
-a {
-  border-bottom: 2px solid #4183c4;
+.signup-container h1.ui.header {
+  max-width: 300px;
+  margin: 0 auto 14px;
 }
 
-#container {
-  display: flex;
-  justify-content: center;
-  padding: 2%;
+.signup-form a {
+  color: #d52484;
 }
 
-#container-segment {
-  padding: 20px 40px 35px 40px;
+.social-signup.ui.button {
+  width: 49%;
+  display: inline-block;
+  min-width: 205px;
+  margin: 5px 0;
 }
 
-#social-media {
-  display: flex;
-  justify-content: center;
-}
-
-#social-media i {
-  color: whitesmoke;
-}
-
-#social-media > * {
-  width: 365px;
-  height: 60px;
-  font-size: 20px;
-  margin: 20px 15px;
-}
-
-#divider-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#divider-item {
-  width: 760px;
-  text-transform: lowercase;
-}
-
-#signup-email-title {
-  margin: 5px 0 25px 0;
-}
-
-#input-form {
-  display: flex;
-  justify-content: center;
-}
-
-#input {
-  width: 365px !important;
-  height: 60px;
-  margin: 0 10px;
-}
-
-#input-email {
-  width: 765px !important;
-  height: 60px;
-  margin: 5px 10px;
-}
-
-#checkbox {
-  margin: 25px 0 20px 15px;
-  text-align: left;
-}
-
-#checkbox > * {
-  font-size: 16px;
-}
-
-#login-button {
-  width: 765px;
-  height: 60px;
-  font-size: 20px;
+.signup-container .ui.message {
+  max-width: 300px;
+  margin: 14px auto;
 }

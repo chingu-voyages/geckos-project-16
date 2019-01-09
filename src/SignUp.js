@@ -1,142 +1,192 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   Button,
   Container,
   Divider,
-  Icon,
   Segment,
   Form,
   Input,
+  Message,
+  Checkbox,
+  Header,
 } from "semantic-ui-react";
 import "./SignUp.css";
 
+const values = {
+  email: "",
+  contactName: "",
+  password: "",
+  confirmPassword: "",
+  isAgreed: false,
+};
+
 class SignUp extends Component {
   state = {
-    email: "",
-    firstName: "",
-    lastName: "",
-    password: "",
-    confirmPassword: "",
-    over18: false,
-    koreanResident: false,
+    ...values,
+    passwordsMatch: null,
+    passwordsAccept: null,
+    successStatus: null,
+    errorStatus: null,
+    isProcessing: false,
   };
 
-  handleChange = event => {
-    const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
-    this.setState({
-      [name]: value,
-    });
+  comparePasswords = () => {
+    const { password, confirmPassword, passwordsMatch } = this.state;
+    const isOneEmpty = !password || !confirmPassword;
+    if (isOneEmpty && passwordsMatch === null) return;
+    isOneEmpty || password.length !== confirmPassword.length
+      ? this.setState({ passwordsMatch: null })
+      : this.setState({ passwordsMatch: password === confirmPassword });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSignUp = async () => {
+    try {
+      const { contactName, password, email } = this.state;
+      const url = "http://localhost:4000/users";
+      const call = await fetch(url, {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contactName,
+          email,
+          password,
+        }),
+      });
+      const user = await call.json();
+      console.log(user);
+      this.setState({ successStatus: true, ...values, isProcessing: false });
+    } catch (err) {
+      this.setState({ errorStatus: true, isProcessing: false });
+      console.log(err);
+    }
+  };
+
+  handleChange = (e, { name, checked, value }) => {
+    this.setState(
+      { [name]: name === "isAgreed" ? checked : value },
+      this.comparePasswords
+    );
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState({ isProcessing: true }, () => setTimeout(this.handleSignUp, 3000));
   };
 
   render() {
+    const {
+      contactName,
+      email,
+      password,
+      confirmPassword,
+      passwordsMatch,
+      isAgreed,
+      successStatus,
+      errorStatus,
+      isProcessing,
+    } = this.state;
+    const [pwIcon, pwColor] = passwordsMatch ? ["lock", "green"] : ["lock open", "red"];
     return (
-      <Container id="container">
-        <Segment id="container-segment" textAlign="center">
-          <h2>Sign Up Here</h2>
-          <div id="social-media">
-            <Button color="facebook">
-              <Icon name="facebook" />
-              Sign Up with Facebook
-            </Button>
-            <Button color="google plus">
-              <Icon name="google" />
-              Sign Up with Google
-            </Button>
-          </div>
-          <div id="divider-container">
-            <Divider horizontal id="divider-item">
-              or
-            </Divider>
-          </div>
-          <h2 id="signup-email-title">Sign Up with Your Email Address</h2>
-          <div id="input-form">
-            <Form onSubmit={this.handleSubmit}>
+      <Container className="signup-container">
+        <Segment inverted color="pink" textAlign="center">
+          <Segment>
+            <Header as="h1" color="violet" content="Create an Account" dividing />
+            <Form
+              loading={isProcessing}
+              className="signup-form"
+              success={successStatus}
+              error={errorStatus}
+              warning={passwordsMatch !== null && !passwordsMatch}
+              onSubmit={this.handleSubmit}
+            >
               <Form.Group widths="equal">
                 <Form.Input
-                  placeholder="First Name"
-                  id="input"
-                  name="firstName"
-                  value={this.state.firstName}
+                  placeholder="Full Name *"
+                  name="contactName"
+                  value={contactName}
                   onChange={this.handleChange}
                 />
-                <Form.Input
-                  placeholder="Last Name"
-                  id="input"
-                  name="lastName"
-                  value={this.state.lastName}
-                  onChange={this.handleChange}
-                />
-              </Form.Group>
-              <Form.Group>
                 <Form.Input
                   type="email"
-                  placeholder="Email"
-                  id="input-email"
+                  placeholder="Email *"
                   name="email"
-                  value={this.state.email}
+                  value={email}
                   onChange={this.handleChange}
                 />
               </Form.Group>
-              <Form.Group>
-                <Form.Input
-                  type="password"
-                  placeholder="Password"
-                  id="input"
-                  name="password"
-                  autoComplete="new-password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                  error={this.state.passwordError || this.state.passwordMatchError}
-                />
-                <Form.Input
-                  type="password"
-                  placeholder="Confirm Password"
-                  id="input"
-                  name="confirmPassword"
-                  autoComplete="new-password"
-                  value={this.state.confirmPassword}
-                  onChange={this.handleChange}
-                  error={this.state.confirmPasswordError || this.state.passwordMatchError}
-                />
-              </Form.Group>
-              <div id="checkbox">
-                <Form.Field inline>
-                  <Input name="over18" type="checkbox" onClick={this.handleChange} />
-                  <label>I am over 18 years of age</label>
-                </Form.Field>
-                <Form.Field inline>
+              <Form.Group widths="equal">
+                <Form.Field>
                   <Input
-                    name="koreanResident"
-                    type="checkbox"
-                    onClick={this.handleChange}
+                    label={{ icon: pwIcon, color: pwColor }}
+                    labelPosition="right corner"
+                    type="password"
+                    placeholder="Password *"
+                    name="password"
+                    value={password}
+                    onChange={this.handleChange}
                   />
-                  <label>I live in South Korea</label>
                 </Form.Field>
-              </div>
+                <Form.Field>
+                  <Input
+                    label={{ icon: pwIcon, color: pwColor }}
+                    labelPosition="right corner"
+                    type="password"
+                    placeholder="Confirm Password *"
+                    name="confirmPassword"
+                    value={confirmPassword}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Form.Group>
+              <Message
+                warning
+                hidden={passwordsMatch || passwordsMatch === null}
+                header="Passwords do not match"
+              />
+              <Form.Field inline required>
+                <Checkbox
+                  name="isAgreed"
+                  onClick={this.handleChange}
+                  label={
+                    <label>
+                      I Agree to the <Link to="/listingpolicy">Listing Policies</Link>
+                    </label>
+                  }
+                />
+              </Form.Field>
               <Form.Button
-                positive
-                id="login-button"
+                color="purple"
+                size="big"
                 type="submit"
-                disabled={
-                  !this.state.email ||
-                  !this.state.firstName ||
-                  !this.state.lastName ||
-                  !this.state.password ||
-                  !this.state.confirmPassword ||
-                  !this.state.over18 ||
-                  !this.state.koreanResident
+                content={isProcessing ? "Processing" : "Create an Account"}
+                disabled={!email || !contactName || !passwordsMatch || !isAgreed}
+              />
+              <Message
+                hidden={!successStatus && !errorStatus}
+                success={successStatus}
+                error={errorStatus}
+                header={
+                  successStatus
+                    ? "Success, you're good to go"
+                    : "Error, something went wrong"
                 }
-              >
-                Sign Up
-              </Form.Button>
+              />
             </Form>
-          </div>
+            <Divider section horizontal content="OR" />
+            <Button
+              color="facebook"
+              icon="facebook"
+              className="social-signup"
+              content="Sign Up with Facebook"
+            />
+            <Button
+              color="google plus"
+              icon="google"
+              className="social-signup"
+              content="Sign Up with Google"
+            />
+          </Segment>
         </Segment>
       </Container>
     );
