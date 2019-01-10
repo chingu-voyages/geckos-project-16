@@ -23,7 +23,7 @@ export default class AccordionExampleStyled extends Component {
           <meta name="keywords" content="Adopt,Pet,Korean animals,Adopt a Korean Pet" />
           <meta
             name="description"
-            content="Our listing policy to read for all those putting their Korean pet up for adoption"
+            content="Our listing policy which should be read by everybody wanting to list a Korean pet for adoption"
           />
         </Helmet>
         <Segment inverted color="pink" className="lp-segment">
