@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import BlurredLoader from "./BlurredLoader";
 import ImageShowCase from "./ImageShowCase";
 import ViewListingPage from "./ViewListingPage";
+import { Helmet } from "react-helmet";
 
 class ViewListingHolder extends Component {
   state = {
@@ -36,6 +37,11 @@ class ViewListingHolder extends Component {
     const { petInfo, isLoading, showImageShowCase, imgID } = this.state;
     return (
       <div className="listing-container">
+        <Helmet>
+          <title>Adopt a Korean Pet || View Pet</title>
+          <meta name="keywords" content="Adopt,Pet,Korean animals,Adopt a Korean Pet" />
+          <meta name="description" content="View one of our Korean pet listings" />
+        </Helmet>
         <BlurredLoader isLoading={isLoading}>
           <ViewListingPage petInfo={petInfo} openImageShowCase={this.openImageShowCase} />
           {!isLoading && this.state.imgID !== null && (

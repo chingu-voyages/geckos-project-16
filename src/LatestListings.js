@@ -3,6 +3,7 @@ import CardList from "./CardList";
 import SearchBox from "./SearchBox";
 import { Grid, Container, Pagination, Segment } from "semantic-ui-react";
 import "./LatestListings.css";
+import { Helmet } from "react-helmet";
 
 // used to map through object
 const labels = ["location", "gender", "breed", "color"];
@@ -115,6 +116,14 @@ class LatestListings extends Component {
     const areBoxesEmpty = Object.values(checkedObj).every(x => !x.length);
     return (
       <Container>
+        <Helmet>
+          <title>Adopt a Korean Pet || View Listings</title>
+          <meta name="keywords" content="Adopt,Pet,Korean animals,Adopt a Korean Pet" />
+          <meta
+            name="description"
+            content="View, search and filter all of our Korean pet listings"
+          />
+        </Helmet>
         <Grid stackable columns={16}>
           <Grid.Column width={4}>
             <SearchBox
