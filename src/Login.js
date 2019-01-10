@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Divider, Icon, Segment, Form } from "semantic-ui-react";
 import "./Login.css";
+import { Helmet } from "react-helmet";
 
 class Login extends Component {
   constructor(props) {
@@ -28,6 +29,14 @@ class Login extends Component {
   render() {
     return (
       <Fragment>
+        <Helmet>
+          <title>Adopt a Korean Pet || Login</title>
+          <meta name="keywords" content="Adopt,Pet,Korean animals,Adopt a Korean Pet" />
+          <meta
+            name="description"
+            content="Login to your account here to adopt a Korean pet today"
+          />
+        </Helmet>
         <Container id="login-container">
           <Segment id="login-container-segment" textAlign="center">
             <h2>Log In</h2>

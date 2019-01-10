@@ -5,9 +5,18 @@ import ViewListingInfo from "./ViewListingInfo";
 import ViewListingStory from "./ViewListingStory";
 import ViewListingContact from "./ViewListingContact";
 import "./ViewListingPage.css";
+import { Helmet } from "react-helmet";
 
 export default ({ petInfo, openImageShowCase }) => (
   <Container>
+    <Helmet>
+      <title>Adopt a Korean Pet || View Listings</title>
+      <meta name="keywords" content="Adopt,Pet,Korean animals,Adopt a Korean Pet" />
+      <meta
+        name="description"
+        content="View, search and filter all of our Korean pet listings"
+      />
+    </Helmet>
     <Grid stackable>
       <Grid.Row columns={16}>
         <ViewListingImages
