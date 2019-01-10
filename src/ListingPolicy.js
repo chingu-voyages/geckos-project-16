@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Accordion, Icon, List, Segment, Container } from "semantic-ui-react";
 import "./ListingPolicy.css";
-import { Helmet } from "react-helmet";
 export default class AccordionExampleStyled extends Component {
   state = { activeIndex: 0 };
 
@@ -18,14 +17,6 @@ export default class AccordionExampleStyled extends Component {
 
     return (
       <Container>
-        <Helmet>
-          <title>Adopt a Korean Pet || Listing Policy</title>
-          <meta name="keywords" content="Adopt,Pet,Korean animals,Adopt a Korean Pet" />
-          <meta
-            name="description"
-            content="Our listing policy which should be read by everybody wanting to list a Korean pet for adoption"
-          />
-        </Helmet>
         <Segment inverted color="pink" className="lp-segment">
           <Accordion styled className="lp-accordion">
             <Accordion.Title

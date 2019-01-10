@@ -3,7 +3,6 @@ import { Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import CardList from "./CardList";
 import "./FeaturedPosts.css";
-import { Helmet } from "react-helmet";
 
 class FeaturedPosts extends Component {
   state = {
@@ -27,11 +26,6 @@ class FeaturedPosts extends Component {
     const { posts, isLoading } = this.state;
     return (
       <div className="featured-container">
-        <Helmet>
-          <title>Adopt a Korean Pet || Home</title>
-          <meta name="keywords" content="Adopt,Pet,Korean animals,Adopt a Korean Pet" />
-          <meta name="description" content="Adopt a Korean pet today" />
-        </Helmet>
         <CardList
           pets={posts}
           isLoading={isLoading}
