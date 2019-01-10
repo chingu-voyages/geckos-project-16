@@ -12,7 +12,7 @@ const ViewListingImages = ({ images, openImageShowCase }) => {
         <ImgWithPlaceholder
           id="0"
           src={primaryImgUrl}
-          alt="Main image of pet"
+          alt="Korean pet for adoption - main image"
           className="imageMain"
           onClick={openImageShowCase}
         />
@@ -29,7 +29,7 @@ const ViewListingImages = ({ images, openImageShowCase }) => {
             <ImgWithPlaceholder
               id={i + 1}
               src={url}
-              alt={`petPic-${i + 1}`}
+              alt={`Korean pet for adoption - image ${i + 1}`}
               className="subImage"
               onClick={openImageShowCase}
             />
