@@ -12,6 +12,7 @@ import {
   Header,
 } from "semantic-ui-react";
 import "./SignUp.css";
+import { Helmet } from "react-helmet";
 
 const values = {
   email: "",
@@ -89,6 +90,11 @@ class SignUp extends Component {
     const [pwIcon, pwColor] = passwordsMatch ? ["lock", "green"] : ["lock open", "red"];
     return (
       <Container className="signup-container">
+        <Helmet>
+          <title>Adopt a Korean Pet || Register</title>
+          <meta name="keywords" content="Adopt,Pet,Korean animals,Adopt a Korean Pet" />
+          <meta name="description" content="Register here to adopt a Korean pet today" />
+        </Helmet>
         <Segment inverted color="pink" textAlign="center">
           <Segment>
             <Header as="h1" color="violet" content="Create an Account" dividing />

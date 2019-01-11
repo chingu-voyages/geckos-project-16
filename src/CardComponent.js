@@ -17,7 +17,7 @@ const CardComponent = ({
   <Grid.Column key={id} mobile={mobile} tablet={tablet} computer={computer}>
     <Segment inverted color="pink" className="individual-card">
       <Card fluid>
-        <ImgWithPlaceHolder src={image} alt="Pets" />
+        <ImgWithPlaceHolder src={image} alt="Korean pet for adoption - main image" />
         <Card.Content>
           <Header as="h2" color="violet" content={petName} />
           <Card.Description>
