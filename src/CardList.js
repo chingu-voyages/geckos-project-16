@@ -1,37 +1,16 @@
 import React from "react";
+import { Grid } from "semantic-ui-react";
 import CardComponent from "./CardComponent";
+import BlurredLoader from "./BlurredLoader";
 
-class CardList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      displayPets: [],
-    };
-  }
-
-  async componentDidMount() {
-    try {
-      const response = await fetch("http://localhost:4000/posts");
-      const data = await response.json();
-      this.setState({ displayPets: data });
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  render() {
-    const { displayPets } = this.state;
-    return displayPets.map((pet, i) => (
-      <CardComponent
-        key={i}
-        image={pet.images[0]}
-        name={pet.user.name}
-        gender={pet.gender}
-        age={pet.age}
-        location={pet.location}
-      />
-    ));
-  }
-}
+const CardList = ({ pets, isLoading, ...sizes }) => (
+  <BlurredLoader isLoading={isLoading}>
+    <Grid style={{ justifyContent: "center" }}>
+      {pets.map(({ id, images, ...rest }) => (
+        <CardComponent key={id} id={id} image={images[0]} {...rest} {...sizes} />
+      ))}
+    </Grid>
+  </BlurredLoader>
+);
 
 export default CardList;

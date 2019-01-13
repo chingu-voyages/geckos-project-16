@@ -1,0 +1,57 @@
+.auth-container h1.ui.header {
+  max-width: 300px;
+  margin: 0 auto 14px;
+}
+
+.auth-container .auth-link {
+  margin: 7px auto 7px !important;
+}
+
+.auth-container .auth-link a {
+  color: #d52484;
+}
+
+.form.ui.form.auth-form .ui.input {
+  margin: 5px auto;
+}
+
+.form.ui.form.auth-form input,
+.form.ui.form.auth-form button {
+  min-height: 50px;
+  margin: 0;
+}
+
+.auth-form a {
+  color: #d52484;
+}
+
+.ui.button[type="submit"] {
+  min-width: 200px;
+}
+
+.social-auth.ui.button {
+  width: 48%;
+  display: inline-block;
+  min-width: 205px;
+  margin: 5px 6px;
+  min-height: 50px;
+}
+
+.auth-container .ui.message {
+  margin: 14px auto;
+}
+
+@media screen and (min-width: 768px) {
+  .auth-container.ui.container {
+    max-width: 725px !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .auth-container.ui.container {
+    max-width: 475px !important;
+  }
+  .auth-container .ui.button {
+    width: 100%;
+  }
+}

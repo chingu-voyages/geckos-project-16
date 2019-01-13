@@ -1,28 +1,62 @@
 import React, { Component, Fragment } from "react";
 import { Menu, Sidebar, Responsive } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import BlurredLoader from "./BlurredLoader";
 import SiteContent from "./SiteContent";
+import ScrollToTop from "./ScrollToTop";
+import { verifyUser } from "./helpers/auth";
 import "./NavBar.css";
 
-export default () => (
-  <Fragment>
-    <Responsive {...Responsive.onlyMobile}>
-      <NavBarMobile />
-    </Responsive>
-    <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-      <NavBarDesktop />
-    </Responsive>
-  </Fragment>
-);
+export default class NavBar extends Component {
+  state = { user: null, isLoading: true };
+
+  async componentDidMount() {
+    // checks if user is in localStorage
+    const user = await verifyUser();
+    this.setState({ user, isLoading: false });
+  }
+
+  handleLogout = () => this.setState({ user: null }, localStorage.clear());
+
+  handleUser = user => this.setState({ user });
+
+  render() {
+    const { isLoading, user } = this.state;
+    return (
+      <BlurredLoader isLoading={isLoading}>
+        <ScrollToTop />
+        <Responsive {...Responsive.onlyMobile}>
+          <NavBarMobile
+            user={user}
+            handleUser={this.handleUser}
+            handleLogout={this.handleLogout}
+          />
+        </Responsive>
+        <Responsive minWidth={Responsive.onlyTablet.minWidth}>
+          <NavBarDesktop
+            user={user}
+            handleUser={this.handleUser}
+            handleLogout={this.handleLogout}
+          />
+        </Responsive>
+      </BlurredLoader>
+    );
+  }
+}
 
 // used for desktop screens
-const NavBarDesktop = () => (
+const NavBarDesktop = ({ user, handleUser, handleLogout }) => (
   <Fragment>
     <Menu fixed="top">
       <MenuItems items={leftItems} />
-      <MenuItems items={rightItems} position="right" />
+      <MenuItems
+        items={rightItems}
+        user={user}
+        handleLogout={handleLogout}
+        position="right"
+      />
     </Menu>
-    <SiteContent />
+    <SiteContent handleUser={handleUser} />
   </Fragment>
 );
 
@@ -41,6 +75,7 @@ class NavBarMobile extends Component {
 
   render() {
     const { visible } = this.state;
+    const { user, handleUser, handleLogout } = this.props;
     return (
       <Sidebar.Pushable>
         <Sidebar as={Menu} animation="overlay" icon="labeled" vertical visible={visible}>
@@ -54,9 +89,14 @@ class NavBarMobile extends Component {
         >
           <Menu fixed="top">
             <Menu.Item onClick={this.handleToggle} icon="sidebar" />
-            <MenuItems items={rightItems} position="right" />
+            <MenuItems
+              items={rightItems}
+              user={user}
+              handleLogout={handleLogout}
+              position="right"
+            />
           </Menu>
-          <SiteContent />
+          <SiteContent handleUser={handleUser} />
         </Sidebar.Pusher>
       </Sidebar.Pushable>
     );
@@ -64,11 +104,13 @@ class NavBarMobile extends Component {
 }
 
 // maps over items array props and returns menu items
-const MenuItems = ({ items, position }) => (
+const MenuItems = ({ items, position, user, handleLogout }) => (
   <Menu.Menu position={position}>
-    {items.map(item => (
-      <Menu.Item {...item} />
-    ))}
+    {user ? (
+      <Menu.Item as="a" onClick={handleLogout} content="Logout" />
+    ) : (
+      items.map(item => <Menu.Item {...item} />)
+    )}
   </Menu.Menu>
 );
 
