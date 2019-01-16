@@ -1,0 +1,24 @@
+.lp-segment {
+  width: 100%;
+  margin: 0 auto !important;
+}
+.lp-accordion {
+  margin: 0 auto;
+  width: 100% !important;
+  padding: 2%;
+}
+
+.listing-policy-items {
+  text-align: left !important;
+}
+.listing-policy-item {
+  line-height: 1.7rem !important;
+  color: #000;
+}
+.policy-heading {
+  color: #666666;
+  font-weight: bold;
+}
+.ui.lp-accordion .title {
+  font-size: 1.3rem !important;
+}
