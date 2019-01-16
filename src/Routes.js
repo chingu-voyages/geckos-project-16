@@ -4,6 +4,7 @@ import FeaturedPosts from "./FeaturedPosts";
 import ViewListingHolder from "./ViewListingHolder";
 import ListingPolicy from "./ListingPolicy";
 import LatestListings from "./LatestListings";
+import ErrorNotFound from "./ErrorNotFound";
 import { Helmet } from "react-helmet";
 import AuthHolder from "./AuthHolder";
 
@@ -116,6 +117,26 @@ const Routes = ({ handleUser }) => (
               />
             </Helmet>
             <LatestListings />
+          </Fragment>
+        )}
+      />
+      <Route
+        path="*"
+        component={ErrorNotFound}
+        render={() => (
+          <Fragment>
+            <Helmet>
+              <title>Error Page</title>
+              <meta
+                name="keywords"
+                content="Adopt,Pet,Korean animals,Adopt a Korean Pet"
+              />
+              <meta
+                name="description"
+                content="View, search and filter all of our Korean pet listings"
+              />
+            </Helmet>
+            <ErrorNotFound />
           </Fragment>
         )}
       />
