@@ -13,8 +13,10 @@ class ViewListingHolder extends Component {
 
   // Fetch data for individual pet
   async componentDidMount() {
+    console.log(this.props);
     try {
-      const id = Number(this.props.match.params.id);
+      // const id = Number(this.props.match.params.id || 0);
+      const id = Number(0);
       const url = `http://localhost:4000/posts/${id}`;
       const response = await fetch(url);
       const petInfo = await response.json();

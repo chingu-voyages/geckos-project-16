@@ -118,7 +118,7 @@ const MenuItems = ({ items, position, user, handleLogout }) => (
 const leftItems = [
   { as: Link, to: "/", icon: "paw", key: "home" },
   { as: Link, to: "/listings", content: "View Listings", key: "listings" },
-  { as: Link, to: "/", content: "Create Listing", key: "createListing" },
+  { as: Link, to: "/create", content: "Create Listing", key: "createListing" },
   { as: Link, to: "/listingpolicy", content: "Listing Policy", key: "listingPolicy" },
 ];
 const rightItems = [

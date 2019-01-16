@@ -4,8 +4,9 @@ import FeaturedPosts from "./FeaturedPosts";
 import ViewListingHolder from "./ViewListingHolder";
 import ListingPolicy from "./ListingPolicy";
 import LatestListings from "./LatestListings";
-import { Helmet } from "react-helmet";
+import CreateListing from "./CreateListing";
 import AuthHolder from "./AuthHolder";
+import { Helmet } from "react-helmet";
 
 const Routes = ({ handleUser }) => (
   <section>
@@ -116,6 +117,25 @@ const Routes = ({ handleUser }) => (
               />
             </Helmet>
             <LatestListings />
+          </Fragment>
+        )}
+      />
+      <Route
+        path="/create"
+        render={() => (
+          <Fragment>
+            <Helmet>
+              <title>Adopt a Korean Pet || View Listings</title>
+              <meta
+                name="keywords"
+                content="Adopt,Pet,Korean animals,Adopt a Korean Pet"
+              />
+              <meta
+                name="description"
+                content="View, search and filter all of our Korean pet listings"
+              />
+            </Helmet>
+            <CreateListing />
           </Fragment>
         )}
       />
