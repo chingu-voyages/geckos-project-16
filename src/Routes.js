@@ -4,6 +4,7 @@ import FeaturedPosts from "./FeaturedPosts";
 import ViewListingHolder from "./ViewListingHolder";
 import ListingPolicy from "./ListingPolicy";
 import LatestListings from "./LatestListings";
+import ErrorNotFound from "./ErrorNotFound";
 import { Helmet } from "react-helmet";
 import AuthHolder from "./AuthHolder";
 
@@ -116,6 +117,15 @@ const Routes = ({ handleUser }) => (
               />
             </Helmet>
             <LatestListings />
+          </Fragment>
+        )}
+      />
+      <Route
+        path="*"
+        component={ErrorNotFound}
+        render={() => (
+          <Fragment>
+            <ErrorNotFound />
           </Fragment>
         )}
       />
