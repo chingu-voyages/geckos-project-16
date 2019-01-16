@@ -125,17 +125,6 @@ const Routes = ({ handleUser }) => (
         component={ErrorNotFound}
         render={() => (
           <Fragment>
-            <Helmet>
-              <title>Error Page</title>
-              <meta
-                name="keywords"
-                content="Adopt,Pet,Korean animals,Adopt a Korean Pet"
-              />
-              <meta
-                name="description"
-                content="View, search and filter all of our Korean pet listings"
-              />
-            </Helmet>
             <ErrorNotFound />
           </Fragment>
         )}
