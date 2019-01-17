@@ -50,7 +50,13 @@ const ViewListingAction = ({ contactName, contactEmail, adoptionFee }) => (
               />
               <Button.Group>
                 {socialShares.map(social => (
-                  <Button circular {...social} className="socialMediaButton" />
+                  <Button
+                    circular
+                    {...social}
+                    as="a"
+                    rel="external-new-window"
+                    className="socialMediaButton"
+                  />
                 ))}
               </Button.Group>
             </div>
@@ -62,11 +68,33 @@ const ViewListingAction = ({ contactName, contactEmail, adoptionFee }) => (
 );
 
 const socialShares = [
-  { icon: "facebook", color: "facebook", key: "facebook" },
-  { icon: "twitter", color: "twitter", key: "twitter" },
-  { icon: "instagram", color: "instagram", key: "instagram" },
-  { icon: "pinterest", color: "red", key: "pinterest" },
-  { icon: "mail", color: "yellow", key: "mail" },
+  {
+    icon: "facebook",
+    color: "facebook",
+    key: "facebook",
+    href:
+      "http://www.facebook.com/sharer.php?u=https://www.adoptapet.com/pet/11308970-los-angeles-california-chihuahua&amp;text=Scrappy Doo, aChihuahuainCalifornia, needs a home now! See him on Adopt-a-Pet.com&amp;picture=https://pet-uploads.adoptapet.com/4/5/9/363003065.jpg",
+  },
+  {
+    icon: "twitter",
+    color: "twitter",
+    key: "twitter",
+    href:
+      "https://twitter.com/intent/tweet?related=TweetACritter&url=https://www.adoptapet.com/pet/11308970-los-angeles-california-chihuahua&text=Scrappy%20Doo,%20a%20Chihuahua%20in%20California,%20needs%20a%20home%20now!%20See%20him%20on%20Adopt-a-Pet.com%20#TwitterACritter",
+  },
+  {
+    icon: "pinterest",
+    color: "red",
+    key: "pinterest",
+    href:
+      "https://www.pinterest.com/login/?next=/pin/create/button/%3Furl%3Dhttps%3A//www.adoptapet.com/pet/11308970-los-angeles-california-chihuahua%26media%3Dhttps%3A//pet-uploads.adoptapet.com/4/5/9/363003065.jpg%26description%3DLos%2520Angeles%2C%2520California%2520-%2520Chihuahua.%2520Meet%2520Scrappy%2520Doo%2C%2520a%2520for%2520adoption.%2520https%3A//www.adoptapet.com/pet/11308970-los-angeles-california-chihuahua",
+  },
+  {
+    icon: "mail",
+    color: "yellow",
+    key: "mail",
+    href: "mailto:?Subject=Adopt a pet",
+  },
 ];
 
 export default ViewListingAction;
