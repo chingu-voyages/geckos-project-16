@@ -4,7 +4,7 @@ import FeaturedPosts from "./FeaturedPosts";
 import ViewListingHolder from "./ViewListingHolder";
 import ListingPolicy from "./ListingPolicy";
 import LatestListings from "./LatestListings";
-import CreateListing from "./CreateListing";
+import CreateListingHolder from "./CreateListingHolder";
 import AuthHolder from "./AuthHolder";
 import { Helmet } from "react-helmet";
 
@@ -135,7 +135,7 @@ const Routes = ({ handleUser }) => (
                 content="View, search and filter all of our Korean pet listings"
               />
             </Helmet>
-            <CreateListing />
+            <CreateListingHolder />
           </Fragment>
         )}
       />

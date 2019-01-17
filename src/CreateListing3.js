@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
 
-class CreateListing4 extends Component {
+class CreateListing3 extends Component {
   openWidget = () =>
     window.cloudinary.openUploadWidget(
       {
@@ -39,9 +39,15 @@ class CreateListing4 extends Component {
 
   render() {
     return (
-      <Button color="violet" content="Upload Images" icon="" onClick={this.openWidget} />
+      <Button
+        disabled={true}
+        color="violet"
+        content="Upload Images"
+        icon="upload"
+        onClick={this.openWidget}
+      />
     );
   }
 }
 
-export default CreateListing4;
+export default CreateListing3;

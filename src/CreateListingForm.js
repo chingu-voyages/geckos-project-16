@@ -1,91 +1,84 @@
 import React, { Component } from "react";
-import CreateListingDetails from "./CreateListingDetails";
-import CreateListingConfirmation from "./CreateListingConfirmation";
-import CreateListingSuccess from "./CreateListingSuccess";
+import { Form } from "semantic-ui-react";
+import CreateListing1 from "./CreateListing1";
+import CreateListing2 from "./CreateListing2";
+import CreateListing3 from "./CreateListing3";
 
 class CreateListingForm extends Component {
   state = {
-    step: 1,
+    petName: "",
+    type: "",
+    breed: "",
+    ageNum: "",
+    agePeriod: "months",
+    gender: "",
+    size: "",
+    color: "",
+    spayed: false,
+    vaccinated: false,
+    description: "",
+    location: "",
+    adoptionFee: 0,
   };
 
-  nextStep = () => {
-    const { step } = this.state;
-    this.setState({
-      step: step + 1,
-    });
-  };
-
-  prevStep = () => {
-    const { step } = this.state;
-    this.setState({
-      step: step - 1,
-    });
-  };
-
-  handleChange = input => event => {
-    this.setState({ [input]: event.target.value });
-  };
+  handleChange = (e, { name, value, checked }) =>
+    this.setState({ [name]: checked ? checked : value });
 
   render() {
-    const { step } = this.state;
     const {
-      name,
+      petName,
       type,
-      gender,
       breed,
-      age,
-      status,
-      foster,
-      weight,
+      ageNum,
+      agePeriod,
+      gender,
+      size,
       color,
-      characteristics,
-      story,
+      spayed,
+      vaccinated,
       location,
-      locStatus,
-      fee,
-      contactName,
-      contactEmail,
+      adoptionFee,
+      description,
     } = this.state;
-    const values = {
-      name,
-      type,
-      gender,
-      breed,
-      age,
-      status,
-      foster,
-      weight,
-      color,
-      characteristics,
-      story,
-      location,
-      locStatus,
-      fee,
-      contactName,
-      contactEmail,
-    };
-    switch (step) {
-      case 1:
-        return (
-          <CreateListingDetails
-            nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            values={values}
+    return (
+      <Form>
+        <CreateListing1
+          handleChange={this.handleChange}
+          type={type}
+          breed={breed}
+          ageNum={ageNum}
+          agePeriod={agePeriod}
+          gender={gender}
+          size={size}
+          color={color}
+          spayed={spayed}
+          vaccinated={vaccinated}
+        />
+        <CreateListing2
+          handleChange={this.handleChange}
+          petName={petName}
+          description={description}
+          location={location}
+          adoptionFee={adoptionFee}
+          gender={!gender ? "He/She's" : gender === "male" ? "He's" : "She's"}
+        />
+        <Form.Group>
+          <Form.Checkbox
+            name="vaccinated"
+            checked={vaccinated}
+            label="Is Vaccinated?"
+            onChange={this.handleChange}
           />
-        );
-      case 2:
-        return (
-          <CreateListingConfirmation
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            values={values}
+          <Form.Checkbox
+            name="spayed"
+            checked={spayed}
+            label="Is Spayed?"
+            onChange={this.handleChange}
           />
-        );
-      case 3:
-        return <CreateListingSuccess />;
-      default:
-      //do nothing
-    }
+        </Form.Group>
+        <CreateListing3 />
+      </Form>
+    );
   }
 }
 
