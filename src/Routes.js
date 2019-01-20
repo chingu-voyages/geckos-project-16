@@ -68,8 +68,7 @@ const Routes = ({ handleUser }) => (
       />
       <Route
         path="/listing/:id"
-        component={ViewListingHolder}
-        render={() => (
+        render={({ match }) => (
           <Fragment>
             <Helmet>
               <title>Adopt a Korean Pet || View Pet</title>
@@ -79,6 +78,7 @@ const Routes = ({ handleUser }) => (
               />
               <meta name="description" content="View one of our Korean pet listings" />
             </Helmet>
+            <ViewListingHolder match={match} />
           </Fragment>
         )}
       />
