@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form } from "semantic-ui-react";
-import { userAuth } from "./helpers/auth";
-import AuthMessage from "./AuthMessage";
+import { fetcher } from "./helpers";
+import FormMessages from "./FormMessages";
 
 const initialState = {
   email: "",
@@ -21,13 +21,14 @@ class LogInForm extends Component {
   handleLogIn = async () => {
     try {
       const { password, email } = this.state;
-      const resp = await userAuth("login", {
+      const resp = await fetcher("/users/login", {
         method: "post",
         body: JSON.stringify({ email, password }),
       });
       const user = await resp.json();
+      console.log(resp);
       if (!resp.ok) {
-        throw user.message;
+        throw user;
       }
       localStorage.setItem("user", JSON.stringify(user));
       this.setState(
@@ -42,7 +43,7 @@ class LogInForm extends Component {
       this.setState({
         ...initialState,
         errorStatus: true,
-        errorMsg: err,
+        errorMsg: err.message,
       });
     }
   };
@@ -93,7 +94,7 @@ class LogInForm extends Component {
           content={isProcessing ? "Processing" : "Submit"}
           disabled={!email || !password}
         />
-        <AuthMessage
+        <FormMessages
           successStatus={successStatus}
           successMsg={`Welcome back, ${activeUser}!`}
           errorStatus={errorStatus}

@@ -1,33 +1,39 @@
-import React, { Component } from "react";
-import { Container, Segment, Header, Button, Progress } from "semantic-ui-react";
+import React from "react";
+import StyledContainer from "./StyledContainer";
 import CreateListingForm from "./CreateListingForm";
 import "./CreateListing.css";
 
-class CreateListingHolder extends Component {
-  render() {
-    return (
-      <Container>
-        <Segment inverted color="pink">
-          <Segment>
-            <Header
-              as="h1"
-              dividing
-              color="violet"
-              content="Create a Listing"
-              textAlign="center"
-            />
-            <Header
-              as="h4"
-              color="purple"
-              content="Please fill in all required fields"
-              textAlign="center"
-            />
-            <CreateListingForm handleSubmit={this.handleSubmit} />
-          </Segment>
-        </Segment>
-      </Container>
-    );
-  }
-}
+const initialState = {
+  petName: "",
+  type: "",
+  breed: "",
+  gender: "",
+  size: "",
+  color: "",
+  description: "",
+  location: "",
+  adoptionFee: "",
+  ageNum: "",
+  agePeriod: "months",
+  spayed: false,
+  vaccinated: false,
+  trained: [],
+  goodWith: [],
+  images: [],
+  formErrors: [],
+  errorMsg: "",
+  errorStatus: null,
+  isProcessing: false,
+};
+
+// history comes from react router
+const CreateListingHolder = ({ history, user }) => (
+  <StyledContainer
+    topHeader="Create a Listing"
+    btmHeader="Please fill in all required fields"
+  >
+    <CreateListingForm history={history} user={user} initialState={initialState} />
+  </StyledContainer>
+);
 
 export default CreateListingHolder;

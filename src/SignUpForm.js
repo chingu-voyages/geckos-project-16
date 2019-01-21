@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Form, Input, Message, Checkbox } from "semantic-ui-react";
 import { validateEmail } from "./helpers";
-import { userAuth } from "./helpers/auth";
-import AuthMessage from "./AuthMessage";
+import { fetcher } from "./helpers";
+import FormMessages from "./FormMessages";
 
 const initialState = {
   email: "",
@@ -41,7 +41,7 @@ class SignUpForm extends Component {
   handleSignUp = async () => {
     try {
       const { fullName, password, email } = this.state;
-      const resp = await userAuth("signup", {
+      const resp = await fetcher("/users/signup", {
         method: "post",
         body: JSON.stringify({
           fullName,
@@ -51,7 +51,7 @@ class SignUpForm extends Component {
       });
       const user = await resp.json();
       if (!resp.ok) {
-        throw user.errors[Object.keys(user.errors)[0]].message;
+        throw user.errors[Object.keys(user.errors)[0]];
       }
       localStorage.setItem("user", JSON.stringify(user));
       this.setState(
@@ -66,7 +66,7 @@ class SignUpForm extends Component {
       this.setState({
         ...initialState,
         errorStatus: true,
-        errorMsg: err,
+        errorMsg: err.message,
       });
     }
   };
@@ -182,7 +182,7 @@ class SignUpForm extends Component {
             !isAgreed
           }
         />
-        <AuthMessage
+        <FormMessages
           successStatus={successStatus}
           successMsg={`Thanks for joining, ${activeUser}!`}
           errorStatus={errorStatus}

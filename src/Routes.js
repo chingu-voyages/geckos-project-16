@@ -8,7 +8,7 @@ import CreateListingHolder from "./CreateListingHolder";
 import AuthHolder from "./AuthHolder";
 import { Helmet } from "react-helmet";
 
-const Routes = ({ handleUser }) => (
+const Routes = ({ handleUser, user }) => (
   <section>
     <Switch>
       <Route
@@ -78,7 +78,7 @@ const Routes = ({ handleUser }) => (
               />
               <meta name="description" content="View one of our Korean pet listings" />
             </Helmet>
-            <ViewListingHolder />
+            <ViewListingHolder user={user} />
           </Fragment>
         )}
       />
@@ -122,7 +122,7 @@ const Routes = ({ handleUser }) => (
       />
       <Route
         path="/create"
-        render={() => (
+        render={({ history }) => (
           <Fragment>
             <Helmet>
               <title>Adopt a Korean Pet || View Listings</title>
@@ -135,7 +135,7 @@ const Routes = ({ handleUser }) => (
                 content="View, search and filter all of our Korean pet listings"
               />
             </Helmet>
-            <CreateListingHolder />
+            <CreateListingHolder history={history} user={user} />
           </Fragment>
         )}
       />

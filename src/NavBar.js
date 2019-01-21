@@ -56,7 +56,7 @@ const NavBarDesktop = ({ user, handleUser, handleLogout }) => (
         position="right"
       />
     </Menu>
-    <SiteContent handleUser={handleUser} />
+    <SiteContent handleUser={handleUser} user={user} />
   </Fragment>
 );
 
@@ -96,7 +96,7 @@ class NavBarMobile extends Component {
               position="right"
             />
           </Menu>
-          <SiteContent handleUser={handleUser} />
+          <SiteContent handleUser={handleUser} user={user} />
         </Sidebar.Pusher>
       </Sidebar.Pushable>
     );

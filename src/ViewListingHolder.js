@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import BlurredLoader from "./BlurredLoader";
 import ImageShowCase from "./ImageShowCase";
 import ViewListingPage from "./ViewListingPage";
+import { fetcher } from "./helpers";
 
 class ViewListingHolder extends Component {
   state = {
@@ -15,11 +17,11 @@ class ViewListingHolder extends Component {
   async componentDidMount() {
     console.log(this.props);
     try {
-      // const id = Number(this.props.match.params.id || 0);
-      const id = Number(0);
-      const url = `http://localhost:4000/posts/${id}`;
-      const response = await fetch(url);
+      const id = this.props.match.params.id;
+      const response = await fetcher(`/posts/${id}`, {});
+      console.log(response);
       const petInfo = await response.json();
+      console.log(petInfo);
       this.setState({ petInfo, isLoading: false });
     } catch (err) {
       console.log(err);
@@ -36,10 +38,16 @@ class ViewListingHolder extends Component {
 
   render() {
     const { petInfo, isLoading, showImageShowCase, imgID } = this.state;
+    console.log(Object.keys(petInfo).length && petInfo.owner.id);
+    console.log(this.props.user && this.props.user.userId);
     return (
       <div className="listing-container">
         <BlurredLoader isLoading={isLoading}>
-          <ViewListingPage petInfo={petInfo} openImageShowCase={this.openImageShowCase} />
+          <ViewListingPage
+            user={this.props.user}
+            petInfo={petInfo}
+            openImageShowCase={this.openImageShowCase}
+          />
           {!isLoading && this.state.imgID !== null && (
             <ImageShowCase
               images={petInfo.images}
@@ -54,4 +62,4 @@ class ViewListingHolder extends Component {
   }
 }
 
-export default ViewListingHolder;
+export default withRouter(ViewListingHolder);

@@ -3,9 +3,9 @@ import Routes from "./Routes";
 import Disclaimer from "./Disclaimer";
 import Footer from "./Footer";
 
-const SiteContent = ({ handleUser }) => (
+const SiteContent = ({ handleUser, user }) => (
   <Fragment>
-    <Routes handleUser={handleUser} />
+    <Routes handleUser={handleUser} user={user} />
     <Disclaimer />
     <Footer />
   </Fragment>

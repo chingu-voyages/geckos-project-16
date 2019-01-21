@@ -78,7 +78,7 @@ const mainDetails = [
   { label: "Gender", key: "gender" },
   { label: "Age", key: "age" },
   { label: "Color", key: "color" },
-  { label: "Weight", key: "weight" },
+  { label: "Size", key: "size" },
   { label: "Location", key: "location" },
 ];
 

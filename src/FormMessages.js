@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Message } from "semantic-ui-react";
 
-const AuthMessage = ({ successStatus, errorStatus, successMsg, errorMsg }) => (
+const FormMessages = ({ successStatus, errorStatus, successMsg, errorMsg }) => (
   <Message
     compact
     hidden={!successStatus && !errorStatus}
@@ -24,4 +24,4 @@ const AuthMessage = ({ successStatus, errorStatus, successMsg, errorMsg }) => (
   </Message>
 );
 
-export default AuthMessage;
+export default FormMessages;

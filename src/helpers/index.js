@@ -1,3 +1,12 @@
+// return a promise that we'll handle in our components
+export function fetcher(url, opts) {
+  return fetch(`${process.env.REACT_APP_API_ROUTE}${url}`, {
+    method: opts.method || "get",
+    headers: { "Content-Type": "application/json", ...opts.headers },
+    body: opts.body,
+  });
+}
+
 // returns true for the following format xxx@xx.xx
 export function validateEmail(email) {
   var re = new RegExp(
@@ -6,3 +15,65 @@ export function validateEmail(email) {
   );
   return re.test(String(email).toLowerCase());
 }
+
+// returns an obj with:
+// array of required fields names that weren't filled
+// and errorStatus and errorMsg
+export function checkRequiredFields(state) {
+  const formErrors = Object.entries(state)
+    .filter(obj => requiredFields.includes(obj[0]))
+    .filter(x => !x[1].length)
+    .map(y => y[0]);
+  const errorStatus = !!formErrors.length;
+  const errorMsg = !errorStatus
+    ? ""
+    : `You left ${formErrors.length} required fields empty ${
+        formErrors.includes("images") ? "(including at least 1 image uploaded)" : ""
+      }`;
+  return { formErrors, errorStatus, errorMsg };
+}
+
+// used when creating posts
+const requiredFields = [
+  "petName",
+  "type",
+  "breed",
+  "gender",
+  "size",
+  "color",
+  "description",
+  "location",
+  "adoptionFee",
+  "ageNum",
+  "images",
+];
+
+// used when creating posts
+export const cloudinaryOptions = {
+  cloudName: process.env.REACT_APP_CLOUD_NAME,
+  uploadPreset: "default",
+  sources: ["local", "camera", "facebook", "instagram"],
+  cropping: true,
+  croppingShowBackButton: true,
+  folder: process.env.REACT_APP_CLOUD_FOLDER,
+  clientAllowedFormats: ["png", "jpeg"],
+  maxFileSize: 2000000,
+  singleUploadAutoClose: false,
+  styles: {
+    palette: {
+      window: "#FFFFFF",
+      windowBorder: "#3D0043",
+      tabIcon: "#D52484",
+      menuIcons: "#90007F",
+      textDark: "#3D0043",
+      textLight: "#FFFFFF",
+      link: "#3D0043",
+      action: "#FF620C",
+      inactiveTabIcon: "#3D0043",
+      error: "#EA3E31",
+      inProgress: "#0078FF",
+      complete: "#20B832",
+      sourceBg: "#FFFFFF",
+    },
+  },
+};
