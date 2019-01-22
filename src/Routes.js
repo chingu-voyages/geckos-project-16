@@ -5,6 +5,7 @@ import ViewListingHolder from "./ViewListingHolder";
 import ListingPolicy from "./ListingPolicy";
 import LatestListings from "./LatestListings";
 import CreateListingHolder from "./CreateListingHolder";
+import ErrorNotFound from "./ErrorNotFound";
 import AuthHolder from "./AuthHolder";
 import { Helmet } from "react-helmet";
 
@@ -68,7 +69,7 @@ const Routes = ({ handleUser, user }) => (
       />
       <Route
         path="/listing/:id"
-        render={() => (
+        render={({ match }) => (
           <Fragment>
             <Helmet>
               <title>Adopt a Korean Pet || View Pet</title>
@@ -78,7 +79,7 @@ const Routes = ({ handleUser, user }) => (
               />
               <meta name="description" content="View one of our Korean pet listings" />
             </Helmet>
-            <ViewListingHolder user={user} />
+            <ViewListingHolder user={user} match={match} />
           </Fragment>
         )}
       />
@@ -138,6 +139,16 @@ const Routes = ({ handleUser, user }) => (
             <CreateListingHolder history={history} user={user} />
           </Fragment>
         )}
+      />
+      <Route
+        path="*"
+        component={ErrorNotFound}
+        render={() => (
+          <Fragment>
+            <ErrorNotFound />
+          </Fragment>
+        )}
+      />
       />
     </Switch>
   </section>

@@ -50,7 +50,13 @@ const ViewListingAction = ({ contactName, contactEmail, adoptionFee }) => (
               />
               <Button.Group>
                 {socialShares.map(social => (
-                  <Button circular {...social} className="socialMediaButton" />
+                  <Button
+                    circular
+                    {...social}
+                    as="a"
+                    target="_newtab"
+                    className="socialMediaButton"
+                  />
                 ))}
               </Button.Group>
             </div>
@@ -61,12 +67,34 @@ const ViewListingAction = ({ contactName, contactEmail, adoptionFee }) => (
   </Grid.Column>
 );
 
+//Need to grab the current page URL here somehow
+const currentUrl = "";
+
 const socialShares = [
-  { icon: "facebook", color: "facebook", key: "facebook" },
-  { icon: "twitter", color: "twitter", key: "twitter" },
-  { icon: "instagram", color: "instagram", key: "instagram" },
-  { icon: "pinterest", color: "red", key: "pinterest" },
-  { icon: "mail", color: "yellow", key: "mail" },
+  {
+    icon: "facebook",
+    color: "facebook",
+    key: "facebook",
+    href: `http://www.facebook.com/sharer.php?u=${currentUrl}`,
+  },
+  {
+    icon: "twitter",
+    color: "twitter",
+    key: "twitter",
+    href: `https://twitter.com/intent/tweet?&url=${currentUrl}`,
+  },
+  {
+    icon: "pinterest",
+    color: "red",
+    key: "pinterest",
+    href: `https://www.pinterest.com/login/?next=/pin/create/button/%3Furl%3D${currentUrl}`,
+  },
+  {
+    icon: "mail",
+    color: "yellow",
+    key: "mail",
+    href: `mailto:?Subject=Adopt a pet today`,
+  },
 ];
 
 export default ViewListingAction;
