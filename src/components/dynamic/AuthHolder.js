@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import { Divider, Button } from "semantic-ui-react";
-import StyledContainer from "./StyledContainer";
+import StyledContainer from "../reusable/StyledContainer";
 import LogInForm from "./LogInForm";
 import SignUpForm from "./SignUpForm";
 import "./AuthHolder.css";

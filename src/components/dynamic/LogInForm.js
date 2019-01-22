@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form } from "semantic-ui-react";
-import { fetcher } from "./helpers";
-import FormMessages from "./FormMessages";
+import { fetcher } from "../../helpers";
+import FormMessages from "../reusable/FormMessages";
 
 const initialState = {
   email: "",

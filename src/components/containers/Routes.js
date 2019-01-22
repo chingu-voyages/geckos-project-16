@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
-import FeaturedPosts from "./FeaturedPosts";
-import ViewListingHolder from "./ViewListingHolder";
-import ListingPolicy from "./ListingPolicy";
-import LatestListings from "./LatestListings";
-import CreateListingHolder from "./CreateListingHolder";
-import ErrorNotFound from "./ErrorNotFound";
-import AuthHolder from "./AuthHolder";
 import { Helmet } from "react-helmet";
+import ListingPolicy from "../static/ListingPolicy";
+import ErrorNotFound from "../static/ErrorNotFound";
+import AuthHolder from "../dynamic/AuthHolder";
+import FeaturedPosts from "../dynamic/FeaturedPosts";
+import LatestListings from "../dynamic/LatestListings";
+import ViewListingHolder from "../dynamic/ViewListingHolder";
+import CreateListingHolder from "../dynamic/CreateListingHolder";
 
 const Routes = ({ handleUser, user }) => (
   <section>

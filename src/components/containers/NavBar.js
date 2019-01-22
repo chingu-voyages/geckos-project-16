@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { Menu, Sidebar, Responsive } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import BlurredLoader from "./BlurredLoader";
+import BlurredLoader from "../reusable/BlurredLoader";
 import SiteContent from "./SiteContent";
 import ScrollToTop from "./ScrollToTop";
-import { verifyUser } from "./helpers/auth";
+import { verifyUser } from "../../helpers/auth";
 import "./NavBar.css";
 
 export default class NavBar extends Component {

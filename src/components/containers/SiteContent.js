@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Routes from "./Routes";
-import Disclaimer from "./Disclaimer";
-import Footer from "./Footer";
+import Disclaimer from "../static/Disclaimer";
+import Footer from "../static/Footer";
 
 const SiteContent = ({ handleUser, user }) => (
   <Fragment>

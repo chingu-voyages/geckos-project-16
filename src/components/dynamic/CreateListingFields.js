@@ -6,7 +6,7 @@ import {
   sizeOpts,
   goodWithOpts,
   trainedOpts,
-} from "./helpers/dropOpts";
+} from "../../helpers/dropOpts";
 import {
   Form,
   Dropdown,

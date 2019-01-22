@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import CardList from "./CardList";
+import CardList from "../reusable/CardList";
 import "./FeaturedPosts.css";
 
 class FeaturedPosts extends Component {

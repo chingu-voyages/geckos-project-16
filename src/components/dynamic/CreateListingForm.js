@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Form } from "semantic-ui-react";
 import CreateListingFields from "./CreateListingFields";
-import FormMessages from "./FormMessages";
-import { fetcher } from "./helpers";
-import { cloudinaryOptions, checkRequiredFields } from "./helpers";
+import FormMessages from "../reusable/FormMessages";
+import { cloudinaryOptions, checkRequiredFields, fetcher } from "../../helpers";
 
 class CreateListingForm extends Component {
   state = { ...this.props.initialState };

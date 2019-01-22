@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Form, Input, Message, Checkbox } from "semantic-ui-react";
-import { validateEmail } from "./helpers";
-import { fetcher } from "./helpers";
-import FormMessages from "./FormMessages";
+import { validateEmail } from "../../helpers";
+import { fetcher } from "../../helpers";
+import FormMessages from "../reusable/FormMessages";
 
 const initialState = {
   email: "",

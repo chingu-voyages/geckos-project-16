@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import NavBar from "./NavBar";
+import NavBar from "./components/containers/NavBar";
 import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import "./semantic/dist/semantic.min.css";

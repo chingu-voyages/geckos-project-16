@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import BlurredLoader from "./BlurredLoader";
-import ImageShowCase from "./ImageShowCase";
-import ViewListingPage from "./ViewListingPage";
-import { fetcher } from "./helpers";
+import BlurredLoader from "../reusable/BlurredLoader";
+import ImageShowCase from "../reusable/ImageShowCase";
+import ViewListingPage from "../dynamic/ViewListingPage";
+import { fetcher } from "../../helpers";
 
 class ViewListingHolder extends Component {
   state = {

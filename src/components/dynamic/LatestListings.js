@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import CardList from "./CardList";
-import SearchBox from "./SearchBox";
+import CardList from "../reusable/CardList";
+import SearchBox from "../dynamic/SearchBox";
 import { Grid, Container, Pagination, Segment } from "semantic-ui-react";
 import "./LatestListings.css";
 

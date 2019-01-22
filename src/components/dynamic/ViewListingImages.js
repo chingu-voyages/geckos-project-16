@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Segment, Image } from "semantic-ui-react";
-import ImgWithPlaceholder from "./ImgWithPlaceholder";
+import ImgWithPlaceholder from "../reusable/ImgWithPlaceholder";
 
 const ViewListingImages = ({ images, openImageShowCase }) => {
   const primaryImgUrl = images[0];
