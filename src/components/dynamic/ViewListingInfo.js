@@ -41,28 +41,28 @@ export default props => (
 const ProfileHolder = props => (
   <div className="extra-details">
     <Header as="h3" color="violet" textAlign="center" content="My Interaction Profile" />
-    <Profile details={goodWithDetails} {...props} isTrained={false} />
+    <Profile details={goodWithDetails} checkedVals={props.goodWith} isTrained={false} />
     <Divider />
     <Header as="h3" color="violet" textAlign="center" content="My Training Profile" />
-    <Profile details={trainedDetails} {...props} isTrained={true} />
+    <Profile details={trainedDetails} checkedVals={props.trained} isTrained={true} />
   </div>
 );
 
-const Profile = ({ details, isTrained, ...props }) => (
+const Profile = ({ details, isTrained, checkedVals }) => (
   <div className="listing-details">
-    {details.map(info => (
-      <Item
-        key={info.key}
-        className={isTrained ? "extra-details-item trained" : "extra-details-item"}
-        label={info.label}
-        content={
-          <Icon
-            name={props[info.key] ? "check" : "times"}
-            color={props[info.key] ? "green" : "red"}
-          />
-        }
-      />
-    ))}
+    {details.map(info => {
+      const [name, color] = checkedVals.includes(info.label)
+        ? ["check", "green"]
+        : ["times", "red"];
+      return (
+        <Item
+          key={info.key}
+          className={isTrained ? "extra-details-item trained" : "extra-details-item"}
+          label={info.label}
+          content={<Icon name={name} color={color} />}
+        />
+      );
+    })}
   </div>
 );
 

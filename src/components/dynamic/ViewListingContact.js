@@ -27,11 +27,7 @@ const ViewListingAction = ({ contactName, contactEmail, adoptionFee }) => (
               <Header.Content>
                 Adoption Fee:
                 <Header.Subheader
-                  content={
-                    adoptionFee
-                      ? `₩${Number(adoptionFee.slice(1)).toLocaleString()}`
-                      : adoptionFee
-                  }
+                  content={adoptionFee ? `${adoptionFee.toLocaleString()}` : "No Charge!"}
                 />
               </Header.Content>
             </Header>

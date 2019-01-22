@@ -5,23 +5,45 @@ import ImageShowCase from "../reusable/ImageShowCase";
 import ViewListingPage from "../dynamic/ViewListingPage";
 import { fetcher } from "../../helpers";
 
+const emptyPetInfo = {
+  owner: {
+    id: "",
+    name: "",
+    email: "",
+  },
+  goodWith: [],
+  trained: [],
+  images: [],
+  _id: "",
+  petName: "",
+  type: "",
+  breed: "",
+  gender: "",
+  size: "",
+  color: "",
+  description: "",
+  location: "",
+  adoptionFee: 0,
+  spayed: false,
+  vaccinated: true,
+  age: "",
+  createdAt: "",
+};
+
 class ViewListingHolder extends Component {
   state = {
     isLoading: true,
-    petInfo: {},
+    petInfo: emptyPetInfo,
     showImageShowCase: false,
     imgID: null,
   };
 
   // Fetch data for individual pet
   async componentDidMount() {
-    console.log(this.props);
     try {
       const id = this.props.match.params.id;
       const response = await fetcher(`/posts/${id}`, {});
-      console.log(response);
       const petInfo = await response.json();
-      console.log(petInfo);
       this.setState({ petInfo, isLoading: false });
     } catch (err) {
       console.log(err);
@@ -38,8 +60,6 @@ class ViewListingHolder extends Component {
 
   render() {
     const { petInfo, isLoading, showImageShowCase, imgID } = this.state;
-    console.log(Object.keys(petInfo).length && petInfo.owner.id);
-    console.log(this.props.user && this.props.user.userId);
     return (
       <div className="listing-container">
         <BlurredLoader isLoading={isLoading}>

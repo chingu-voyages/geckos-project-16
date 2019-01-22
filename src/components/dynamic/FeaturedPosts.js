@@ -3,6 +3,7 @@ import { Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import CardList from "../reusable/CardList";
 import "./FeaturedPosts.css";
+import { fetcher } from "../../helpers";
 
 class FeaturedPosts extends Component {
   state = {
@@ -13,7 +14,7 @@ class FeaturedPosts extends Component {
   async componentDidMount() {
     // Temporary code for development purposes. Which pet will be displayed will be more complex in finished product
     try {
-      const response = await fetch("http://localhost:4000/posts");
+      const response = await fetcher("/posts", {});
       const data = await response.json();
       const posts = data.slice(0, 4);
       this.setState({ posts, isLoading: false });

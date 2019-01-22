@@ -8,6 +8,7 @@ import "./ViewListingPage.css";
 
 export default ({ petInfo, openImageShowCase, user }) => {
   console.log(user);
+  console.log(petInfo);
   return (
     <Container>
       <Grid stackable>
@@ -19,8 +20,8 @@ export default ({ petInfo, openImageShowCase, user }) => {
           <ViewListingInfo {...petInfo} />
           <ViewListingStory story={petInfo.description} />
           <ViewListingContact
-            contactName={petInfo.user ? petInfo.user.contactName : null}
-            contactEmail={petInfo.user ? petInfo.user.email : null}
+            contactName={petInfo.owner.name}
+            contactEmail={petInfo.owner.email}
             adoptionFee={petInfo.adoptionFee}
           />
         </Grid.Row>
