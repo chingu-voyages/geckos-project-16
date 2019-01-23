@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import CardList from "../reusable/CardList";
+import EmptyPlaceholder from "../reusable/EmptyPlaceholder";
 import "./FeaturedPosts.css";
-import { fetcher } from "../../helpers";
 
 class FeaturedPosts extends Component {
   state = {
@@ -11,15 +11,17 @@ class FeaturedPosts extends Component {
     isLoading: true,
   };
 
-  async componentDidMount() {
-    // Temporary code for development purposes. Which pet will be displayed will be more complex in finished product
-    try {
-      const response = await fetcher("/posts", {});
-      const data = await response.json();
-      const posts = data.slice(0, 4);
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(prevProps) === JSON.stringify(this.props)) return;
+    this.setState({ posts: this.props.posts, isLoading: false });
+  }
+
+  componentDidMount() {
+    const { posts } = this.props;
+    if (posts.length) {
       this.setState({ posts, isLoading: false });
-    } catch (err) {
-      console.log(err);
+    } else {
+      this.setState({ isLoading: false });
     }
   }
 
@@ -27,14 +29,18 @@ class FeaturedPosts extends Component {
     const { posts, isLoading } = this.state;
     return (
       <div className="featured-container">
-        <CardList
-          pets={posts}
-          isLoading={isLoading}
-          mobile={16}
-          tablet={8}
-          computer={4}
-        />
-        {!isLoading && (
+        {!posts.length ? (
+          <EmptyPlaceholder />
+        ) : (
+          <CardList
+            pets={posts}
+            isLoading={isLoading}
+            mobile={16}
+            tablet={8}
+            computer={4}
+          />
+        )}
+        {posts.length > 4 && (
           <Button
             as={Link}
             to="/listings"
