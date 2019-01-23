@@ -1,11 +1,39 @@
 import React, { Component } from "react";
 import { Form } from "semantic-ui-react";
-import CreateListingFields from "./CreateListingFields";
+import ListingFormFields from "./ListingFormFields";
 import FormMessages from "../reusable/FormMessages";
-import { cloudinaryOptions, checkRequiredFields, fetcher } from "../../helpers";
+import {
+  cloudinaryOptions,
+  checkRequiredFields,
+  fetcher,
+  initialFormState,
+  stringifyBody,
+} from "../../helpers";
+
+const extraState = {
+  formErrors: [],
+  errorMsg: "",
+  errorStatus: null,
+  isProcessing: false,
+};
 
 class CreateListingForm extends Component {
-  state = { ...this.props.initialState };
+  state = { ...initialFormState, ...extraState };
+
+  componentDidMount() {
+    if (!this.props.isEdit) return;
+    this.setState({ ...this.props.post[0] });
+  }
+
+  // needed to go from an edit to create successfully
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(prevProps) === JSON.stringify(this.props)) return;
+    if (this.props.isEdit) {
+      this.setState({ ...this.props.post[0] });
+    } else {
+      this.setState({ ...initialFormState });
+    }
+  }
 
   handleChange = (e, { name, value, checked }) =>
     this.setState({ [name]: checked ? checked : value }, this._checkFieldsAfterUpdating);
@@ -14,47 +42,8 @@ class CreateListingForm extends Component {
     try {
       if (!this.props.user) throw new Error("You must log in first");
       const { userId, fullName, email, token } = this.props.user;
-      const owner = {
-        id: userId,
-        name: fullName,
-        email,
-      };
-      const {
-        petName,
-        type,
-        breed,
-        gender,
-        size,
-        color,
-        description,
-        location,
-        adoptionFee,
-        goodWith,
-        trained,
-        ageNum,
-        agePeriod,
-        spayed,
-        vaccinated,
-        images,
-      } = this.state;
-      const body = JSON.stringify({
-        owner,
-        petName,
-        type,
-        breed,
-        gender,
-        size,
-        color,
-        description,
-        location,
-        adoptionFee,
-        spayed,
-        vaccinated,
-        goodWith,
-        trained,
-        images: images.map(img => img.url),
-        age: `${ageNum} ${agePeriod}`,
-      });
+      const owner = { id: userId, name: fullName, email };
+      const body = stringifyBody(this.state, owner);
       const resp = await fetcher("/posts", {
         method: "POST",
         body,
@@ -62,6 +51,33 @@ class CreateListingForm extends Component {
       });
       const post = await resp.json();
       if (!resp.ok) throw post;
+      this.props.updatePosts();
+      this.props.history.push(`/listing/${post._id}`);
+    } catch (err) {
+      console.log(err);
+      this.setState({
+        isProcessing: false,
+        errorStatus: true,
+        errorMsg: err.message,
+      });
+    }
+  };
+
+  handleUpdate = async () => {
+    try {
+      console.log(this.props.user);
+      if (!this.props.user) throw new Error("You must log in first");
+      const { userId, fullName, email, token } = this.props.user;
+      const owner = { id: userId, name: fullName, email };
+      const body = stringifyBody(this.state, owner);
+      const resp = await fetcher(`/posts/${this.state._id}`, {
+        method: "PUT",
+        body,
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const post = await resp.json();
+      if (!resp.ok) throw post;
+      this.props.updatePosts();
       this.props.history.push(`/listing/${post._id}`);
     } catch (err) {
       console.log(err);
@@ -76,13 +92,18 @@ class CreateListingForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const errorsObj = checkRequiredFields(this.state);
-    this.setState(
-      { ...errorsObj, isProcessing: !errorsObj.errorStatus },
-      () => !errorsObj.errorStatus && this.handleCreate()
-    );
+    this.setState({ ...errorsObj, isProcessing: !errorsObj.errorStatus }, () => {
+      if (!errorsObj.errorStatus) {
+        if (this.props.isEdit) {
+          this.handleUpdate();
+        } else {
+          this.handleCreate();
+        }
+      }
+    });
   };
 
-  handleImgDeletion = async (e, { delete_token, path }) => {
+  deleteNewImages = async (e, { delete_token, path }) => {
     const start = process.env.REACT_APP_IMG_DELETE_URL;
     const end = `?token=${delete_token}`;
     const images = this.state.images.filter(img => img.path !== path);
@@ -92,14 +113,28 @@ class CreateListingForm extends Component {
     });
   };
 
+  deleteOldImages = async (e, { public_id, path }) => {
+    try {
+      const urlAdd = `?public_ids=${public_id}`;
+      const resp = await fetcher(`/images/single${urlAdd}`, { method: "DELETE" });
+      const image = await resp.json();
+      if (!resp.ok) throw image;
+      const images = this.state.images.filter(img => img.path !== path);
+      this.setState({ isLoading: false, images });
+    } catch (err) {
+      console.log(err);
+      this.props.history.push("/error");
+    }
+  };
+
   openImgWidget = () => {
     const { images } = this.state;
     const { formErrors } = checkRequiredFields(this.state);
     // don't open the upload widget if...
     if (
       images.length >= 3 ||
-      !formErrors.length ||
-      !(formErrors.length === 1 && formErrors.includes("images"))
+      formErrors.length > 1 ||
+      (formErrors.length === 1 && !formErrors.includes("images"))
     )
       return;
     window.cloudinary.openUploadWidget(cloudinaryOptions, (err, { event, info }) => {
@@ -109,6 +144,7 @@ class CreateListingForm extends Component {
           images: [
             ...images,
             {
+              public_id: info.public_id,
               path: info.path,
               url: info.secure_url,
               thumb: info.thumbnail_url,
@@ -132,14 +168,17 @@ class CreateListingForm extends Component {
     const { gender, formErrors, errorStatus, errorMsg, isProcessing } = this.state;
     return (
       <Form loading={isProcessing} error={errorStatus}>
-        <CreateListingFields
+        <ListingFormFields
           {...this.state}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
-          handleImgDeletion={this.handleImgDeletion}
+          handleImgDeletion={
+            this.props.isEdit ? this.deleteOldImages : this.deleteNewImages
+          }
           openImgWidget={this.openImgWidget}
           formErrors={formErrors}
           errorStatus={errorStatus}
+          isEdit={this.props.isEdit}
           pronoun={!gender ? "He/She's" : gender === "male" ? "He's" : "She's"}
         />
         <FormMessages errorMsg={errorMsg} errorStatus={errorStatus} />

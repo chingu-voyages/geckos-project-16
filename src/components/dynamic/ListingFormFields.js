@@ -19,7 +19,7 @@ import {
   Button,
 } from "semantic-ui-react";
 
-const CreateListingFields = ({
+const ListingFormFields = ({
   handleChange,
   handleSubmit,
   openImgWidget,
@@ -27,6 +27,7 @@ const CreateListingFields = ({
   pronoun,
   formErrors,
   errorStatus,
+  isEdit,
   ...vals
 }) => (
   <Fragment>
@@ -213,6 +214,7 @@ const CreateListingFields = ({
             content="X"
             attached="top right"
             path={img.path}
+            public_id={img.public_id}
             delete_token={img.token}
             onClick={handleImgDeletion}
           />
@@ -240,11 +242,11 @@ const CreateListingFields = ({
         size="big"
         color="green"
         icon="send"
-        content="Create Listing"
+        content={`${isEdit ? "Edit" : "Create"} Listing`}
         onClick={handleSubmit}
       />
     </Form.Field>
   </Fragment>
 );
 
-export default CreateListingFields;
+export default ListingFormFields;

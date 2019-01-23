@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import BlurredLoader from "../reusable/BlurredLoader";
 import ImageShowCase from "../reusable/ImageShowCase";
 import ViewListingPage from "../dynamic/ViewListingPage";
@@ -38,15 +37,19 @@ class ViewListingHolder extends Component {
     imgID: null,
   };
 
-  // Fetch data for individual pet
-  async componentDidMount() {
-    try {
-      const id = this.props.match.params.id;
-      const response = await fetcher(`/posts/${id}`, {});
-      const petInfo = await response.json();
-      this.setState({ petInfo, isLoading: false });
-    } catch (err) {
-      console.log(err);
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(prevProps) === JSON.stringify(this.props)) return;
+    // if you can't find a post redirect to error page
+    if (this.props.post.length) {
+      this.setState({ petInfo: this.props.post[0], isLoading: false });
+    } else {
+      this.props.history.push("/error");
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.post.length) {
+      this.setState({ petInfo: this.props.post[0], isLoading: false });
     }
   }
 
@@ -58,6 +61,24 @@ class ViewListingHolder extends Component {
       imgID: Number(e.target.id),
     });
 
+  handleDelete = async () => {
+    try {
+      const resp = await fetcher(`/posts/${this.state.petInfo._id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${this.props.user.token}`,
+        },
+      });
+      const post = await resp.json();
+      if (!resp.ok) throw post;
+      this.props.updatePosts();
+      this.props.history.push("/");
+    } catch (err) {
+      console.log(err);
+      this.props.history.push("/error");
+    }
+  };
+
   render() {
     const { petInfo, isLoading, showImageShowCase, imgID } = this.state;
     return (
@@ -67,6 +88,7 @@ class ViewListingHolder extends Component {
             user={this.props.user}
             petInfo={petInfo}
             openImageShowCase={this.openImageShowCase}
+            handleDelete={this.handleDelete}
           />
           {!isLoading && this.state.imgID !== null && (
             <ImageShowCase
@@ -82,4 +104,4 @@ class ViewListingHolder extends Component {
   }
 }
 
-export default withRouter(ViewListingHolder);
+export default ViewListingHolder;

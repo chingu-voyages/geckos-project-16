@@ -3,15 +3,16 @@ import { Grid, Segment, Image } from "semantic-ui-react";
 import ImgWithPlaceholder from "../reusable/ImgWithPlaceholder";
 
 const ViewListingImages = ({ images, openImageShowCase }) => {
-  const primaryImgUrl = images[0];
-  const secondImgUrls = images.slice(1);
+  const isThereImages = !!images.length;
+  const primaryImgUrl = isThereImages ? images[0] : "";
+  const secondImgUrls = isThereImages ? images.slice(1) : [];
   return (
     <Grid.Column width={9}>
       {/* Primary Image */}
       <Segment inverted color="pink">
         <ImgWithPlaceholder
           id="0"
-          src={primaryImgUrl}
+          src={primaryImgUrl.url}
           alt="Korean pet for adoption - main image"
           className="imageMain"
           onClick={openImageShowCase}
@@ -28,7 +29,7 @@ const ViewListingImages = ({ images, openImageShowCase }) => {
           <Segment key={i + 1} color="pink">
             <ImgWithPlaceholder
               id={i + 1}
-              src={url}
+              src={url.url}
               alt={`Korean pet for adoption - image ${i + 1}`}
               className="subImage"
               onClick={openImageShowCase}

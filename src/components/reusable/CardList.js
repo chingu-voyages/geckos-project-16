@@ -6,8 +6,8 @@ import BlurredLoader from "./BlurredLoader";
 const CardList = ({ pets, isLoading, ...sizes }) => (
   <BlurredLoader isLoading={isLoading}>
     <Grid style={{ justifyContent: "center" }}>
-      {pets.map(({ id, images, ...rest }) => (
-        <CardComponent key={id} id={id} image={images[0]} {...rest} {...sizes} />
+      {pets.map(({ _id, images, ...rest }) => (
+        <CardComponent key={_id} id={_id} image={images[0]} {...rest} {...sizes} />
       ))}
     </Grid>
   </BlurredLoader>

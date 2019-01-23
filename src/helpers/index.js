@@ -7,6 +7,27 @@ export function fetcher(url, opts) {
   });
 }
 
+export function stringifyBody(state, owner) {
+  return JSON.stringify({
+    owner,
+    petName: state.petName,
+    type: state.type,
+    breed: state.breed,
+    gender: state.gender,
+    size: state.size,
+    color: state.color,
+    description: state.description,
+    location: state.location,
+    adoptionFee: state.adoptionFee,
+    spayed: state.spayed,
+    vaccinated: state.vaccinated,
+    goodWith: state.goodWith,
+    trained: state.trained,
+    images: state.images,
+    age: `${state.ageNum} ${state.agePeriod}`,
+  });
+}
+
 // returns true for the following format xxx@xx.xx
 export function validateEmail(email) {
   var re = new RegExp(
@@ -32,6 +53,25 @@ export function checkRequiredFields(state) {
       }`;
   return { formErrors, errorStatus, errorMsg };
 }
+
+export const initialFormState = {
+  petName: "",
+  type: "",
+  breed: "",
+  gender: "",
+  size: "",
+  color: "",
+  description: "",
+  location: "",
+  adoptionFee: "",
+  spayed: false,
+  vaccinated: false,
+  trained: [],
+  goodWith: [],
+  images: [],
+  ageNum: "",
+  agePeriod: "month(s)",
+};
 
 // used when creating posts
 const requiredFields = [

@@ -34,14 +34,9 @@ class LatestListings extends Component {
     isLoading: true,
   };
 
-  async componentDidMount() {
-    try {
-      const response = await fetch("http://localhost:4000/posts");
-      const allPets = await response.json();
-      this.setState({ allPets, isLoading: false }, this.handleLogic);
-    } catch (err) {
-      console.log(err);
-    }
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(prevProps.posts) === JSON.stringify(this.props.posts)) return;
+    this.setState({ allPets: this.props.posts, isLoading: false }, this.handleLogic);
   }
 
   handleLogic = (

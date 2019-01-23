@@ -6,26 +6,25 @@ import ViewListingStory from "./ViewListingStory";
 import ViewListingContact from "./ViewListingContact";
 import "./ViewListingPage.css";
 
-export default ({ petInfo, openImageShowCase, user }) => {
-  console.log(user);
-  console.log(petInfo);
-  return (
-    <Container>
-      <Grid stackable>
-        <Grid.Row columns={16}>
-          <ViewListingImages
-            images={petInfo.images || []}
-            openImageShowCase={openImageShowCase}
-          />
-          <ViewListingInfo {...petInfo} />
-          <ViewListingStory story={petInfo.description} />
-          <ViewListingContact
-            contactName={petInfo.owner.name}
-            contactEmail={petInfo.owner.email}
-            adoptionFee={petInfo.adoptionFee}
-          />
-        </Grid.Row>
-      </Grid>
-    </Container>
-  );
-};
+export default ({ petInfo, openImageShowCase, user, handleDelete }) => (
+  <Container>
+    <Grid stackable>
+      <Grid.Row columns={16}>
+        <ViewListingImages
+          images={petInfo.images || []}
+          openImageShowCase={openImageShowCase}
+        />
+        <ViewListingInfo {...petInfo} />
+        <ViewListingStory story={petInfo.description} />
+        <ViewListingContact
+          isOwner={user && user.userId === petInfo.owner.id}
+          postId={petInfo._id}
+          contactName={petInfo.owner.name}
+          contactEmail={petInfo.owner.email}
+          adoptionFee={petInfo.adoptionFee}
+          handleDelete={handleDelete}
+        />
+      </Grid.Row>
+    </Grid>
+  </Container>
+);

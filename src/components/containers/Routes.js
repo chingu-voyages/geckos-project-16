@@ -7,9 +7,9 @@ import AuthHolder from "../dynamic/AuthHolder";
 import FeaturedPosts from "../dynamic/FeaturedPosts";
 import LatestListings from "../dynamic/LatestListings";
 import ViewListingHolder from "../dynamic/ViewListingHolder";
-import CreateListingHolder from "../dynamic/CreateListingHolder";
+import ListingFormHolder from "../dynamic/ListingFormHolder";
 
-const Routes = ({ handleUser, user }) => (
+const Routes = ({ handleUser, updatePosts, user, posts, isLoading }) => (
   <section>
     <Switch>
       <Route
@@ -25,7 +25,10 @@ const Routes = ({ handleUser, user }) => (
               />
               <meta name="description" content="Adopt a Korean pet today" />
             </Helmet>
-            <FeaturedPosts />
+            <FeaturedPosts
+              // pass the last 4 posts down
+              posts={posts.slice(posts.length <= 4 ? 0 : posts.length - 4)}
+            />
           </Fragment>
         )}
       />
@@ -68,20 +71,64 @@ const Routes = ({ handleUser, user }) => (
         )}
       />
       <Route
+        exact
         path="/listing/:id"
-        render={({ match }) => (
-          <Fragment>
-            <Helmet>
-              <title>Adopt a Korean Pet || View Pet</title>
-              <meta
-                name="keywords"
-                content="Adopt,Pet,Korean animals,Adopt a Korean Pet"
+        render={({ match, history }) => {
+          const post = posts.filter(post => post._id === match.params.id);
+          return (
+            <Fragment>
+              <Helmet>
+                <title>Adopt a Korean Pet || View Pet</title>
+                <meta
+                  name="keywords"
+                  content="Adopt,Pet,Korean animals,Adopt a Korean Pet"
+                />
+                <meta name="description" content="View one of our Korean pet listings" />
+              </Helmet>
+              <ViewListingHolder
+                user={user}
+                isLoading={isLoading}
+                post={post}
+                match={match}
+                history={history}
+                updatePosts={updatePosts}
               />
-              <meta name="description" content="View one of our Korean pet listings" />
-            </Helmet>
-            <ViewListingHolder user={user} match={match} />
-          </Fragment>
-        )}
+            </Fragment>
+          );
+        }}
+      />
+      <Route
+        exact
+        path="/listing/:id/edit"
+        render={({ match, history }) => {
+          let post = posts.filter(post => post._id === match.params.id);
+          let ageNum, agePeriod;
+          if (post.length) {
+            [ageNum, agePeriod] = post[0].age.split(" ");
+            post[0].ageNum = ageNum;
+            post[0].agePeriod = agePeriod;
+            post[0].adoptionFee = String(post[0].adoptionFee);
+          }
+          return (
+            <Fragment>
+              <Helmet>
+                <title>Adopt a Korean Pet || Edit Pet</title>
+                <meta
+                  name="keywords"
+                  content="Adopt,Pet,Korean animals,Adopt a Korean Pet"
+                />
+                <meta name="description" content="Edit your Korean pet listings" />
+              </Helmet>
+              <ListingFormHolder
+                history={history}
+                user={user}
+                post={post}
+                isEdit={true}
+                updatePosts={updatePosts}
+              />
+            </Fragment>
+          );
+        }}
       />
       <Route
         path="/listingpolicy"
@@ -117,7 +164,7 @@ const Routes = ({ handleUser, user }) => (
                 content="View, search and filter all of our Korean pet listings"
               />
             </Helmet>
-            <LatestListings />
+            <LatestListings posts={posts} />
           </Fragment>
         )}
       />
@@ -136,20 +183,16 @@ const Routes = ({ handleUser, user }) => (
                 content="View, search and filter all of our Korean pet listings"
               />
             </Helmet>
-            <CreateListingHolder history={history} user={user} />
+            <ListingFormHolder
+              history={history}
+              user={user}
+              isEdit={false}
+              updatePosts={updatePosts}
+            />
           </Fragment>
         )}
       />
-      <Route
-        path="*"
-        component={ErrorNotFound}
-        render={() => (
-          <Fragment>
-            <ErrorNotFound />
-          </Fragment>
-        )}
-      />
-      />
+      <Route component={ErrorNotFound} />
     </Switch>
   </section>
 );

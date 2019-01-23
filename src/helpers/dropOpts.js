@@ -10,8 +10,8 @@ export const typeOpts = [
 ];
 
 export const ageOpts = [
-  { key: "months", text: "months", value: "month(s)" },
-  { key: "years", text: "years", value: "year(s)" },
+  { key: "months", text: "month(s)", value: "month(s)" },
+  { key: "years", text: "year(s)", value: "year(s)" },
 ];
 
 export const sizeOpts = [

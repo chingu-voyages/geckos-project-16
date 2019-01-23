@@ -1,62 +1,92 @@
 import React, { Component, Fragment } from "react";
 import { Menu, Sidebar, Responsive } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import BlurredLoader from "../reusable/BlurredLoader";
 import SiteContent from "./SiteContent";
 import ScrollToTop from "./ScrollToTop";
 import { verifyUser } from "../../helpers/auth";
+import { fetcher } from "../../helpers";
 import "./NavBar.css";
 
-export default class NavBar extends Component {
-  state = { user: null, isLoading: true };
+export default withRouter(
+  class NavBar extends Component {
+    state = { user: null, posts: [], isLoading: true };
 
-  async componentDidMount() {
-    // checks if user is in localStorage
-    const user = await verifyUser();
-    this.setState({ user, isLoading: false });
+    // check if there's a user and get all posts on loading
+    // instead of repeated calls to our API, which is on a free tier
+    // we'll make one fetch here and then pass down through props
+    async componentDidMount() {
+      try {
+        // checks if user is in localStorage
+        const user = await verifyUser();
+        const resp = await fetcher("/posts", {});
+        const posts = await resp.json();
+        if (!resp.ok) throw posts;
+        this.setState({ user, posts, isLoading: false });
+      } catch (err) {
+        console.log(err);
+        this.setState({ isLoading: false }, () => this.props.history.push("/error"));
+      }
+    }
+
+    updatePosts = () => {
+      this.setState({ isLoading: true }, async () => {
+        try {
+          const resp = await fetcher("/posts", {});
+          const posts = await resp.json();
+          if (!resp.ok) throw posts;
+          this.setState({ posts, isLoading: false });
+        } catch (err) {
+          console.log(err);
+          this.setState({ isLoading: false }, () => this.props.history.push("/error"));
+        }
+      });
+    };
+
+    handleLogout = () => this.setState({ user: null }, localStorage.clear());
+
+    handleUser = user => this.setState({ user });
+
+    render() {
+      const { isLoading } = this.state;
+      return (
+        <BlurredLoader isLoading={isLoading}>
+          <ScrollToTop />
+          <Responsive {...Responsive.onlyMobile}>
+            <NavBarMobile
+              {...this.state}
+              handleUser={this.handleUser}
+              handleLogout={this.handleLogout}
+              updatePosts={this.updatePosts}
+            />
+          </Responsive>
+          <Responsive minWidth={Responsive.onlyTablet.minWidth}>
+            <NavBarDesktop
+              {...this.state}
+              handleUser={this.handleUser}
+              handleLogout={this.handleLogout}
+              updatePosts={this.updatePosts}
+            />
+          </Responsive>
+        </BlurredLoader>
+      );
+    }
   }
-
-  handleLogout = () => this.setState({ user: null }, localStorage.clear());
-
-  handleUser = user => this.setState({ user });
-
-  render() {
-    const { isLoading, user } = this.state;
-    return (
-      <BlurredLoader isLoading={isLoading}>
-        <ScrollToTop />
-        <Responsive {...Responsive.onlyMobile}>
-          <NavBarMobile
-            user={user}
-            handleUser={this.handleUser}
-            handleLogout={this.handleLogout}
-          />
-        </Responsive>
-        <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-          <NavBarDesktop
-            user={user}
-            handleUser={this.handleUser}
-            handleLogout={this.handleLogout}
-          />
-        </Responsive>
-      </BlurredLoader>
-    );
-  }
-}
+);
 
 // used for desktop screens
-const NavBarDesktop = ({ user, handleUser, handleLogout }) => (
+const NavBarDesktop = ({ handleUser, handleLogout, updatePosts, ...state }) => (
   <Fragment>
     <Menu fixed="top">
       <MenuItems items={leftItems} />
       <MenuItems
         items={rightItems}
-        user={user}
+        user={state.user}
         handleLogout={handleLogout}
         position="right"
       />
     </Menu>
-    <SiteContent handleUser={handleUser} user={user} />
+    <SiteContent handleUser={handleUser} updatePosts={updatePosts} {...state} />
   </Fragment>
 );
 
@@ -75,7 +105,7 @@ class NavBarMobile extends Component {
 
   render() {
     const { visible } = this.state;
-    const { user, handleUser, handleLogout } = this.props;
+    const { handleUser, handleLogout, updatePosts, ...state } = this.props;
     return (
       <Sidebar.Pushable>
         <Sidebar as={Menu} animation="overlay" icon="labeled" vertical visible={visible}>
@@ -91,12 +121,12 @@ class NavBarMobile extends Component {
             <Menu.Item onClick={this.handleToggle} icon="sidebar" />
             <MenuItems
               items={rightItems}
-              user={user}
+              user={state.user}
               handleLogout={handleLogout}
               position="right"
             />
           </Menu>
-          <SiteContent handleUser={handleUser} user={user} />
+          <SiteContent handleUser={handleUser} updatePosts={updatePosts} {...state} />
         </Sidebar.Pusher>
       </Sidebar.Pushable>
     );
