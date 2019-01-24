@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import ListingPolicy from "../static/ListingPolicy";
 import ErrorNotFound from "../static/ErrorNotFound";
@@ -29,6 +29,7 @@ const Routes = ({ handleUser, updatePosts, user, posts, isLoading }) => (
       )}
     />
     <Route
+      exact
       path="/login"
       render={() => (
         <Fragment>
@@ -45,6 +46,7 @@ const Routes = ({ handleUser, updatePosts, user, posts, isLoading }) => (
       )}
     />
     <Route
+      exact
       path="/signup"
       render={() => (
         <Fragment>
@@ -121,6 +123,7 @@ const Routes = ({ handleUser, updatePosts, user, posts, isLoading }) => (
       }}
     />
     <Route
+      exact
       path="/listingpolicy"
       render={() => (
         <Fragment>
@@ -137,6 +140,7 @@ const Routes = ({ handleUser, updatePosts, user, posts, isLoading }) => (
       )}
     />
     <Route
+      exact
       path="/listings"
       render={() => (
         <Fragment>
@@ -153,25 +157,33 @@ const Routes = ({ handleUser, updatePosts, user, posts, isLoading }) => (
       )}
     />
     <Route
+      exact
       path="/create"
-      render={({ history }) => (
-        <Fragment>
-          <Helmet>
-            <title>Adopt a Korean Pet || View Listings</title>
-            <meta name="keywords" content="Adopt,Pet,Korean animals,Adopt a Korean Pet" />
-            <meta
-              name="description"
-              content="View, search and filter all of our Korean pet listings"
+      render={({ history }) =>
+        !user ? (
+          <Redirect to="/login" />
+        ) : (
+          <Fragment>
+            <Helmet>
+              <title>Adopt a Korean Pet || View Listings</title>
+              <meta
+                name="keywords"
+                content="Adopt,Pet,Korean animals,Adopt a Korean Pet"
+              />
+              <meta
+                name="description"
+                content="View, search and filter all of our Korean pet listings"
+              />
+            </Helmet>
+            <ListingFormHolder
+              history={history}
+              user={user}
+              isEdit={false}
+              updatePosts={updatePosts}
             />
-          </Helmet>
-          <ListingFormHolder
-            history={history}
-            user={user}
-            isEdit={false}
-            updatePosts={updatePosts}
-          />
-        </Fragment>
-      )}
+          </Fragment>
+        )
+      }
     />
     <Route component={ErrorNotFound} />
   </Switch>
