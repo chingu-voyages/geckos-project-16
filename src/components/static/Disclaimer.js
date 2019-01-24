@@ -12,12 +12,11 @@ const Disclaimer = () => (
     />
     <Container color="violet">
       <p style={{ color: "#3d0043" }}>
-        Chingu Dogs is a free service to list pets for adoption in South Korea. Chingu
-        Dogs takes no responsibility for any content as all listed pets are
-        user-generated, and Chingu Dogs has not verified any information regarding health,
-        condition, or any other matter. Chingu Dogs is not a shelter, and unfortunately
-        does not have a way to accept unwanted pets. All content uploaded is the property
-        of the submitter.
+        This is a free service for listing your pets for adoption in South Korea. We take
+        no responsibility for any listings as all listed pets are user-generated, and we
+        cannot verify any information regarding health, condition, or any other matter. We
+        are not a shelter, and unfortunately do not have a way to accept unwanted pets.
+        All content uploaded is the property of the submitter.
       </p>
     </Container>
   </Segment>
