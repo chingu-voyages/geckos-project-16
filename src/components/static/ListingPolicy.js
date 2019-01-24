@@ -30,28 +30,24 @@ export default class AccordionExampleStyled extends Component {
             <Accordion.Content active={activeIndex === 0}>
               <List as="ul" className="listing-policy-items">
                 <List.Item as="li" className="listing-policy-item">
-                  <span className="policy-heading">ONE animal per listing.</span> Please
-                  only list one animal in your listing. If the animal is in a bonded pair,
-                  you can select “bonded pair” in the list of description options
-                  provided. In the written description box, please include a link to the
-                  other animal’s listing or just their name.
+                  <span className="policy-heading">ONE animal per listing.</span> If you
+                  have multiple animals make separate listings and add a link to your
+                  other listing in the description.
                 </List.Item>
                 <List.Item as="li" className="listing-policy-item">
                   <span className="policy-heading">
-                    Only type the NAME of the animal in the name field.
+                    Only type the name in the name field.
                   </span>{" "}
-                  Please don't add things like "urgent" or any additional information.
-                  Please use a name and not a description like "Baby" "Kitten" "Puppy"
-                  etc. You can include this in the description field. Please use only
-                  English characters. Do not post the animal’s name in Hangeul. Also, to
-                  avoid errors in your upload, please keep the name short (example:
-                  "David", not "David formerly Socks").
+                  Please don't add things like "Urgent", "Baby", "Kitten", "Puppy" or any
+                  additional information in the name field. You can include these in the
+                  description field. Please use only English characters; do not post the
+                  animal’s name in Hangeul. Also, to avoid errors in your upload, please
+                  keep the name short (example: "David", not "David formerly Socks").
                 </List.Item>
                 <List.Item as="li" className="listing-policy-item">
-                  <span className="policy-heading">Only post LANDSCAPE photos.</span>{" "}
-                  Please post photos taken in landscape view (“long” ways). Photos in
-                  vertical view (“tall” ways) will be cut off and site viewers will not
-                  see the full image of the cutie you’ve listed.
+                  <span className="policy-heading">Min 1 photo; Max 3 photos.</span>{" "}
+                  Please try to crop your photos into a sqaure or landscape view (long)
+                  for the best possible experience.
                 </List.Item>
                 <List.Item as="li" className="listing-policy-item">
                   <span className="policy-heading">
@@ -85,12 +81,12 @@ export default class AccordionExampleStyled extends Component {
                   <span className="policy-heading">
                     DELETE your listing after adoption.
                   </span>{" "}
-                  Please delete the listing for the animal when adoption is no longer
-                  needed. Rescue Korea has received several complaints from would-be
-                  adopters regarding abandoned listings and unresponsive listers. Keep in
-                  mind that unhappy adopters will lead to less visits and recommendations
-                  to use our site. To make sure our furry friends here have the highest
-                  chances of find loving homes, please use the site responsibly.
+                  After 60 days, a listing and it's photos will automatically be deleted.
+                  If adoption is no longer needed, please delete the listing yourself.
+                  Keep in mind that unhappy adopters will lead to less visits and
+                  recommendations to use our site. To make sure our furry friends here
+                  have the highest chances of find loving homes, please use the site
+                  responsibly.
                 </List.Item>
               </List>
             </Accordion.Content>
@@ -106,23 +102,20 @@ export default class AccordionExampleStyled extends Component {
             <Accordion.Content active={activeIndex === 1}>
               <List as="ol" className="listing-policy-items">
                 <List.Item as="li" className="listing-policy-item">
-                  Make an Account. After reading through the listing guidelines, you’re
-                  ready to post your listing! Click “Login” in the upper right-hand corner
-                  of the page. Then, select “Create new account” and fill in the required
-                  fields. When you are finished, hit the “Create New Account” button. You
-                  will be sent an email with your initial login information and prompted
-                  to change your password and user information.
+                  Read our listing policy.
                 </List.Item>
                 <List.Item as="li" className="listing-policy-item">
-                  Add a new listing. Now that you are a member, you will see new options
-                  in the drop down menu for “Pet Adoption”. Please select “Add a New
-                  Listing” followed by the type of animal.
+                  Create an account or log into your account.
                 </List.Item>
                 <List.Item as="li" className="listing-policy-item">
-                  Create your listing. You will be taken to a listing form. Simply fill in
-                  all relevant information and upload a photo/photos in accordance with
-                  the listing guidelines. When you have finished, check that everything is
-                  in order by clicking “Preview” and finally “Save”.
+                  Head to create a listing.
+                </List.Item>
+                <List.Item as="li" className="listing-policy-item">
+                  Fill in all required information, including at least one photo. Remember
+                  to follow the posting guidelines above.
+                </List.Item>
+                <List.Item as="li" className="listing-policy-item">
+                  Click 'Create a Listing'.
                 </List.Item>
               </List>
             </Accordion.Content>
@@ -138,10 +131,9 @@ export default class AccordionExampleStyled extends Component {
             <Accordion.Content active={activeIndex === 2}>
               <List>
                 <List.Item className="listing-policy-item">
-                  Login to your account and open the listing for the animal. You will see
-                  two options on your listing, “View” and “Edit”. Click “Edit”. You will
-                  then have the freedom to update any of the information regarding the
-                  animal OR to delete the listing.
+                  Log into your account and go to your listing. Scroll to the bottom and
+                  click the edit or delete button. *Listings are automatically deleted
+                  after 60 days of creation*
                 </List.Item>
               </List>
             </Accordion.Content>
