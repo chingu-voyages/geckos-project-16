@@ -50,25 +50,12 @@ class ImageShowCase extends Component {
 
   render() {
     const { imgID } = this.state;
-    // uncomment to use images from props
-    // const { isOpen, closeImageShowCase, images } = this.props;
-
-    // used for testing purposes
-    // delete in production
-    const { isOpen, closeImageShowCase } = this.props;
-    const images = [
-      "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?cs=srgb&dl=animals-cats-cute-45170.jpg&fm=jpg",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1YdhNIlN5PqquJhiInSCGiEhqw0rbBwAAQ6stCTgrpC_ZzTS4",
-      "https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-      "http://r.ddmcdn.com/w_830/s_f/o_1/cx_98/cy_0/cw_640/ch_360/APL/uploads/2015/07/cecil-AP463227356214-1000x400.jpg",
-      "https://animals.sandiegozoo.org/sites/default/files/2016-08/category-thumbnail-mammals_0.jpg",
-    ];
-    // ============
+    const { isOpen, closeImageShowCase, images } = this.props;
     return (
       <Modal basic open={isOpen} className="img-showcase">
         <Modal.Content image>
           <Segment inverted color="olive">
-            <ImgWithPlaceholder src={images[imgID]} alt={"pet-" + imgID} />
+            <ImgWithPlaceholder src={images[imgID].url} alt={"pet-" + imgID} />
             <Rail
               as={Icon}
               onClick={this.handlePrev}
