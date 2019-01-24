@@ -65,11 +65,9 @@ class CreateListingForm extends Component {
 
   handleUpdate = async () => {
     try {
-      console.log(this.props.user);
       if (!this.props.user) throw new Error("You must log in first");
-      const { userId, fullName, email, token } = this.props.user;
-      const owner = { id: userId, name: fullName, email };
-      const body = stringifyBody(this.state, owner);
+      const { token } = this.props.user;
+      const body = stringifyBody(this.state, null);
       const resp = await fetcher(`/posts/${this.state._id}`, {
         method: "PUT",
         body,

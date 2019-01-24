@@ -8,8 +8,7 @@ export function fetcher(url, opts) {
 }
 
 export function stringifyBody(state, owner) {
-  return JSON.stringify({
-    owner,
+  const obj = {
     petName: state.petName,
     type: state.type,
     breed: state.breed,
@@ -25,7 +24,13 @@ export function stringifyBody(state, owner) {
     trained: state.trained,
     images: state.images,
     age: `${state.ageNum} ${state.agePeriod}`,
-  });
+  };
+  return owner
+    ? JSON.stringify({
+        owner,
+        ...obj,
+      })
+    : JSON.stringify(obj);
 }
 
 // returns true for the following format xxx@xx.xx

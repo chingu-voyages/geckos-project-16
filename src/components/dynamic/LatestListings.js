@@ -39,6 +39,15 @@ class LatestListings extends Component {
     this.setState({ allPets: this.props.posts, isLoading: false }, this.handleLogic);
   }
 
+  componentDidMount() {
+    const { posts } = this.props;
+    if (posts.length) {
+      this.setState({ allPets: this.props.posts, isLoading: false }, this.handleLogic);
+    } else {
+      this.setState({ isLoading: false });
+    }
+  }
+
   handleLogic = (
     filteredPets = this.state.allPets,
     checkedObj = this.state.checkedObj

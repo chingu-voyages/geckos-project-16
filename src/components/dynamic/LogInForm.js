@@ -26,7 +26,6 @@ class LogInForm extends Component {
         body: JSON.stringify({ email, password }),
       });
       const user = await resp.json();
-      console.log(resp);
       if (!resp.ok) {
         throw user;
       }
