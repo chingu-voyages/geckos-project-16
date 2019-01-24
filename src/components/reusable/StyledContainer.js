@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Segment, Header } from "semantic-ui-react";
-// import "./AuthHolder.css";
 import "./StyledContainer.css";
 
 const StyledContainer = ({ children, topHeader, btmHeader }) => (

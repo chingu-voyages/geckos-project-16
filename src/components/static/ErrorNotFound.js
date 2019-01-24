@@ -1,19 +1,14 @@
 import React from "react";
-import { Container, Segment, Image, Header } from "semantic-ui-react";
-import "./ErrorNotFound.css";
+import { Image } from "semantic-ui-react";
+import StyledContainer from "../reusable/StyledContainer";
+
 const ErrorNotFound = () => (
-  <Container className="er-container">
-    <Segment inverted color="pink" className="er-segment">
-      <Segment>
-        <Header
-          className="er-heading"
-          as="h3"
-          color="purple"
-          content="Sorry, we couldn't find what you're looking for."
-        />
-        <Image src="/error.svg" fluid />
-      </Segment>
-    </Segment>
-  </Container>
+  <StyledContainer
+    topHeader="We're Sorry!"
+    btmHeader="Something went wrong or we couldn't find what you're looking for"
+  >
+    <Image src="/error.svg" fluid />
+  </StyledContainer>
 );
+
 export default ErrorNotFound;
