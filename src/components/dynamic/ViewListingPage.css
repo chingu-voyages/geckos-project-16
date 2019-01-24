@@ -48,7 +48,7 @@
 .listing-details-item {
   color: #fff;
   padding: 10px 5px;
-  flex: 1 1 33%;
+  flex: 1 1 30%;
 }
 
 .listing-details-item strong,
@@ -65,14 +65,10 @@
 }
 
 .extra-details-item {
-  flex: 1 1 33%;
+  flex: 1 1 auto;
   margin: 0;
   padding: 5px;
   line-height: 20px;
-}
-
-.extra-details-item.trained {
-  flex: 1 1 24%;
 }
 
 .extra-details-item > .icon {

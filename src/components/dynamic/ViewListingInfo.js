@@ -41,14 +41,14 @@ export default props => (
 const ProfileHolder = props => (
   <div className="extra-details">
     <Header as="h3" color="violet" textAlign="center" content="My Interaction Profile" />
-    <Profile details={goodWithDetails} checkedVals={props.goodWith} isTrained={false} />
+    <Profile details={goodWithDetails} checkedVals={props.goodWith} />
     <Divider />
     <Header as="h3" color="violet" textAlign="center" content="My Training Profile" />
-    <Profile details={trainedDetails} checkedVals={props.trained} isTrained={true} />
+    <Profile details={trainedDetails} checkedVals={props.trained} />
   </div>
 );
 
-const Profile = ({ details, isTrained, checkedVals }) => (
+const Profile = ({ details, checkedVals }) => (
   <div className="listing-details">
     {details.map(info => {
       const [name, color] = checkedVals.includes(info.label)
@@ -57,7 +57,7 @@ const Profile = ({ details, isTrained, checkedVals }) => (
       return (
         <Item
           key={info.key}
-          className={isTrained ? "extra-details-item trained" : "extra-details-item"}
+          className="extra-details-item"
           label={info.label}
           content={<Icon name={name} color={color} />}
         />
