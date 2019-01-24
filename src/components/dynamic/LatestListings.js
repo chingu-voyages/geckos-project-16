@@ -3,6 +3,7 @@ import CardList from "../reusable/CardList";
 import SearchBox from "../dynamic/SearchBox";
 import { Grid, Container, Pagination, Segment } from "semantic-ui-react";
 import "./LatestListings.css";
+import EmptyPlaceholder from "../reusable/EmptyPlaceholder";
 
 // used to map through object
 const labels = ["location", "gender", "breed", "color"];
@@ -130,13 +131,17 @@ class LatestListings extends Component {
             />
           </Grid.Column>
           <Grid.Column width={12}>
-            <CardList
-              pets={results}
-              isLoading={isLoading}
-              mobile={16}
-              tablet={8}
-              computer={5}
-            />
+            {!results.length ? (
+              <EmptyPlaceholder />
+            ) : (
+              <CardList
+                pets={results}
+                isLoading={isLoading}
+                mobile={16}
+                tablet={8}
+                computer={5}
+              />
+            )}
             {activePage && (
               <Segment inverted color="pink" className="pagination-holder">
                 <Pagination

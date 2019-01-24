@@ -34,6 +34,7 @@
 @media screen and (min-width: 768px) {
   .styled-container.ui.container {
     max-width: 725px !important;
+    width: 100%;
   }
 }
 

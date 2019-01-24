@@ -40,7 +40,7 @@ class FeaturedPosts extends Component {
             computer={4}
           />
         )}
-        {posts.length > 4 && (
+        {this.props.totalPostsLength > 4 && (
           <Button
             as={Link}
             to="/listings"

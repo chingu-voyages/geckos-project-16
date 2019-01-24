@@ -10,12 +10,12 @@ const Footer = () => (
         <List.Item as={Link} to="/login">
           Login
         </List.Item>
-        <List.Item as={Link} to="/register" className="footer-item">
+        <List.Item as={Link} to="/signup" className="footer-item">
           Register
         </List.Item>
       </List>
       <List horizontal className="top-items">
-        <List.Item as={Link} to="/">
+        <List.Item as={Link} to="/create">
           Create Listing
         </List.Item>
         <List.Item as={Link} to="/listings">
