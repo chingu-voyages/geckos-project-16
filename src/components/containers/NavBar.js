@@ -53,8 +53,8 @@ export default withRouter(
 
     render() {
       const { isLoading } = this.state;
-      console.log(Responsive.onlyMobile.maxWidth);
-      console.log(Responsive.onlyTablet.minWidth);
+      console.log(this.isBrowser());
+      console.log(this.getWidth());
       return (
         <BlurredLoader isLoading={isLoading}>
           <ScrollToTop />
@@ -81,20 +81,23 @@ export default withRouter(
 );
 
 // used for desktop screens
-const NavBarDesktop = ({ handleUser, handleLogout, updatePosts, ...state }) => (
-  <Fragment>
-    <Menu fixed="top">
-      <MenuItems items={leftItems} />
-      <MenuItems
-        items={rightItems}
-        user={state.user}
-        handleLogout={handleLogout}
-        position="right"
-      />
-    </Menu>
-    <SiteContent handleUser={handleUser} updatePosts={updatePosts} {...state} />
-  </Fragment>
-);
+const NavBarDesktop = ({ handleUser, handleLogout, updatePosts, ...state }) => {
+  console.log("isDeskTop");
+  return (
+    <Fragment>
+      <Menu fixed="top">
+        <MenuItems items={leftItems} />
+        <MenuItems
+          items={rightItems}
+          user={state.user}
+          handleLogout={handleLogout}
+          position="right"
+        />
+      </Menu>
+      <SiteContent handleUser={handleUser} updatePosts={updatePosts} {...state} />
+    </Fragment>
+  );
+};
 
 // used for tablet and mobile screens
 class NavBarMobile extends Component {
@@ -110,6 +113,7 @@ class NavBarMobile extends Component {
   handleToggle = () => this.setState({ visible: !this.state.visible });
 
   render() {
+    console.log("isMobile: true");
     const { visible } = this.state;
     const { handleUser, handleLogout, updatePosts, ...state } = this.props;
     return (
