@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from "react";
-import { Menu, Sidebar, Responsive } from "semantic-ui-react";
+import React, { Component } from "react";
+import { Menu, Sidebar } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
 import BlurredLoader from "../reusable/BlurredLoader";
 import SiteContent from "./SiteContent";
@@ -52,49 +52,20 @@ export default withRouter(
       return (
         <BlurredLoader isLoading={isLoading}>
           <ScrollToTop />
-          <Responsive {...Responsive.onlyMobile}>
-            <NavBarMobile
-              {...this.state}
-              handleUser={this.handleUser}
-              handleLogout={this.handleLogout}
-              updatePosts={this.updatePosts}
-            />
-          </Responsive>
-          <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-            <NavBarDesktop
-              {...this.state}
-              handleUser={this.handleUser}
-              handleLogout={this.handleLogout}
-              updatePosts={this.updatePosts}
-            />
-          </Responsive>
+          <NavBarHolder
+            {...this.state}
+            handleUser={this.handleUser}
+            handleLogout={this.handleLogout}
+            updatePosts={this.updatePosts}
+          />
         </BlurredLoader>
       );
     }
   }
 );
 
-// used for desktop screens
-const NavBarDesktop = ({ handleUser, handleLogout, updatePosts, ...state }) => (
-  <Fragment>
-    <Menu fixed="top">
-      <MenuItems items={leftItems} />
-      <MenuItems
-        items={rightItems}
-        user={state.user}
-        handleLogout={handleLogout}
-        position="right"
-      />
-    </Menu>
-    <SiteContent handleUser={handleUser} updatePosts={updatePosts} {...state} />
-  </Fragment>
-);
-
-// used for tablet and mobile screens
-class NavBarMobile extends Component {
-  state = {
-    visible: false,
-  };
+class NavBarHolder extends Component {
+  state = { visible: false };
 
   handlePusher = () => {
     if (!this.state.visible) return;
@@ -150,6 +121,7 @@ const leftItems = [
   { as: Link, to: "/listings", content: "View Listings", key: "listings" },
   { as: Link, to: "/create", content: "Create Listing", key: "createListing" },
   { as: Link, to: "/listingpolicy", content: "Listing Policy", key: "listingPolicy" },
+  { as: Link, to: "/contactus", content: "Contact Us", key: "contactus" },
 ];
 const rightItems = [
   { as: Link, to: "/login", content: "Login", key: "login" },

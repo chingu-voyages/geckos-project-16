@@ -41,6 +41,7 @@
 @media screen and (max-width: 767px) {
   .styled-container.ui.container {
     max-width: 475px !important;
+    width: 100% !important;
   }
   .styled-container .ui.button {
     width: 100%;
