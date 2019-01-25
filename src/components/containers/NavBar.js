@@ -47,12 +47,18 @@ export default withRouter(
 
     handleUser = user => this.setState({ user });
 
+    isBrowser = () => typeof window !== "undefined";
+
+    getWidth = () => (isBrowser() ? window.innerWidth : 0);
+
     render() {
       const { isLoading } = this.state;
+      console.log(Responsive.onlyMobile.maxWidth);
+      console.log(Responsive.onlyTablet.minWidth);
       return (
         <BlurredLoader isLoading={isLoading}>
           <ScrollToTop />
-          <Responsive {...Responsive.onlyMobile}>
+          <Responsive fireOnMount getWidth={this.getWidth} maxWidth={767}>
             <NavBarMobile
               {...this.state}
               handleUser={this.handleUser}
@@ -60,7 +66,7 @@ export default withRouter(
               updatePosts={this.updatePosts}
             />
           </Responsive>
-          <Responsive minWidth={Responsive.onlyTablet.minWidth}>
+          <Responsive fireOnMount getWidth={this.getWidth} minWidth={768}>
             <NavBarDesktop
               {...this.state}
               handleUser={this.handleUser}
