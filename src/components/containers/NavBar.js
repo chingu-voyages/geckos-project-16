@@ -58,14 +58,14 @@ export default withRouter(
       return (
         <BlurredLoader isLoading={isLoading}>
           <ScrollToTop />
-          <Responsive fireOnMount getWidth={this.getWidth} maxWidth={767}>
-            <NavBarMobile
-              {...this.state}
-              handleUser={this.handleUser}
-              handleLogout={this.handleLogout}
-              updatePosts={this.updatePosts}
-            />
-          </Responsive>
+          {/* <Responsive fireOnMount getWidth={this.getWidth} maxWidth={767}> */}
+          <NavBarMobile
+            {...this.state}
+            handleUser={this.handleUser}
+            handleLogout={this.handleLogout}
+            updatePosts={this.updatePosts}
+          />
+          {/* </Responsive>
           <Responsive fireOnMount getWidth={this.getWidth} minWidth={768}>
             <NavBarDesktop
               {...this.state}
@@ -73,7 +73,7 @@ export default withRouter(
               handleLogout={this.handleLogout}
               updatePosts={this.updatePosts}
             />
-          </Responsive>
+          </Responsive> */}
         </BlurredLoader>
       );
     }
