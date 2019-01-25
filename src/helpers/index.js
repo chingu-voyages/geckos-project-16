@@ -2,11 +2,7 @@
 export function fetcher(url, opts) {
   return fetch(`${process.env.REACT_APP_API_ROUTE}${url}`, {
     method: opts.method || "get",
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "application/json",
-      ...opts.headers,
-    },
+    headers: { "Content-Type": "application/json", ...opts.headers },
     body: opts.body,
   });
 }
