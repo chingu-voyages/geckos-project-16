@@ -49,7 +49,7 @@ export default withRouter(
 
     isBrowser = () => typeof window !== "undefined";
 
-    getWidth = () => (isBrowser() ? window.innerWidth : 0);
+    getWidth = () => (this.isBrowser() ? window.innerWidth : 0);
 
     render() {
       const { isLoading } = this.state;
