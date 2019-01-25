@@ -30,31 +30,32 @@ const AuthHolder = ({ match, handleUser }) => {
       )}
       <Divider section horizontal content="OR" />
       <FacebookLogin
-        appId="" //APP ID NOT CREATED YET
+        appId="323501384952013"
         fields="name,email,picture"
         callback={responseFacebook}
-        render={() => (
+        render={renderProps => (
           <Button
             size="big"
             color="facebook"
             icon="facebook"
             className="social-auth"
             content="Login with Facebook"
+            onClick={renderProps.onClick}
           />
         )}
       />
       <GoogleLogin
-        clientId="" //CLIENTID NOT CREATED YET
-        buttonText="LOGIN WITH GOOGLE"
+        clientId="849865718976-222rlc6r2qnuqd6m7cv9kbnra318e7h7.apps.googleusercontent.com"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
-        render={() => (
+        render={renderProps => (
           <Button
             size="big"
             color="google plus"
             icon="google"
             className="social-auth"
             content="Login with Google"
+            onClick={renderProps.onClick}
           />
         )}
       />
