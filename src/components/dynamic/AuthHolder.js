@@ -30,14 +30,14 @@ const AuthHolder = ({ match, handleUser }) => {
         color="facebook"
         icon="facebook"
         className="social-auth"
-        content="Sign up with Facebook"
+        content="Log in with Facebook"
       />
       <Button
         size="big"
         color="google plus"
         icon="google"
         className="social-auth"
-        content="Sign up with Google"
+        content="Log in with Google"
       />
     </StyledContainer>
   );
