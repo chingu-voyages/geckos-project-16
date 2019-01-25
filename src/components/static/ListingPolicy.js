@@ -79,7 +79,7 @@ export default class AccordionExampleStyled extends Component {
                 <span className="policy-heading">
                   DELETE your listing after adoption.
                 </span>{" "}
-                After 60 days, a listing and it's photos will automatically be deleted. If
+                After 90 days, a listing and it's photos will automatically be deleted. If
                 adoption is no longer needed, please delete the listing yourself. Keep in
                 mind that unhappy adopters will lead to less visits and recommendations to
                 use our site. To make sure our furry friends here have the highest chances
@@ -130,7 +130,7 @@ export default class AccordionExampleStyled extends Component {
               <List.Item className="listing-policy-item">
                 Log into your account and go to your listing. Scroll to the bottom and
                 click the edit or delete button. *Listings are automatically deleted after
-                60 days of creation*
+                90 days of creation*
               </List.Item>
             </List>
           </Accordion.Content>

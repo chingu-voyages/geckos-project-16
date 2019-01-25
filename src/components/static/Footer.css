@@ -1,15 +1,11 @@
 #footer.ui.inverted.vertical.segment {
   text-align: center;
-  padding: 30px;
+  padding: 15px 10px;
 }
 
 #footer .list {
   width: 100%;
   text-align: center;
-}
-
-#footer .footer-item {
-  border-right: none !important;
 }
 
 #footer a.item {
@@ -18,23 +14,32 @@
 }
 
 #footer .ui.list > a.item {
-  color: #fff !important;
-  border-right: 1px solid #fff;
-  padding-right: 12px;
+  color: #fff;
+  padding: 14px 20px !important;
   font-size: 17px !important;
+  margin: 0;
+  transition: opacity 0.2s;
+}
+
+#footer .ui.list > a.item:hover {
+  opacity: 0.7;
+}
+
+#footer hr {
+  border: none;
+  background-color: #fff;
+  height: 2px;
+  width: 225px;
 }
 
 #footer p {
+  padding: 10px 0;
   color: #fff;
   text-align: center;
 }
 
-#footer .top-items {
-  padding-bottom: 20px !important;
-}
-
-@media only screen and (width: 767px) {
+@media only screen and (max-width: 767px) {
   #footer .ui.list > a.item {
-    font-size: 9px;
+    padding: 14px 10px !important;
   }
 }

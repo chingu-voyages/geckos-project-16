@@ -6,25 +6,31 @@ import "./Footer.css";
 const Footer = () => (
   <Segment inverted color="purple" vertical id="footer">
     <Container>
-      <List horizontal className="top-items">
+      <List horizontal>
+        <List.Item as={Link} to="/contactus">
+          Contact Us
+        </List.Item>
+      </List>
+      <List horizontal>
         <List.Item as={Link} to="/login">
           Login
         </List.Item>
-        <List.Item as={Link} to="/signup" className="footer-item">
+        <List.Item as={Link} to="/signup">
           Register
         </List.Item>
       </List>
-      <List horizontal className="top-items">
+      <List horizontal>
         <List.Item as={Link} to="/create">
           Create Listing
         </List.Item>
         <List.Item as={Link} to="/listings">
           View Listings
         </List.Item>
-        <List.Item as={Link} to="/listingpolicy" className="footer-item">
+        <List.Item as={Link} to="/listingpolicy">
           Listing Policy
         </List.Item>
       </List>
+      <hr />
       <p>
         Built with{" "}
         <span role="img" aria-label="sheep">

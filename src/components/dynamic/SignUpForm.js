@@ -50,7 +50,6 @@ class SignUpForm extends Component {
         }),
       });
       const user = await resp.json();
-      console.log(user);
       if (!resp.ok) {
         throw user.errors[Object.keys(user.errors)[0]];
       }

@@ -8,6 +8,7 @@ import FeaturedPosts from "../dynamic/FeaturedPosts";
 import LatestListings from "../dynamic/LatestListings";
 import ViewListingHolder from "../dynamic/ViewListingHolder";
 import ListingFormHolder from "../dynamic/ListingFormHolder";
+import ContactForm from "../dynamic/ContactForm";
 
 const Routes = ({ handleUser, updatePosts, user, posts, isLoading }) => (
   <Switch>
@@ -154,6 +155,20 @@ const Routes = ({ handleUser, updatePosts, user, posts, isLoading }) => (
             />
           </Helmet>
           <LatestListings posts={posts} />
+        </Fragment>
+      )}
+    />
+    <Route
+      exact
+      path="/contactus"
+      render={() => (
+        <Fragment>
+          <Helmet>
+            <title>Adopt a Korean Pet || Contact Us</title>
+            <meta name="keywords" content="Adopt,Pet,Korean animals,Adopt a Korean Pet" />
+            <meta name="description" content="Contact us" />
+          </Helmet>
+          <ContactForm user={user} />
         </Fragment>
       )}
     />
