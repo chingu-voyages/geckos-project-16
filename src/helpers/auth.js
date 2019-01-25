@@ -1,18 +1,21 @@
-// return a promise that we'll handle in our components
-export function userAuth(url, opts) {
-  return fetch(`http://localhost:3000/api/users/${url}`, {
-    method: opts.method || "get",
-    headers: { "Content-Type": "application/json", ...opts.headers },
-    body: opts.body,
-  });
-}
+import { fetcher } from "./";
 
 // verify that the token is valid
 export async function verifyUser() {
   const userObj = JSON.parse(localStorage.getItem("user"));
   if (!userObj) return;
-  const resp = await userAuth("verify", {
-    headers: { Authorization: `Bearer ${userObj.token}` },
-  });
-  return await resp.json();
+  try {
+    const resp = await fetcher("/users/verify", {
+      headers: { Authorization: `Bearer ${userObj.token}` },
+    });
+    if (!resp.ok) {
+      localStorage.clear();
+      // eslint-disable-next-line no-throw-literal
+      throw null;
+    }
+    return await resp.json();
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
 }

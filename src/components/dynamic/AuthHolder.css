@@ -1,0 +1,25 @@
+.form.ui.form.auth-form .ui.input {
+  margin: 5px auto;
+}
+
+.form.ui.form.auth-form input,
+.form.ui.form.auth-form button {
+  min-height: 50px;
+  margin: 0;
+}
+
+.auth-form a {
+  color: #d52484;
+}
+
+.ui.button[type="submit"] {
+  min-width: 200px;
+}
+
+.social-auth.ui.button {
+  width: 48%;
+  display: inline-block;
+  min-width: 205px;
+  margin: 5px 6px;
+  min-height: 50px;
+}
