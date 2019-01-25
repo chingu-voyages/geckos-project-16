@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from "react";
-import { Menu, Sidebar, Responsive } from "semantic-ui-react";
+import React, { Component } from "react";
+import { Menu, Sidebar } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
 import BlurredLoader from "../reusable/BlurredLoader";
 import SiteContent from "./SiteContent";
@@ -47,63 +47,25 @@ export default withRouter(
 
     handleUser = user => this.setState({ user });
 
-    isBrowser = () => typeof window !== "undefined";
-
-    getWidth = () => (this.isBrowser() ? window.innerWidth : Infinity);
-
     render() {
       const { isLoading } = this.state;
-      console.log(this.isBrowser());
-      console.log(this.getWidth());
       return (
         <BlurredLoader isLoading={isLoading}>
           <ScrollToTop />
-          {/* <Responsive fireOnMount getWidth={this.getWidth} maxWidth={767}> */}
-          <NavBarMobile
+          <NavBarHolder
             {...this.state}
             handleUser={this.handleUser}
             handleLogout={this.handleLogout}
             updatePosts={this.updatePosts}
           />
-          {/* </Responsive>
-          <Responsive fireOnMount getWidth={this.getWidth} minWidth={768}>
-            <NavBarDesktop
-              {...this.state}
-              handleUser={this.handleUser}
-              handleLogout={this.handleLogout}
-              updatePosts={this.updatePosts}
-            />
-          </Responsive> */}
         </BlurredLoader>
       );
     }
   }
 );
 
-// used for desktop screens
-const NavBarDesktop = ({ handleUser, handleLogout, updatePosts, ...state }) => {
-  console.log("isDeskTop");
-  return (
-    <Fragment>
-      <Menu fixed="top">
-        <MenuItems items={leftItems} />
-        <MenuItems
-          items={rightItems}
-          user={state.user}
-          handleLogout={handleLogout}
-          position="right"
-        />
-      </Menu>
-      <SiteContent handleUser={handleUser} updatePosts={updatePosts} {...state} />
-    </Fragment>
-  );
-};
-
-// used for tablet and mobile screens
-class NavBarMobile extends Component {
-  state = {
-    visible: false,
-  };
+class NavBarHolder extends Component {
+  state = { visible: false };
 
   handlePusher = () => {
     if (!this.state.visible) return;
@@ -113,7 +75,6 @@ class NavBarMobile extends Component {
   handleToggle = () => this.setState({ visible: !this.state.visible });
 
   render() {
-    console.log("isMobile: true");
     const { visible } = this.state;
     const { handleUser, handleLogout, updatePosts, ...state } = this.props;
     return (
@@ -160,6 +121,7 @@ const leftItems = [
   { as: Link, to: "/listings", content: "View Listings", key: "listings" },
   { as: Link, to: "/create", content: "Create Listing", key: "createListing" },
   { as: Link, to: "/listingpolicy", content: "Listing Policy", key: "listingPolicy" },
+  { as: Link, to: "/contactus", content: "Contact Us", key: "contactus" },
 ];
 const rightItems = [
   { as: Link, to: "/login", content: "Login", key: "login" },
