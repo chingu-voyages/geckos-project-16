@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Form, Divider, Button } from "semantic-ui-react";
+import { Form, Divider, Button, Message } from "semantic-ui-react";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import GoogleLogin from "react-google-login";
 import { fetcher } from "../../helpers";
@@ -168,6 +168,16 @@ class LogInForm extends Component {
             />
           )}
         />
+        <Message color="purple">
+          <Message.Header>Social Login Information</Message.Header>
+          <Message.Content>
+            Only your email is used for account verification purposes.
+          </Message.Content>
+          <Message.Content>
+            Your account email has to match your social platform's email.
+          </Message.Content>
+          <Message.Content>We don't save anything.</Message.Content>
+        </Message>
       </Fragment>
     );
   }

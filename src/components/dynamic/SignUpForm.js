@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Form, Input, Message, Checkbox } from "semantic-ui-react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { validateEmail } from "../../helpers";
 import { fetcher } from "../../helpers";
 import FormMessages from "../reusable/FormMessages";
@@ -18,6 +19,7 @@ const initialState = {
   errorStatus: null,
   activeUser: null,
   errorMsg: null,
+  validCaptcha: false,
 };
 
 class SignUpForm extends Component {
@@ -76,6 +78,9 @@ class SignUpForm extends Component {
     this.setState({ isProcessing: true }, this.handleSignUp);
   };
 
+  successCaptcha = () => this.setState({ validCaptcha: true });
+  expiredCaptcha = () => this.setState({ validCaptcha: false });
+
   render() {
     const {
       fullName,
@@ -90,6 +95,7 @@ class SignUpForm extends Component {
       activeUser,
       errorMsg,
       isRealEmail,
+      validCaptcha,
     } = this.state;
     // input label values
     const [pwIcon, pwColor] =
@@ -169,6 +175,12 @@ class SignUpForm extends Component {
             }
           />
         </Form.Field>
+        <ReCAPTCHA
+          sitekey={process.env.REACT_APP_CAPTCHA_KEY}
+          onChange={this.successCaptcha}
+          onExpired={this.expiredCaptcha}
+          className="recaptcha"
+        />
         <Form.Button
           color="purple"
           size="big"
@@ -179,7 +191,8 @@ class SignUpForm extends Component {
             !fullName ||
             !passwordsMatch ||
             password.length < 8 ||
-            !isAgreed
+            !isAgreed ||
+            !validCaptcha
           }
         />
         <FormMessages
