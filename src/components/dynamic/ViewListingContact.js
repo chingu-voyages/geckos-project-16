@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button, Icon, Grid, Segment, Header, Label, Confirm } from "semantic-ui-react";
 
 class ViewListingAction extends Component {
@@ -158,4 +158,4 @@ const getSocialShareBtns = (href, img) => {
   ];
 };
 
-export default withRouter(ViewListingAction);
+export default ViewListingAction;
