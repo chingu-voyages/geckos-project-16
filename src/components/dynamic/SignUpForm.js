@@ -5,6 +5,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { validateEmail } from "../../helpers";
 import { fetcher } from "../../helpers";
 import FormMessages from "../reusable/FormMessages";
+import { addGooEvent } from "../../helpers/analytics";
 
 const initialState = {
   email: "",
@@ -55,6 +56,7 @@ class SignUpForm extends Component {
       if (!resp.ok) {
         throw user.errors[Object.keys(user.errors)[0]];
       }
+      addGooEvent("Auth", "Signup Successful");
       localStorage.setItem("user", JSON.stringify(user));
       this.setState(
         {
@@ -65,6 +67,7 @@ class SignUpForm extends Component {
         () => this.props.handleUser(user)
       );
     } catch (err) {
+      addGooEvent("Auth", "Signup Failed");
       this.setState({
         ...initialState,
         errorStatus: true,
@@ -74,6 +77,7 @@ class SignUpForm extends Component {
   };
 
   handleSubmit = e => {
+    addGooEvent("Auth", "Signup Attemped");
     e.preventDefault();
     this.setState({ isProcessing: true }, this.handleSignUp);
   };
