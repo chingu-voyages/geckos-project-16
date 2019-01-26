@@ -1,5 +1,7 @@
-import React, { Component } from "react";
-import { Form } from "semantic-ui-react";
+import React, { Component, Fragment } from "react";
+import { Form, Divider, Button } from "semantic-ui-react";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+import GoogleLogin from "react-google-login";
 import { fetcher } from "../../helpers";
 import FormMessages from "../reusable/FormMessages";
 
@@ -18,6 +20,11 @@ class LogInForm extends Component {
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
 
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState({ isProcessing: true }, this.handleLogIn);
+  };
+
   handleLogIn = async () => {
     try {
       const { password, email } = this.state;
@@ -29,27 +36,54 @@ class LogInForm extends Component {
       if (!resp.ok) {
         throw user;
       }
-      localStorage.setItem("user", JSON.stringify(user));
-      this.setState(
-        {
-          ...initialState,
-          successStatus: true,
-          activeUser: user.fullName,
-        },
-        () => this.props.handleUser(user)
-      );
+      this.onSuccess(user);
     } catch (err) {
-      this.setState({
-        ...initialState,
-        errorStatus: true,
-        errorMsg: err.message,
-      });
+      this.onError(err);
     }
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.setState({ isProcessing: true }, this.handleLogIn);
+  handleSocialLogin = async email => {
+    try {
+      if (!email) throw new Error("Sorry, something went wrong");
+      const blob = await this.socialFetch(email);
+      const user = await blob.json();
+      if (!blob.ok) throw user;
+      this.onSuccess(user);
+    } catch (err) {
+      this.onError(err);
+    }
+  };
+
+  socialFetch = email =>
+    fetcher("/users/social", {
+      method: "POST",
+      body: JSON.stringify({ email }),
+    });
+
+  onSuccess = user => {
+    // put user in storage
+    localStorage.setItem("user", JSON.stringify(user));
+    // reset our state and show a successful message
+    this.setState(
+      {
+        ...initialState,
+        successStatus: true,
+        activeUser: user.fullName,
+      },
+      // send the user obj back to Navbar
+      // this will update the UI
+      // logout button, etc
+      () => this.props.handleUser(user)
+    );
+  };
+
+  onError = err => {
+    console.log(err);
+    this.setState({
+      ...initialState,
+      errorStatus: true,
+      errorMsg: err.message,
+    });
   };
 
   render() {
@@ -63,43 +97,78 @@ class LogInForm extends Component {
       isProcessing,
     } = this.state;
     return (
-      <Form
-        loading={isProcessing}
-        className="auth-form"
-        success={successStatus}
-        error={errorStatus}
-        onSubmit={this.handleSubmit}
-      >
-        <Form.Group widths="equal">
-          <Form.Input
-            type="email"
-            placeholder="Email"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
+      <Fragment>
+        <Form
+          loading={isProcessing}
+          className="auth-form"
+          success={successStatus}
+          error={errorStatus}
+          onSubmit={this.handleSubmit}
+        >
+          <Form.Group widths="equal">
+            <Form.Input
+              type="email"
+              placeholder="Email"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+            />
+            <Form.Input
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Button
+            color="purple"
+            size="big"
+            type="submit"
+            content={isProcessing ? "Processing" : "Submit"}
+            disabled={!email || !password}
           />
-          <Form.Input
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
+          <FormMessages
+            successStatus={successStatus}
+            successMsg={`Welcome back, ${activeUser}!`}
+            errorStatus={errorStatus}
+            errorMsg={errorMsg}
           />
-        </Form.Group>
-        <Form.Button
-          color="purple"
-          size="big"
-          type="submit"
-          content={isProcessing ? "Processing" : "Submit"}
-          disabled={!email || !password}
+        </Form>
+        <Divider section horizontal content="OR" />
+        <FacebookLogin
+          appId={process.env.REACT_APP_FACEBOOK_APP_ID}
+          fields="email"
+          callback={resp => this.handleSocialLogin(resp.email)}
+          render={renderProps => (
+            <Button
+              size="big"
+              color="facebook"
+              icon="facebook"
+              className="social-auth"
+              content="Login with Facebook"
+              onClick={resp =>
+                this.setState({ isProcessing: true }, renderProps.onClick(resp))
+              }
+            />
+          )}
         />
-        <FormMessages
-          successStatus={successStatus}
-          successMsg={`Welcome back, ${activeUser}!`}
-          errorStatus={errorStatus}
-          errorMsg={errorMsg}
+        <GoogleLogin
+          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+          onSuccess={resp => this.handleSocialLogin(resp.profileObj.email)}
+          onFailure={() => this.onError({ message: "Something went wrong." })}
+          render={renderProps => (
+            <Button
+              size="big"
+              color="google plus"
+              icon="google"
+              className="social-auth"
+              content="Login with Google"
+              onClick={renderProps.onClick}
+            />
+          )}
         />
-      </Form>
+      </Fragment>
     );
   }
 }
