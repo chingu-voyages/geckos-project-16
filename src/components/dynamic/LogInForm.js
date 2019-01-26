@@ -4,6 +4,7 @@ import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props
 import GoogleLogin from "react-google-login";
 import { fetcher } from "../../helpers";
 import FormMessages from "../reusable/FormMessages";
+import { addGooEvent } from "../../helpers/analytics";
 
 const initialState = {
   email: "",
@@ -33,6 +34,7 @@ class LogInForm extends Component {
         body: JSON.stringify({ email, password }),
       });
       const user = await resp.json();
+      addGooEvent("Auth", "Regular Login");
       if (!resp.ok) {
         throw user;
       }
@@ -47,6 +49,7 @@ class LogInForm extends Component {
       if (!email) throw new Error("Sorry, something went wrong");
       const blob = await this.socialFetch(email);
       const user = await blob.json();
+      addGooEvent("Auth", "Social Login");
       if (!blob.ok) throw user;
       this.onSuccess(user);
     } catch (err) {
@@ -61,6 +64,7 @@ class LogInForm extends Component {
     });
 
   onSuccess = user => {
+    addGooEvent("Auth", "Login Successful");
     // put user in storage
     localStorage.setItem("user", JSON.stringify(user));
     // reset our state and show a successful message
@@ -79,6 +83,7 @@ class LogInForm extends Component {
 
   onError = err => {
     console.log(err);
+    addGooEvent("Auth", "Login Failed");
     this.setState({
       ...initialState,
       errorStatus: true,

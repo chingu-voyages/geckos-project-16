@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Menu, Sidebar } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
+import ReactGA from "react-ga";
 import BlurredLoader from "../reusable/BlurredLoader";
 import SiteContent from "./SiteContent";
 import ScrollToTop from "./ScrollToTop";
 import { verifyUser } from "../../helpers/auth";
 import { fetcher } from "../../helpers";
+import { trackGooPage } from "../../helpers/analytics";
 import "./NavBar.css";
 
 export default withRouter(
@@ -16,6 +18,9 @@ export default withRouter(
     // instead of repeated calls to our API, which is on a free tier
     // we'll make one fetch here and then pass down through props
     async componentDidMount() {
+      ReactGA.initialize(process.env.REACT_APP_ANALYTICS_KEY);
+      const page = this.props.location.pathname;
+      trackGooPage(page);
       try {
         // checks if user is in localStorage
         const user = await verifyUser();
@@ -27,6 +32,13 @@ export default withRouter(
         console.log(err);
         this.setState({ isLoading: false }, () => this.props.history.push("/error"));
       }
+    }
+
+    componentDidUpdate(prevProps) {
+      const lastPage = prevProps.location.pathname;
+      const currentPage = this.props.location.pathname;
+      if (currentPage === lastPage) return;
+      trackGooPage(currentPage);
     }
 
     updatePosts = () => {

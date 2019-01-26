@@ -9,6 +9,7 @@ import {
   initialFormState,
   stringifyBody,
 } from "../../helpers";
+import { addGooEvent } from "../../helpers/analytics";
 
 const extraState = {
   formErrors: [],
@@ -51,6 +52,7 @@ class CreateListingForm extends Component {
       });
       const post = await resp.json();
       if (!resp.ok) throw post;
+      addGooEvent("Listing", "Created");
       this.props.updatePosts();
       this.props.history.push(`/listing/${post._id}`);
     } catch (err) {
@@ -75,6 +77,7 @@ class CreateListingForm extends Component {
       });
       const post = await resp.json();
       if (!resp.ok) throw post;
+      addGooEvent("Listing", "Updated");
       this.props.updatePosts();
       this.props.history.push(`/listing/${post._id}`);
     } catch (err) {

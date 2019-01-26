@@ -3,6 +3,7 @@ import BlurredLoader from "../reusable/BlurredLoader";
 import ImageShowCase from "../reusable/ImageShowCase";
 import ViewListingPage from "../dynamic/ViewListingPage";
 import { fetcher } from "../../helpers";
+import { addGooEvent } from "../../helpers/analytics";
 
 const emptyPetInfo = {
   owner: {
@@ -55,11 +56,13 @@ class ViewListingHolder extends Component {
 
   closeImageShowCase = () => this.setState({ showImageShowCase: false });
 
-  openImageShowCase = e =>
+  openImageShowCase = e => {
+    addGooEvent("Listing", "Showcase opened");
     this.setState({
       showImageShowCase: true,
       imgID: Number(e.target.id),
     });
+  };
 
   handleDelete = async () => {
     try {
@@ -71,6 +74,7 @@ class ViewListingHolder extends Component {
       });
       const post = await resp.json();
       if (!resp.ok) throw post;
+      addGooEvent("Listing", "Deleted");
       this.props.updatePosts();
       this.props.history.push("/");
     } catch (err) {
