@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Button, Icon, Grid, Segment, Header, Label, Confirm } from "semantic-ui-react";
 
 class ViewListingAction extends Component {
@@ -15,7 +15,9 @@ class ViewListingAction extends Component {
       adoptionFee,
       isOwner,
       postId,
+      petName,
       handleDelete,
+      mainImg,
     } = this.props;
     return (
       <Grid.Column style={{ paddingTop: "14px" }} width={16}>
@@ -86,7 +88,11 @@ class ViewListingAction extends Component {
                     </Button>
                   </Button.Group>
                 ) : (
-                  <Button size="huge" color="purple">
+                  <Button
+                    size="huge"
+                    color="purple"
+                    href={`mailto:${contactEmail}?subject=I'm interested in ${petName}!`}
+                  >
                     I'm interested!
                   </Button>
                 )}
@@ -99,11 +105,11 @@ class ViewListingAction extends Component {
                     content="Share"
                   />
                   <Button.Group>
-                    {socialShares.map(social => (
+                    {getSocialShareBtns(window.location.href, mainImg).map(social => (
                       <Button
+                        as="a"
                         circular
                         {...social}
-                        as="a"
                         target="_newtab"
                         className="socialMediaButton"
                       />
@@ -119,34 +125,37 @@ class ViewListingAction extends Component {
   }
 }
 
-//Need to grab the current page URL here somehow
-const currentUrl = "";
+const getSocialShareBtns = (href, img) => {
+  return [
+    {
+      icon: "facebook",
+      color: "facebook",
+      key: "facebook",
+      href: `https://www.facebook.com/dialog/share?app_id=${
+        process.env.REACT_APP_FACEBOOK_APP_ID
+      }&display=popup&href=${href}`,
+    },
+    {
+      icon: "twitter",
+      color: "twitter",
+      key: "twitter",
+      href: `https://twitter.com/intent/tweet?&url=${href}`,
+    },
+    {
+      icon: "pinterest",
+      color: "red",
+      key: "pinterest",
+      href: `http://pinterest.com/pin/create/link/?url=${href}&media=${
+        img ? img.url : ""
+      }`,
+    },
+    {
+      icon: "mail",
+      color: "yellow",
+      key: "mail",
+      href: `mailto:?Subject=Check out this animal - Rescue Korea&body=${href}`,
+    },
+  ];
+};
 
-const socialShares = [
-  {
-    icon: "facebook",
-    color: "facebook",
-    key: "facebook",
-    href: `http://www.facebook.com/sharer.php?u=${currentUrl}`,
-  },
-  {
-    icon: "twitter",
-    color: "twitter",
-    key: "twitter",
-    href: `https://twitter.com/intent/tweet?&url=${currentUrl}`,
-  },
-  {
-    icon: "pinterest",
-    color: "red",
-    key: "pinterest",
-    href: `https://www.pinterest.com/login/?next=/pin/create/button/%3Furl%3D${currentUrl}`,
-  },
-  {
-    icon: "mail",
-    color: "yellow",
-    key: "mail",
-    href: `mailto:?Subject=Adopt a pet today`,
-  },
-];
-
-export default ViewListingAction;
+export default withRouter(ViewListingAction);
