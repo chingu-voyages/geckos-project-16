@@ -16,10 +16,23 @@
   min-width: 200px;
 }
 
+.social-auth.ui.button:last-child {
+  margin-left: 10px;
+}
+
 .social-auth.ui.button {
-  width: 48%;
-  display: inline-block;
+  width: calc(50% - 5px);
   min-width: 205px;
-  margin: 5px 6px;
+  margin: 5px 0;
   min-height: 50px;
+}
+
+@media screen and (max-width: 767px) {
+  .social-auth.ui.button {
+    width: 100%;
+    margin: 5px 0;
+  }
+  .social-auth.ui.button:last-child {
+    margin-left: 0;
+  }
 }

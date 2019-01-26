@@ -15,7 +15,7 @@
     "semantic-ui-react": "^0.83.0"
   },
   "scripts": {
-    "start": "HTTPS=true react-scripts start",
+    "start": "SET PORT=3001 && react-scripts start",
     "build": "react-scripts build && react-snapshot",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
