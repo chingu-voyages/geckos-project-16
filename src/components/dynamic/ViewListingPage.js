@@ -19,6 +19,8 @@ export default ({ petInfo, openImageShowCase, user, handleDelete }) => (
         <ViewListingContact
           isOwner={user && (user.isAdmin || user.userId === petInfo.owner.id)}
           postId={petInfo._id}
+          petName={petInfo.petName}
+          mainImg={petInfo.images[0]}
           contactName={petInfo.owner.name}
           contactEmail={petInfo.owner.email}
           adoptionFee={petInfo.adoptionFee}
