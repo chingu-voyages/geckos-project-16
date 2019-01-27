@@ -23,16 +23,18 @@ We ended up completing our MVP on time, so I made a serverless API. You can view
 
 ### Things to note:
 
-- Our project is built on a free Lambda tier and a non-production tier of mongoDB, so I wanted to reduce the number of calls to each.
-- I wanted to reduce the time need to keep the site clean, so each post automatically deletes after 90 days and since we used cloudinary to host our images, I had to made a route that gets pinged so any images over 90 days are deleted from the cloud as well.
-- Cloudinary features includes a widget to upload from local, social networks or a camera. Users can also crop their photos before uploading
-- We deployed our front end to Netlify and are using their Forms feature for our Contact Us page
+- Our backend is built on a free Lambda tier and a non-production tier of mongoDB, so I wanted to reduce the number of calls to each.
+- To reduce site maintenance, we used mongoDB TTL to automatically delete a post after 90 days.
+  - However since we used Cloudinary to host our images, I had to make a route that gets pinged so any images over 90 days are deleted from the cloud as well.
+  - Note: If a user manually deletes their post, their images are be deleted as well. 
+- Our Cloudinary features include a widget to upload from local, social networks or by using their camera to take a new photo. We also gave users the ability to crop their photos before uploading.
+- We deployed our front end to Netlify and are using their Forms feature for our Contact Us page.
 - We used a custom theme built using Semantic UI, and used React Semantic UI for our components.
 - We used a Facebook and Google login feature that verifies the user is logged into their account and checks our DB for their email.
-- We added Google Analytics to track page views and different types of events
-- We added a couple polyfills since a high volume of our user base resides in South Korea (which uses IE alot) to ensure a smooth experience across all browsers
-- We took used react-snapshot to help improve our SEO
-- We ensured our site looks fantastic on mobile as well as desktops
+- We added Google Analytics to track page views and different types of events.
+- We added a couple polyfills since a high volume of our user base resides in South Korea (which use IE alot) to ensure a smooth experience across all browsers.
+- We took used react-snapshot to help improve our SEO.
+- We ensured our site looks fantastic on mobile as well as desktops.
 
 ### .env file you'll need to run locally
 
@@ -49,4 +51,4 @@ REACT_APP_CAPTCHA_KEY="googleCaptchaKeyHere"
 REACT_APP_ANALYTICS_KEY="googleAnalyticsKeyHere"
 ```
 
-If you have any question, let us know. Our GitHub's are at the top.
+If you have any questions, let us know. Our GitHub's are at the top.
