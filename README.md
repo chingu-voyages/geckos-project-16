@@ -2,6 +2,8 @@
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Waffle.io - Issues in progress](https://badge.waffle.io/chingu-voyages/geckos-project-16.png?label=in%20progress&title=In%20Progress)](http://waffle.io/chingu-voyages/geckos-project-16)
 
+**_For further development and long-term support go [here](https://github.com/dastrong/RescueKorea)._**
+
 ## Our Team
 
 - [Daniel Strong](https://github.com/dastrong) _Team Lead_
